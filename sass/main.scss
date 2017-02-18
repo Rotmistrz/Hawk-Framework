@@ -1,4 +1,5 @@
 $dark-color: #000;
+$dark-color-01: #222;
 
 $medium-color: #36802d;
 
@@ -17,7 +18,7 @@ $huge-font-size: 48px;
 $header-01-font-size: 32px;
 
 $header-02-font-size: 24px;
-
+$subsection-header-font-size: 20px;
 
 $icons-header-font-size: 20px;
 
@@ -137,7 +138,7 @@ h3 {
 }
 
 .section-header {
-text-align: center;
+text-align: left;
 padding: 0 0 50px 0;
 
 	h1 {
@@ -153,6 +154,14 @@ padding: 0 0 50px 0;
 	line-height: $header-02-font-size + 8px;
 	font-weight: 400;
 	letter-spacing: 1px;
+	}
+}
+
+.subsection-header {
+	.subsection-header__title {
+	color: $dark-color-01;
+	font-size: $subsection-header-font-size;
+	font-weight: 500;
 	}
 }
 
@@ -250,6 +259,11 @@ margin: 0 auto;
 
 .site-content {
 overflow: hidden;
+max-width: 1300px;
+margin: 0 auto;
+}
+.site-subsection {
+padding: 20px 0;
 }
 
 .wrapper {
@@ -816,93 +830,30 @@ padding-top: 50px;
 
 /***** SYMBOLS *****/
 
-.symbol.cross {
-width: 28px;
-height: 28px;
-position: relative;
-}
-.symbol.cross .v
-,.symbol.cross .h {
-position: absolute;
-@include transition(all .3s ease-in);
-}
-.symbol.cross.light .v
-,.symbol.cross.light .h {
-background: #fff;
-}
-.symbol.cross.dark .v
-,.symbol.cross.dark .h {
-background: #000;
-}
-.symbol.cross.medium .v
-,.symbol.cross.medium .h {
-background: #00c9fb;
-}
-.symbol.cross .v {
-height: 100%;
-width: 3px;
-left: 50%;
-top: 0;
-margin: 0 0 0 -1.5px;
-}
-.symbol.cross .h {
-height: 3px;
-width: 100%;
-left: 0;
-top: 50%;
-margin: -1.5px 0 0 0;
-}
-
-.symbol.cross.rotated {
-@include transform(rotate(45deg));
-}
-
-.symbol.hamburger {
-display: block;
-width: 40px;
-
-	> div {
-	height: 6px;
-	background: $dark-color;
-	margin: 5px 0 0 0;
-	@include border-radius(4px);
-	}
-
-	> div:first-child {
-	margin: 0;
-	}
-}
-.symbol.hamburger.dark {
-	> div {
-	background: $dark-color;
-	}
-}
-
-
-
+/* icon hamburger */
 
 .icon-hamburger {
 display: block;
-width: 35px;
-height: 22px;
+width: 27px;
+height: 17px;
 position: relative;
-
+	
 	> div {
 	position: absolute;
 	left: 0;
-	height: 4px;
+	height: 3px;
 	background: $dark-color;
 	width: 100%;
-	@include border-radius(2px);
+	@include border-radius(1.5px);
 	}
 	> div:nth-child(1) {
 	top: 0;
 	}
 	> div:nth-child(2) {
-	top: 9px;
+	top: 7px;
 	}
 	> div:nth-child(3) {
-	top: 18px;
+	top: 14px;
 	}
 }
 .icon-hamburger--medium {
@@ -916,41 +867,132 @@ position: relative;
 	}
 }
 .icon-hamburger--large {
-width: 40px;
-height: 27px;
+width: 32px;
+height: 20px;
 
 	> div {
-	height: 5px;
-	@include border-radius(3px);
+	height: 4px;
+	@include border-radius(2px);
 	}
 	> div:nth-child(1) {
 	top: 0;
 	}
 	> div:nth-child(2) {
-	top: 11px;
+	top: 8px;
 	}
 	> div:nth-child(3) {
-	top: 22px;
+	top: 16px;
 	}
 }
 .icon-hamburger--small {
-width: 27px;
-height: 17px;
+width: 20px;
+height: 12px;
 
 	> div {
-	height: 3px;
-	@include border-radius(1.5px);
+	height: 2px;
+	@include border-radius(1px);
 	}
 	> div:nth-child(1) {
 	top: 0;
 	}
 	> div:nth-child(2) {
-	top: 7px;
+	top: 5px;
 	}
 	> div:nth-child(3) {
-	top: 14px;
+	top: 10px;
 	}
 }
+
+/* icon cross */
+
+.icon-cross {
+width: 26px;
+height: 26px;
+position: relative;
+overflow: hidden;
+
+	> div {
+	position: absolute;
+	background: $dark-color;
+	}
+
+	> div:nth-child(1) {
+	width: 100%;
+	left: 0;
+	top: 50%;
+	height: 4px;
+	margin: -2px 0 0 0;
+	}
+	> div:nth-child(2) {
+	width: 4px;
+	top: 0;
+	left: 50%;
+	margin: 0 0 0 -2px;
+	height: 100%;
+	}
+}
+.icon-cross--large {
+width: 30px;
+height: 30px;
+
+	> div {
+	
+	}
+}
+.icon-cross--small {
+width: 20px;
+height: 20px;
+
+	> div:nth-child(1) {
+	height: 3px;
+	margin: -1.5px 0 0 0;
+	}
+	> div:nth-child(2) {
+	width: 3px;
+	margin: 0 0 0 -1.5px;
+	}
+}
+
+.icon-cross--rotated {
+@include transform(rotate(45deg));
+}
+
+/* icon arrow */
+
+.icon-arrow {
+position: relative;
+width: 18px;
+height: 18px;
+border-top: 3px solid $dark-color;
+border-right: 3px solid $dark-color;
+}
+.icon-arrow--left {
+@include transform(rotate(-135deg));
+left: 3px;
+}
+.icon-arrow--up {
+@include transform(rotate(-45deg));
+top: 3px;
+}
+.icon-arrow--right {
+@include transform(rotate(45deg));
+left: -3px;
+}
+.icon-arrow--down {
+@include transform(rotate(135deg));
+top: -3px;
+}
+.icon-arrow--small {
+width: 14px;
+height: 14px;
+border-width: 2px;
+}
+.icon-arrow--large {
+width: 20px;
+height: 20px;
+border-width: 4px;
+}
+
 
 /***** BUTTONS ******/
 
