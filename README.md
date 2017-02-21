@@ -1,4 +1,4 @@
 ## Hawk Framework
-Simple light CSS framework
+Simple light front-end framework
 
 Visit official website: hawk.filipmarkiewicz.pl

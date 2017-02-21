@@ -1,4 +1,43 @@
+'use strict';
+
 $(document).ready(function() {
+
+    var hawk = {};
+
+    hawk = {
+        w: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        h: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
+
+        hash: window.location.hash,
+        anchorSufix: '-anchor',
+
+        scrollToElement: function(options) {
+            const defaultOptions = {
+                anchor: '#top' + hawk.anchorSufix,
+                callback: function() {},
+                delay: 0
+            };
+
+            options = Object.assign(defaultOptions, options);
+
+            setTimeout(function(){
+                $.scrollTo(options.anchor, 800, {'axis': 'y', 'offset': 0, onAfter: function() { options.callback(); } });
+            }, options.delay);
+        },
+
+        dropdown: function(element) {
+            this.$item = $(element);
+        },
+
+        run: function() { 
+            if(this.hash.length != 0) {
+                this.scrollToElement({ anchor: this.hash + this.anchorSufix, delay: 200 });
+            }
+        }
+    }
+
+    hawk.run();
+
     var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
@@ -15,11 +54,11 @@ $(document).ready(function() {
     var hash = window.location.hash;
     var anchor_str = '-anchor';
 
-    if(hash.length != 0) {
+    /**if(hash.length != 0) {
         scrollToElement(hash + anchor_str, function() {}, 200);
     }
-
-    baguetteBox.run('.gallery');
+**/
+    // baguetteBox.run('.gallery');
 
     function SlideMenu(id) {
         this.menu = $('#' + id);
