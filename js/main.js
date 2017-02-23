@@ -26,13 +26,23 @@ $(document).ready(function() {
         },
 
         dropdown: function(element) {
-            this.$item = $(element);
+            this.item = $(element);
+            this.containerClass = 'dropdown';
+
+            this.header = this.item.find('.' + this.containerClass + '__' + 'header');
+
+            this.run = function() {
+                console.log('Hello, I am dropdown list!');
+            }
         },
 
         run: function() { 
             if(this.hash.length != 0) {
                 this.scrollToElement({ anchor: this.hash + this.anchorSufix, delay: 200 });
             }
+
+            const drop = new this.dropdown($('.dropdown').first());
+            drop.run();
         }
     }
 
