@@ -651,6 +651,98 @@
                         <li><a href="">Aliquam in mi non dolor</a></li>
                     </ul>
                 </section>
+
+                <section class="dropdown">
+                    <header class="dropdown__header">
+                        <h1 class="dropdown__title">Dropdown 2</h1>
+                        <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                    </header>
+
+                    <ul class="dropdown__list">
+                        <li><a href="">Orci varius natoque penatibus</a></li>
+                        <li><a href="">Aliquam in mi non dolor</a></li>
+                        <li><a href="">Lorem ipsum dolor</a></li>
+                        <li><a href="">Sed tristique massa</a></li>
+                    </ul>
+                </section>
+            </section>
+
+            <section id="form-anchor" class="section section-04">
+                <header class="section-header">
+                    <h1 class="section-header__title">Form</h1>
+                </header>
+
+                <form class="form" action="/" method="post">
+                    <fieldset>
+                        <label class="form__field-container">
+                            <input id="name" class="form__field" name="name" type="text" placeholder="Your name" />
+                        </label>
+
+                        <label class="form__field-container">
+                            <input id="email" class="form__field" name="email" type="text" placeholder="Your e-mail" />
+                        </label>
+
+                        <label class="form__field-container">
+                            <section class="dropdown">
+                                <header class="dropdown__header">
+                                    <h1 class="dropdown__title">Choose one or more options</h1>
+                                    <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                </header>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <label class="choice-field">
+                                            <input name="checkbox[]" type="checkbox" value="Value 4" />
+                                            <div class="choice-field__inner">
+                                                <div class="choice-field__field-container">
+                                                    <div class="choice-field__field"></div>
+                                                </div>
+                                                <div class="choice-field__description">Aliquam in mi non dolor</div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li>
+                                        <label class="choice-field">
+                                            <input name="checkbox[]" type="checkbox" value="Value 4" />
+                                            <div class="choice-field__inner">
+                                                <div class="choice-field__field-container">
+                                                    <div class="choice-field__field"></div>
+                                                </div>
+                                                <div class="choice-field__description">Lorem ipsum dolor</div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li>
+                                        <label class="choice-field">
+                                            <input name="checkbox[]" type="checkbox" value="Value 4" />
+                                            <div class="choice-field__inner">
+                                                <div class="choice-field__field-container">
+                                                    <div class="choice-field__field"></div>
+                                                </div>
+                                                <div class="choice-field__description">Orci varius natoque penatibus</div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li>
+                                        <label class="choice-field">
+                                            <input name="checkbox[]" type="checkbox" value="Value 4" />
+                                            <div class="choice-field__inner">
+                                                <div class="choice-field__field-container">
+                                                    <div class="choice-field__field"></div>
+                                                </div>
+                                                <div class="choice-field__description">Sed tristique massa</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </section>
+                        </label>
+                    </fieldset>
+                </form>
+
             </section>
         </main>
 
