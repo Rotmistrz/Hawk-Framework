@@ -10,115 +10,163 @@ $(document).ready(function() {
 
         hash: window.location.hash,
         anchorSufix: '-anchor',
+    }
 
-        scrollToElement: function(options) {
-            const defaultOptions = {
-                anchor: '#top' + hawk.anchorSufix,
-                callback: function() {},
-                delay: 0
-            };
+    hawk.scrollToElement = function(options) {
+        const defaultOptions = {
+            anchor: '#top' + hawk.anchorSufix,
+            callback: function() {},
+            delay: 0
+        };
 
-            options = Object.assign(defaultOptions, options);
+        options = Object.assign(defaultOptions, options);
 
-            setTimeout(function(){
-                $.scrollTo(options.anchor, 800, {'axis': 'y', 'offset': 0, onAfter: function() { options.callback(); } });
-            }, options.delay);
-        },
+        setTimeout(function(){
+            $.scrollTo(options.anchor, 800, {'axis': 'y', 'offset': 0, onAfter: function() { options.callback(); } });
+        }, options.delay);
+    }
 
-        dropdown: function(element) {
-            this.container = $(element);
-            this.containerClass = 'dropdown';
-            this.openClass = this.containerClass + '--open';
+    hawk.Dropdown = function(element) {
+        this.container = $(element);
+        this.containerClass = 'dropdown';
+        this.openClass = this.containerClass + '--open';
 
-            this.header = this.container.find('.' + this.containerClass + '__header');
-            this.list = this.container.find('.' + this.containerClass + '__list');
+        this.header = this.container.find('.' + this.containerClass + '__header');
+        this.list = this.container.find('.' + this.containerClass + '__list');
 
-            this.states = {
-                open: 'open',
-                closed: 'closed'
-            };
+        this.states = {
+            open: 'open',
+            closed: 'closed'
+        };
 
-            this.options = {
-                slideSpeed: 200
-            };
+        this.options = {
+            slideSpeed: 200
+        };
 
+        this.state = this.states.open;
+
+        this.setOpen = function() {
             this.state = this.states.open;
+        }
 
-            this.setOpen = function() {
-                this.state = this.states.open;
+        this.setClosed = function() {
+            this.state = this.states.closed;
+        }
+
+        this.isOpen = function() {
+            if(this.state == this.states.open) {
+                return true;
+            } else {
+                return false;
             }
+        }
 
-            this.setClosed = function() {
-                this.state = this.states.closed;
-            }
-
-            this.isOpen = function() {
-                if(this.state == this.states.open) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
-            this.show = function() {
-                const that = this;
-
-                this.container.addClass(that.openClass);
-                this.list.slideDown(that.options.slideSpeed);
-                this.setOpen();
-            }
-
-            this.hide = function() {
-                const that = this;
-
-                this.container.removeClass(that.openClass);
-                this.list.slideUp(that.options.slideSpeed);
-                this.setClosed();
-            }
-
-            this.run = function() {
-                const that = this;
-
-                this.hide();
-
-                this.container.click(function(e) {
-                    e.stopPropagation();
-                });
-
-                this.header.click(function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    if(that.isOpen()) {
-                        that.hide();
-                    } else {
-                        that.show();
-                    }
-                });
-
-                $('*').not(this.container).not(this.header).not(this.header.find('*')).not(this.list).not(this.list.find('*')).click(function() {
-                    that.hide();
-                });
-            }
-        },
-
-        initializeDropdowns: function() {
-            const dropdowns = $('.dropdown');
+        this.show = function() {
             const that = this;
 
-            dropdowns.each(function() {
-                const dropdown = new that.dropdown($(this));
-                dropdown.run();
-            });
-        },
-
-        run: function() { 
-            if(this.hash.length != 0) {
-                this.scrollToElement({ anchor: this.hash + this.anchorSufix, delay: 200 });
-            }
-
-            this.initializeDropdowns();
+            this.container.addClass(that.openClass);
+            this.list.slideDown(that.options.slideSpeed);
+            this.setOpen();
         }
+
+        this.hide = function() {
+            const that = this;
+
+            this.container.removeClass(that.openClass);
+            this.list.slideUp(that.options.slideSpeed);
+            this.setClosed();
+        }
+
+        this.run = function() {
+            const that = this;
+
+            this.hide();
+
+            this.container.click(function(e) {
+                e.stopPropagation();
+            });
+
+            this.header.click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if(that.isOpen()) {
+                    that.hide();
+                } else {
+                    that.show();
+                }
+            });
+
+            $('*').not(this.container).not(this.header).not(this.header.find('*')).not(this.list).not(this.list.find('*')).click(function() {
+                that.hide();
+            });
+        }
+    }
+
+    hawk.initializeDropdowns = function() {
+        const dropdowns = $('.dropdown');
+        const that = this;
+
+        dropdowns.each(function() {
+            const dropdown = new that.Dropdown($(this));
+            dropdown.run();
+        });
+    }
+
+    hawk.OverlayerManager = function(id) {
+        this.container = $('#' + id);
+        this.overlayerId = this.container.attr('data-overlayer-id');
+        this.contentContainer = this.container.find('.overlayer__content').first();
+
+        this.buttons = $('.overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
+        this.contents = $('.overlayer-content[data-overlayer-id=' + this.overlayerId + ']');
+
+        this.options = {
+            fadeSpeed: 400
+        };
+
+        this.show = function(callback) {
+            const that = this;
+
+            this.container.fadeIn(that.options.fadeSpeed, function() {
+                if(callback !== undefined) {
+                    callback();
+                }
+            });
+        }
+
+        this.hide = function(callback) {
+            const that = this;
+
+            this.container.fadeOut(that.options.fadeSpeed, function() {
+                if(callback !== undefined) {
+                    callback();
+                }
+            });
+        }
+
+        this.setContent = function(content) {
+            this.contentContainer.html(content);
+        }
+
+        this.run = function() {
+            const that = this;
+
+            this.buttons.click(function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+
+
+            });
+        }
+    }
+
+    hawk.run = function() { 
+        if(this.hash.length != 0) {
+            this.scrollToElement({ anchor: this.hash + this.anchorSufix, delay: 200 });
+        }
+
+        this.initializeDropdowns();
     }
 
     hawk.run();

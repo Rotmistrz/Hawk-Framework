@@ -682,7 +682,7 @@
                             <input id="email" class="form__field" name="email" type="text" placeholder="Your e-mail" />
                         </label>
 
-                        <label class="form__field-container">
+                        <div class="form__field-container">
                             <section class="dropdown">
                                 <header class="dropdown__header">
                                     <h1 class="dropdown__title">Choose one or more options</h1>
@@ -739,37 +739,157 @@
                                     </li>
                                 </ul>
                             </section>
-                        </label>
+                        </div>
+
+                        <div class="form__field-container">
+                            <section class="dropdown">
+                                <header class="dropdown__header">
+                                    <h1 class="dropdown__title">Choose one option</h1>
+                                    <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                </header>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <label class="choice-field choice-field--radio">
+                                            <input name="radio" type="radio" value="Value 4" />
+                                            <div class="choice-field__inner">
+                                                <div class="choice-field__field-container">
+                                                    <div class="choice-field__field"></div>
+                                                </div>
+                                                <div class="choice-field__description">Aliquam in mi non dolor</div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li>
+                                        <label class="choice-field choice-field--radio">
+                                            <input name="radio" type="radio" value="Value 4" />
+                                            <div class="choice-field__inner">
+                                                <div class="choice-field__field-container">
+                                                    <div class="choice-field__field"></div>
+                                                </div>
+                                                <div class="choice-field__description">Lorem ipsum dolor</div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li>
+                                        <label class="choice-field choice-field--radio">
+                                            <input name="radio" type="radio" value="Value 4" />
+                                            <div class="choice-field__inner">
+                                                <div class="choice-field__field-container">
+                                                    <div class="choice-field__field"></div>
+                                                </div>
+                                                <div class="choice-field__description">Orci varius natoque penatibus</div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li>
+                                        <label class="choice-field choice-field--radio">
+                                            <input name="radio" type="radio" value="Value 4" />
+                                            <div class="choice-field__inner">
+                                                <div class="choice-field__field-container">
+                                                    <div class="choice-field__field"></div>
+                                                </div>
+                                                <div class="choice-field__description">Sed tristique massa</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+
+                        <div class="form__field-container">
+                            <div class="form__field-label">
+                            Choose one or more options:
+                            </div>
+
+                            <label class="choice-field">
+                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                <div class="choice-field__inner">
+                                    <div class="choice-field__field-container">
+                                        <div class="choice-field__field"></div>
+                                    </div>
+                                    <div class="choice-field__description">Sed tristique massa</div>
+                                </div>
+                            </label>
+
+                            <label class="choice-field">
+                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                <div class="choice-field__inner">
+                                    <div class="choice-field__field-container">
+                                        <div class="choice-field__field"></div>
+                                    </div>
+                                    <div class="choice-field__description">Orci varius natoque penatibus</div>
+                                </div>
+                            </label>
+
+                            <label class="choice-field">
+                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                <div class="choice-field__inner">
+                                    <div class="choice-field__field-container">
+                                        <div class="choice-field__field"></div>
+                                    </div>
+                                    <div class="choice-field__description">Lorem ipsum dolor</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="button-container">
+                            <button class="button" type="submit">
+                                <div class="button__inner">Wyślij</div>
+                            </button>
+                        </div>
                     </fieldset>
                 </form>
+            </section>
 
+            <section id="overlayer-anchor" class="section section-05">
+                <header class="section-header">
+                    <h1 class="section-header__title">Overlayers</h1>
+                </header>
+
+                <div class="button-container">
+                    <a class="button overlayer-button" data-id="1" data-overlayer-id="1" href="">See more</a>
+                </div>
+
+                <div class="for-overlayer" data-id="1">
+                    <article class="article">
+                        <header class="article__header">
+                            <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
+                        </header>
+
+                        <div class="article__text">
+                            <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque sollicitudin orci nec molestie. Aliquam quis vehicula augue. Vivamus in porta tellus. Curabitur vel mollis diam. Nullam at sodales eros. Integer eu lectus consectetur ante dignissim aliquet. Maecenas varius, ante vel scelerisque faucibus, tellus ex blandit velit, ut molestie turpis mi nec tellus. Curabitur vitae nunc faucibus, bibendum eros sed, consequat sem. Vestibulum pulvinar nunc augue, et fringilla enim accumsan a. Pellentesque rutrum lectus sit amet nisl malesuada viverra. Proin pellentesque quis tellus et accumsan.
+                            </p>
+                            <p>
+                            Vivamus nec gravida dolor, ac ultrices velit. Vivamus massa eros, commodo gravida feugiat vel, consequat non urna. Vivamus felis libero, tincidunt mattis luctus ut, tempor a tellus. Donec et diam iaculis, facilisis felis sed, sodales justo. Sed vel odio sed ligula suscipit dictum vel commodo nisl. Phasellus enim massa, sollicitudin ut libero vitae, ultricies porttitor turpis. Vestibulum elementum ipsum a blandit euismod. Nam id urna lorem. Phasellus hendrerit quam non mauris semper congue. Pellentesque ut finibus enim, et convallis est. Praesent ornare maximus lectus, rutrum hendrerit sem commodo id.
+                            </p>
+                            <p>
+                            Morbi viverra risus turpis, at posuere nunc efficitur ac. Mauris pharetra tempus purus, at tristique tortor suscipit sit amet. Sed tempus, ipsum eget sodales pulvinar, turpis tellus consequat sapien, eu bibendum lectus quam nec diam. Integer est massa, malesuada in finibus pharetra, ornare in ante. Praesent imperdiet pellentesque est a elementum. Sed id mollis dolor, vitae ultricies tortor. Praesent magna massa, finibus eget bibendum id, fermentum a ex. In metus tellus, rutrum scelerisque elementum non, sagittis vel nisl.
+                            </p>
+                            <p>
+                            Nunc a suscipit odio. Curabitur sit amet iaculis nulla, sit amet tristique leo. Maecenas rhoncus aliquet sapien ut imperdiet. Nunc lobortis nulla a nisi hendrerit, a accumsan eros accumsan. Mauris vel mauris arcu. Maecenas aliquet mi ut leo mollis, eu convallis quam pellentesque. Sed vitae accumsan lorem. Nam condimentum laoreet velit at lacinia. Duis pharetra dictum erat at molestie. Sed eu justo sagittis, molestie mi nec, aliquam erat. Nulla lacinia quis felis nec sollicitudin. Morbi nulla neque, gravida at dolor at, blandit gravida nisi. Nunc tincidunt neque ac dolor semper, ut auctor sem viverra. Curabitur egestas convallis enim, vel mollis mauris bibendum lacinia. Mauris dignissim ullamcorper sodales.
+                            </p>
+                        </div>
+                    </article>
+                </div>
             </section>
         </main>
 
         <article id="overlayer" class="overlayer" data-overlayer-id="1">
-            <div class="overlayer-inner">
-                <section class="overlayer-body">
-                    <header class="overlayer-body-header" style="background-image: url('/img/photo-01.jpg');">
-                        <h1>Lorem ipsum dolor sit amet</h1>
-                    </header>
+            <div class="overlayer__inner">
+                <section class="overlayer__content">
 
-                    <section id="overlayer-content-anchor" class="overlayer-content">
-                        <article class="single-vimeo">
-                            <div class="vimeo">
-                                <iframe src="https://player.vimeo.com/video/187625727?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                            </div>
-                        </article>
-                    </section>
                 </section>
             </div>
 
-            <div class="close-icon">
-                <div class="icon round medium">
-                    <div class="wrapper">
-                        <div>
-                            <div class="cross-type-02 medium">X</div>
-                        </div>
-                    </div>
+            <div class="overlayer__close">
+                <div class="icon-cross icon-cross--rotated">
+                    <div></div>
+                    <div></div>
                 </div>
             </div>
         </article>
