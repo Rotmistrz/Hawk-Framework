@@ -47,4 +47,5 @@ Temporary Items
 .apdisk
 
 /sftp-config.json
-/.sass-cache
+/.sass-cache/
+/.gitignore

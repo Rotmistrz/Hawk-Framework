@@ -16,22 +16,16 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-        <script src="/js/jquery-mobile-custom.js"></script>
         <script src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false&amp;key=AIzaSyBKYEAlbCKOG7xKNWlA6_TRXCUA7ptM9ys"></script>
         <script src="/js/infobox.js"></script>
         <script src="/js/map.js"></script>
         <script src="/js/jquery.scrollTo.js"></script>
-        <script src="/js/jquery-viewport-checker.js"></script>
         <script src="/js/retina.js"></script>
-        <script src="/js/parallax.min.js"></script>
-        <script src="/js/jquery.zoom-scroller.min.js"></script>
-        <script src="/js/jquery.bxslider.js"></script>
+
+        <script src="/js/hawk.js"></script>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="/css/owl.carousel.css">
         <link rel="stylesheet" href="/css/animate.css" />
-        <link rel="stylesheet" href="/css/unslider.css" />
-        <link rel="stylesheet" href="/css/jquery.bxslider.css" />
         <link rel="stylesheet" href="/css/main.css" />
         <link rel="stylesheet" href="/css/hover.css" />
 
@@ -41,7 +35,31 @@
         <link rel="icon" href="/img/favicon-16x16.png" sizes="16x16" type="image/png" />
      </head>
      <body>
-        <header class="site-header">
+        <section class="slide-menu" data-id="1">
+            <div class="slide-menu__inner">
+                <nav class="menu">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#column-layouts">Column layouts</a></li>
+                        <li><a href="#icons">Icons</a></li>
+                        <li><a href="#dropdowns">Dropdowns</a></li>
+                        <li><a href="#forms">Forms</a></li>
+                        <li><a href="#overlayers">Overlayers</a></li>
+                        <li><a href="#more-contents">More contents</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <div id="main-menu-toggler" class="menu-toggler" data-id="1">
+            <div class="icon-hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <header id="home-anchor" class="site-header">
             <div class="wrapper">
                 <div>
                     <h1 class="site-header__title">Hawk Framework</h1>
@@ -50,7 +68,7 @@
         </header>
 
         <main class="site-content">
-            <section id="columns-layouts-anchor" class="section section-01">
+            <section id="column-layouts-anchor" class="section section-01">
                 <header class="section-header">
                     <h1 class="section-header__title">Column layouts</h1>
                 </header>
@@ -667,9 +685,9 @@
                 </section>
             </section>
 
-            <section id="form-anchor" class="section section-04">
+            <section id="forms-anchor" class="section section-04">
                 <header class="section-header">
-                    <h1 class="section-header__title">Form</h1>
+                    <h1 class="section-header__title">Forms</h1>
                 </header>
 
                 <form class="form" action="/" method="post">
@@ -854,7 +872,7 @@
                     <a class="button overlayer-button" data-id="1" data-overlayer-id="1" href="">See more</a>
                 </div>
 
-                <div class="for-overlayer" data-id="1">
+                <div class="overlayer-content" data-id="1">
                     <article class="article">
                         <header class="article__header">
                             <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
@@ -877,6 +895,51 @@
                     </article>
                 </div>
             </section>
+
+            <section id="more-content-anchor" class="section section-06">
+                <header class="section-header">
+                    <h1 class="section-header__title">More contents</h1>
+                </header>
+
+                
+
+                
+                <article class="article">
+                    <header class="article__header">
+                        <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
+                    </header>
+
+                    <div class="article__text">
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque sollicitudin orci nec molestie. Aliquam quis vehicula augue. Vivamus in porta tellus. Curabitur vel mollis diam. Nullam at sodales eros. Integer eu lectus consectetur ante dignissim aliquet. Maecenas varius, ante vel scelerisque faucibus, tellus ex blandit velit, ut molestie turpis mi nec tellus. Curabitur vitae nunc faucibus, bibendum eros sed, consequat sem. Vestibulum pulvinar nunc augue, et fringilla enim accumsan a. Pellentesque rutrum lectus sit amet nisl malesuada viverra. Proin pellentesque quis tellus et accumsan.
+                        </p>
+
+                        <div class="more-content" data-id="1">
+                            <p>
+                            Vivamus nec gravida dolor, ac ultrices velit. Vivamus massa eros, commodo gravida feugiat vel, consequat non urna. Vivamus felis libero, tincidunt mattis luctus ut, tempor a tellus. Donec et diam iaculis, facilisis felis sed, sodales justo. Sed vel odio sed ligula suscipit dictum vel commodo nisl. Phasellus enim massa, sollicitudin ut libero vitae, ultricies porttitor turpis. Vestibulum elementum ipsum a blandit euismod. Nam id urna lorem. Phasellus hendrerit quam non mauris semper congue. Pellentesque ut finibus enim, et convallis est. Praesent ornare maximus lectus, rutrum hendrerit sem commodo id.
+                            </p>
+                            <p>
+                            Morbi viverra risus turpis, at posuere nunc efficitur ac. Mauris pharetra tempus purus, at tristique tortor suscipit sit amet. Sed tempus, ipsum eget sodales pulvinar, turpis tellus consequat sapien, eu bibendum lectus quam nec diam. Integer est massa, malesuada in finibus pharetra, ornare in ante. Praesent imperdiet pellentesque est a elementum. Sed id mollis dolor, vitae ultricies tortor. Praesent magna massa, finibus eget bibendum id, fermentum a ex. In metus tellus, rutrum scelerisque elementum non, sagittis vel nisl.
+                            </p>
+                            <p>
+                            Nunc a suscipit odio. Curabitur sit amet iaculis nulla, sit amet tristique leo. Maecenas rhoncus aliquet sapien ut imperdiet. Nunc lobortis nulla a nisi hendrerit, a accumsan eros accumsan. Mauris vel mauris arcu. Maecenas aliquet mi ut leo mollis, eu convallis quam pellentesque. Sed vitae accumsan lorem. Nam condimentum laoreet velit at lacinia. Duis pharetra dictum erat at molestie. Sed eu justo sagittis, molestie mi nec, aliquam erat. Nulla lacinia quis felis nec sollicitudin. Morbi nulla neque, gravida at dolor at, blandit gravida nisi. Nunc tincidunt neque ac dolor semper, ut auctor sem viverra. Curabitur egestas convallis enim, vel mollis mauris bibendum lacinia. Mauris dignissim ullamcorper sodales.
+                            </p>
+                        </div>
+
+                        <div class="button-container more-buttons">
+                            <a class="simple-button more-button simple-button--bottom-icon" data-id="1" href="">
+                                <div class="simple-button__inner">See more</div>
+                                <div class="simple-button__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
+                            </a>
+
+                            <a class="simple-button less-button simple-button--top-icon" data-id="1" href="">
+                                <div class="simple-button__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
+                                <div class="simple-button__inner">See less</div>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </section>
         </main>
 
         <article id="overlayer" class="overlayer" data-overlayer-id="1">
@@ -884,17 +947,16 @@
                 <section class="overlayer__content">
 
                 </section>
-            </div>
 
-            <div class="overlayer__close">
-                <div class="icon-cross icon-cross--rotated">
-                    <div></div>
-                    <div></div>
+                <div class="overlayer__close">
+                    <div class="icon-cross icon-cross--rotated icon-cross--large">
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </article>
 
-        <script src="/js/unslider.js"></script>
         <script src="/js/main.js"></script>
      </body>
 </html>
