@@ -5,6 +5,13 @@
   transition: $transition;
 }
 
+@mixin double-transition($transition-00, $transition-01) {
+  -webkit-transition: $transition-00, $transition-01;
+  -moz-transition: $transition-00, $transition-01;
+  -o-transition: $transition-00, $transition-01;
+  transition: $transition-00, $transition-01;
+}
+
 @mixin box-sizing($box-sizing) {
   -webkit-box-sizing: $box-sizing;
   -moz-box-sizing: $box-sizing;

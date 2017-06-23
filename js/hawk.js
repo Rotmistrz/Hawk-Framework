@@ -261,22 +261,29 @@ hawk.initializeMoreContentManagers = function() {
     });
 }
 
-hawk.SlideMenu = function(element, options) {
-    this.menu = $(element);
+hawk.SlideMenu = function(id, options) {
+    this.menu = $('#' + id);
     this.wrapper = this.menu.find('> div');
 
     this.mode;
     this.direction;
     this.state;
 
+    this.toggler;
+    this.close;
+    this.directionClassName;
+    this.modeClassName;
+    this.openClassName;
+
     this.states = {
-        hidden: 'hidden',
-        visible: 'visible'
+        closed: 'closed',
+        open: 'open'
     };
 
     this.modes = {
         slideFade: 'slide-fade',
-        slide: 'slide'
+        slide: 'slide',
+        fade: 'fade'
     };
 
     this.directions = {
@@ -288,76 +295,64 @@ hawk.SlideMenu = function(element, options) {
 
     this.defaultOptions = {
         slideDuration: 500,
-        fadeDuration: 200,
+        fadeDuration: 500,
         direction: 'top',
-        mode: 'slide-fade',
+        mode: 'slide',
         toggler: $('.menu-toggler'),
-        close: this.menu.find('.menu-close')
+        close: this.menu.find('.menu-close'),
+        mainClass: 'slide-menu'
     };
 
     this.options = Object.assign(this.defaultOptions, options);
 
-    this.showSlideFade = function() {
-        const that = this;
+    this.show = function() {
+        var that = this;
 
-        this.menu.show({
-            effect: 'slide',
-            duration: that.options.slideDuration,
-            direction: that.options.direction,
-            complete: function () {
-                setTimeout(
-                    function() {
-                        that.wrapper.animate({ opacity: 1 }, that.options.fadeDuration);
-                    },
-                    100
-                );
-            }
-        });
-    };
+        if(this.options.mode == this.modes.fade) {
+            this.menu.fadeIn(this.options.fadeDuration);
+        }
 
-    this.hideSlideFade = function() {
-        const that = this;
+        this.menu.addClass(this.openClassName);
+        this.state = this.states.open;
+    }
 
-        this.wrapper.animate({ opacity: 0 }, that.options.fadeDuration, function() {
-            setTimeout(
-                function() {
-                    that.menu.hide({
-                        duration: that.options.slideDuration,
-                        effect: 'slide',
-                        direction: that.options.direction
-                    });
-                },
-                200
-            );
-        });
-    };
+    this.hide = function() {
+        var that = this;
 
-    this.showSlide = function() {
-        const that = this;
+        if(this.options.mode == this.modes.fade) {
+            this.menu.fadeOut(this.options.fadeDuration);
+        }
 
-        this.menu.show({
-            effect: 'slide',
-            duration: that.options.slideDuration,
-            direction: that.options.direction,
-            complete: function () {
-
-            }
-        });
-    };
-
-    this.hideSlide = function() {
-        const that = this;
-
-        that.menu.hide({
-            duration: that.options.slideDuration,
-            effect: 'slide',
-            direction: that.options.direction
-        });
-    };
+        this.menu.removeClass(this.openClassName);
+        this.state = this.states.closed;
+    }
 
     this.run = function() {
         var that = this;
 
+        this.toggler = this.options.toggler;
+        this.close = this.options.close;
+
+        this.modeClassName = this.options.mainClass + "--" + this.options.mode;
+        this.directionClassName = this.options.mainClass + "--" + this.options.direction;
+        this.openClassName = this.options.mainClass + "--open";
+
+        this.menu.addClass(this.directionClassName);
+        this.menu.addClass(this.modeClassName);
+
+        this.hide();
+
+        this.toggler.click(function() {
+            if(that.state == that.states.open) {
+                that.hide();
+            } else {
+                that.show();
+            }
+        });
+
+        this.close.click(function() {
+            that.hide();
+        });
     }
 }
 
@@ -375,4 +370,7 @@ hawk.run = function() {
 
     const overlayer = new this.OverlayerManager('overlayer');
     overlayer.run();
+
+    const mainmenu = new this.SlideMenu('main-menu', { mode: 'fade', direction: 'right' });
+    mainmenu.run();
 }
