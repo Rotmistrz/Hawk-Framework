@@ -453,13 +453,14 @@ padding: 100px 0;
 
 .slide-menu {
 position: fixed;
-z-index: 8000;
+z-index: 4000;
 height: 100%;
-background: $light-color-02;
 display: block;
-border-left: 2px solid $medium-color;
 text-align: center;
-@include transition(opacity .5s linear);
+width: 20%;
+background: $light-color-02;
+border-left: 2px solid $medium-color;
+margin: 0 -2px 0 0;
 
 	.slide-menu__inner {
 	padding: 80px 60px;
@@ -502,6 +503,7 @@ bottom: auto;
 .slide-menu--slide {
 display: block;
 opacity: 1;
+@include transition(all .3s linear);
 }
 
 .slide-menu--slide.slide-menu--top {
@@ -517,7 +519,7 @@ top: 0;
 .slide-menu--slide.slide-menu--right {
 top: 0;
 left: auto;
-right: -100%;
+right: -20%;
 bottom: auto;
 }
 .slide-menu--slide.slide-menu--right.slide-menu--open {
@@ -542,6 +544,78 @@ bottom: auto;
 }
 .slide-menu--slide.slide-menu--left.slide-menu--open {
 left: 0;
+}
+
+/** slide-fade **/
+.slide-menu--slide-fade {
+display: block;
+opacity: 1;
+
+@include transition(all .3s linear .4s);
+
+	.slide-menu__inner {
+	opacity: 0;
+	@include transition(opacity .3s linear 0);
+	}
+}
+
+.slide-menu--slide-fade.slide-menu--open {
+@include transition(all .3s linear);
+
+	.slide-menu__inner {
+	opacity: 1;
+	@include transition(opacity .3s linear .4s);
+	}
+}
+
+.slide-menu--slide-fade.slide-menu--top {
+top: -100%;
+left: 0;
+right: auto;
+bottom: auto;
+}
+.slide-menu--slide-fade.slide-menu--top.slide-menu--open {
+top: 0;
+}
+
+.slide-menu--slide-fade.slide-menu--right {
+top: 0;
+left: auto;
+right: -20%;
+bottom: auto;
+}
+.slide-menu--slide-fade.slide-menu--right.slide-menu--open {
+right: 0;
+}
+
+.slide-menu--slide-fade.slide-menu--bottom {
+top: auto;
+left: 0;
+right: auto;
+bottom: -100%;
+}
+.slide-menu--slide-fade.slide-menu--bottom.slide-menu--open {
+bottom: 0;
+}
+
+.slide-menu--slide-fade.slide-menu--left {
+top: 0;
+left: -100%;
+right: auto;
+bottom: auto;
+}
+.slide-menu--slide-fade.slide-menu--left.slide-menu--open {
+left: 0;
+}
+
+/** menu toggler **/
+
+#main-menu-toggler {
+position: fixed;
+z-index: 9500;
+top: 30px;
+right: 30px;
+cursor: pointer;
 }
 
 .menu {
@@ -633,14 +707,6 @@ padding-top: 50px;
 
 .section-04 {
 max-width: 500px;
-}
-
-#main-menu-toggler {
-position: fixed;
-z-index: 9500;
-top: 30px;
-right: 30px;
-cursor: pointer;
 }
 
 /***** ICONS *****/

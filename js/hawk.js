@@ -9,7 +9,7 @@ hawk = {
 }
 
 hawk.scrollToElement = function(options) {
-    const defaultOptions = {
+    var defaultOptions = {
         anchor: '#top' + hawk.anchorSufix,
         callback: function() {},
         delay: 0
@@ -58,7 +58,7 @@ hawk.Dropdown = function(element) {
     }
 
     this.show = function() {
-        const that = this;
+        var that = this;
 
         this.container.addClass(that.openClass);
         this.list.slideDown(that.options.slideSpeed);
@@ -66,7 +66,7 @@ hawk.Dropdown = function(element) {
     }
 
     this.hide = function() {
-        const that = this;
+        var that = this;
 
         this.container.removeClass(that.openClass);
         this.list.slideUp(that.options.slideSpeed);
@@ -74,7 +74,7 @@ hawk.Dropdown = function(element) {
     }
 
     this.run = function() {
-        const that = this;
+        var that = this;
 
         this.hide();
 
@@ -100,11 +100,11 @@ hawk.Dropdown = function(element) {
 }
 
 hawk.initializeDropdowns = function() {
-    const dropdowns = $('.dropdown');
-    const that = this;
+    var dropdowns = $('.dropdown');
+    var that = this;
 
     dropdowns.each(function() {
-        const dropdown = new that.Dropdown($(this));
+        var dropdown = new that.Dropdown($(this));
         dropdown.run();
     });
 }
@@ -122,7 +122,7 @@ hawk.OverlayerManager = function(id) {
     };
 
     this.show = function(callback) {
-        const that = this;
+        var that = this;
 
         this.container.fadeIn(that.options.fadeSpeed, function() {
             if(callback !== undefined) {
@@ -132,7 +132,7 @@ hawk.OverlayerManager = function(id) {
     }
 
     this.hide = function(callback) {
-        const that = this;
+        var that = this;
 
         this.container.fadeOut(that.options.fadeSpeed, function() {
             if(callback !== undefined) {
@@ -146,15 +146,15 @@ hawk.OverlayerManager = function(id) {
     }
 
     this.run = function() {
-        const that = this;
+        var that = this;
 
         this.buttons.click(function(e) {
             e.stopPropagation();
             e.preventDefault();
 
-            let id = $(this).attr('data-id');
+            var id = $(this).attr('data-id');
 
-            const current = $('.overlayer-content[data-id=' + id + ']').first();
+            var current = $('.overlayer-content[data-id=' + id + ']').first();
 
             that.setContent(current.html());
 
@@ -174,6 +174,109 @@ hawk.OverlayerManager = function(id) {
             that.hide();
         });
     }
+}
+
+hawk.AjaxOverlayerManager = function(id) {
+    this.container = $('#' + id);
+    this.overlayerId = parseInt(this.container.attr('data-overlayer-id'));
+    this.contentContainer = this.container.find('.overlayer__content');
+    this.buttons = $('.ajax-overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
+    this.closeButton = $(this.container.find('.overlayer__close'));
+    
+    this.options = {
+        fadeSpeed: 400,
+        ajaxFilePath: "/ajax.php"
+    }
+
+    this.show = function(callback) {
+        this.container.fadeIn(this.options.fadeSpeed, function() {
+            $('body').css({ 'overflow': 'hidden' });
+
+            if(callback !== undefined) {
+                callback();
+            }
+        });
+    };
+
+    this.hide = function(callback) {
+        this.container.fadeOut(this.options.fadeSpeed, function() {
+            $('body').css({ 'overflow': 'auto'});
+
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+
+            if(callback !== undefined) {
+                callback();
+            }
+        });
+    }
+
+    this.changeContent = function(content) {
+        this.contentContainer.html(content);
+    }
+
+    this.loadContent = function(id) {
+        var that = this;
+        var lang = $('html').attr('lang');
+
+        $.ajax({
+            type: "POST",
+            url: that.options.ajaxFilePath,
+            dataType: "json",
+            data: { 'action': 'load-overlayer', 'id': id, 'lang': lang },
+            success: function(result) {
+                if(result.error > 0) {
+                    return;
+                }
+
+                that.changeContent(result['html']);
+
+                that.show(function() {
+                    that.closeButton.click(function() {
+                        that.hide();
+                        $(that.container).find('iframe').attr('src', 0);
+                    });
+
+                    window.location.hash = result['anchor'];
+                });
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+    }
+
+    this.run = function() {
+        var that = this;
+
+        $(this.buttons).click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var id = $(this).attr('data-id');
+
+            that.loadContent(id);
+        });
+
+        this.closeButton.click(function(e) {
+            e.preventDefault();
+
+            that.hide(function() { $('body').css('overflow', 'auto'); });
+        });
+
+        var hash = window.location.hash;
+        
+        var pattern = /n_[0-9]+(-[a-zA-Z0-9]+)+/
+
+        if(pattern.test(hash)) {
+            var parts = hash.split('_');
+
+            hash = parts[1];
+
+            parts = hash.split('-');
+
+            this.loadContent(parts[0]); 
+        }
+    };
 }
 
 hawk.MoreContentManager = function(id) {
@@ -200,7 +303,7 @@ hawk.MoreContentManager = function(id) {
     }
 
     this.show = function() {
-        const that = this;
+        var that = this;
 
         this.contents.slideDown(that.options.slideSpeed, function() {
             that.moreButton.fadeOut(that.options.buttonFadeSpeed, function() {
@@ -212,7 +315,7 @@ hawk.MoreContentManager = function(id) {
     }
 
     this.hide = function() {
-        const that = this;
+        var that = this;
 
         this.contents.slideUp(that.options.slideSpeed, function() {
             that.lessButton.fadeOut(that.options.buttonFadeSpeed, function() {
@@ -224,7 +327,7 @@ hawk.MoreContentManager = function(id) {
     }
 
     this.run = function() {
-        const that = this;
+        var that = this;
 
         this.lessButton.hide();
         this.moreButton.show();
@@ -247,13 +350,13 @@ hawk.MoreContentManager = function(id) {
 }
 
 hawk.initializeMoreContentManagers = function() {
-    const contents = $('.more-content');
-    const that = this;
+    var contents = $('.more-content');
+    var that = this;
 
     contents.each(function() {
-        let id = $(this).attr('data-id');
+        var id = $(this).attr('data-id');
 
-        let moreContents;
+        var moreContents;
 
         if(moreContents = new that.MoreContentManager(id)) {
             moreContents.run();
@@ -300,7 +403,7 @@ hawk.SlideMenu = function(id, options) {
         mode: 'slide',
         toggler: $('.menu-toggler'),
         close: this.menu.find('.menu-close'),
-        mainClass: 'slide-menu'
+        mainClass: 'slide-menu',
     };
 
     this.options = Object.assign(this.defaultOptions, options);
@@ -314,6 +417,8 @@ hawk.SlideMenu = function(id, options) {
 
         this.menu.addClass(this.openClassName);
         this.state = this.states.open;
+
+        this.toggler.find('.icon-hamburger').addClass('open');
     }
 
     this.hide = function() {
@@ -325,6 +430,20 @@ hawk.SlideMenu = function(id, options) {
 
         this.menu.removeClass(this.openClassName);
         this.state = this.states.closed;
+
+        this.options.toggler.find('.icon-hamburger').removeClass('open');
+    }
+
+    this.totalDuration = function() {
+        if(this.options.mode == this.modes.slide) {
+            return this.options.slideDuration;
+        } else if(this.options.mode == this.modes.slideFade) {
+            return this.options.slideDuration + this.options.fadeDuration;
+        } else if(this.options.mode == this.modes.fade) {
+            return this.options.fadeDuration;
+        } else {
+            return 0;
+        }
     }
 
     this.run = function() {
@@ -356,21 +475,58 @@ hawk.SlideMenu = function(id, options) {
     }
 }
 
+hawk.initializeAnchors = function(options) {
+    var that = this;
+
+    var defaultOptions = {
+        delay: 100,
+        menu: undefined
+    }
+
+    options = Object.assign(defaultOptions, options);
+
+    $('a').click(function(e) {
+        var regex = /#{1}.+$/;
+        var link = this;
+
+        var href = $(this).attr('href');
+        var anchor;
+        var extraDelay = 0;
+
+        if(anchor = regex.exec(href)) {
+            if($(anchor + that.anchorSufix).length) {
+                e.preventDefault();
+
+                if(options.menu !== undefined && $(link).parents(options.menu).length) {
+                    extraDelay = options.menu.totalDuration();
+
+                    options.menu.hide();   
+                }
+
+                var finalDelay = options.delay + extraDelay;
+
+                that.scrollToElement({ anchor: anchor + that.anchorSufix, callback: function() { window.location.hash = anchor; }, delay: finalDelay });
+            }
+        }
+    });
+}
+
 hawk.run = function() { 
     if(this.hash.length != 0) {
         this.scrollToElement({ anchor: this.hash + this.anchorSufix, delay: 200 });
     }
 
-    $('.icon-hamburger').click(function() {
-        $(this).toggleClass('open');
-    });
-
     this.initializeDropdowns();
     this.initializeMoreContentManagers();
 
-    const overlayer = new this.OverlayerManager('overlayer');
+    var overlayer = new this.OverlayerManager('overlayer');
     overlayer.run();
 
-    const mainmenu = new this.SlideMenu('main-menu', { mode: 'fade', direction: 'right' });
+    var ajaxOverlayer = new this.AjaxOverlayerManager('overlayer');
+    ajaxOverlayer.run();
+
+    var mainmenu = new this.SlideMenu('main-menu', { mode: 'slide-fade', direction: 'right' });
     mainmenu.run();
+
+    this.initializeAnchors({ menu: mainmenu, delay: 100 });
 }
