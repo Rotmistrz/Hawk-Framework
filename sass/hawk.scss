@@ -310,6 +310,23 @@ margin: 0 auto;
 	}
 }
 
+.bookmarks-manager {
+	.bookmarks-manager__bookmarks {
+		> li {
+		padding: 20px;
+		display: block;
+		}
+	}
+
+	.bookmarks-manager__bookmark-content {
+	display: none;
+	}
+
+	.bookmarks-manager__content-container {
+	display: none;
+	}
+}
+
 /***** FORMS *****/
 
 .form {
