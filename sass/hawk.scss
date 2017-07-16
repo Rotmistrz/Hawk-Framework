@@ -101,15 +101,22 @@ text-align: center;
 padding: 0;
 margin: 0 auto;
 list-style-type: none;
-width: 900px;
+max-width: 900px;
 	
 	> li {
-	display: inline-block;
-	width: 33.33%;
-	padding: 20px 30px;
-	margin: 0 0 0 -5px;
-	vertical-align: top;
 	@include box-sizing(border-box);
+	display: block;
+	padding: 20px 0;
+
+		@media (min-width: $rwd-650) {
+		display: inline-block;
+		width: 33.33%;
+		padding: 20px 30px;
+		margin: 0 0 0 -5px;
+		vertical-align: top;	
+		}
+	
+	
 	}
 
 	.icons__icon-container {
@@ -650,7 +657,7 @@ left: 0;
 
 #main-menu-toggler {
 position: fixed;
-z-index: 9500;
+z-index: 6500;
 top: 30px;
 right: 30px;
 cursor: pointer;
@@ -664,6 +671,33 @@ cursor: pointer;
 }
 
 /***** FOOTER *****/
+
+.site-footer {
+background: $light-color-01;
+text-align: center;
+padding: 40px 0;
+
+	&__inner {
+	max-width: 1300px;
+	margin: 0 auto;
+	padding: 0 20px;
+
+		@media (min-width: $rwd-650) {
+		padding-left: 40px;
+		padding-right: 40px;
+		}
+
+		@media (min-width: $rwd-992) {
+		padding-left: 50px;
+		padding-right: 50px;
+		}
+
+		@media (min-width: $rwd-1300) {
+		padding-left: 0;
+		padding-right: 0;
+		}
+	}
+}
 
 /***** SECTIONS *****/
 

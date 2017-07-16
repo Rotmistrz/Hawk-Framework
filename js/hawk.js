@@ -8,6 +8,24 @@ hawk = {
     anchorSufix: '-anchor',
 }
 
+hawk.mergeObjects = function(mainObject, object) {
+    var result = {};
+
+    if(object === undefined) {
+        return mainObject;
+    }
+
+    for (var property in mainObject) {
+        if (mainObject.hasOwnProperty(property)) {
+            result[property] = (object.hasOwnProperty(property)) ? object[property] : mainObject[property];
+        }
+
+        //console.log("object." + property + ": " + result[property]);
+    }
+
+    return result;
+}
+
 hawk.scrollToElement = function(options) {
     var defaultOptions = {
         anchor: '#top' + hawk.anchorSufix,
@@ -15,14 +33,14 @@ hawk.scrollToElement = function(options) {
         delay: 0
     };
 
-    options = Object.assign(defaultOptions, options);
+    options = hawk.mergeObjects(defaultOptions, options);
 
     setTimeout(function(){
         $.scrollTo(options.anchor, 800, {'axis': 'y', 'offset': 0, onAfter: function() { options.callback(); } });
     }, options.delay);
 }
 
-hawk.Dropdown = function(element) {
+hawk.Dropdown = function(element, options) {
     this.container = $(element);
     this.containerClass = 'dropdown';
     this.openClass = this.containerClass + '--open';
@@ -35,9 +53,11 @@ hawk.Dropdown = function(element) {
         closed: 'closed'
     };
 
-    this.options = {
+    this.defaultOptions = {
         slideSpeed: 200
     };
+
+    this.options = hawk.mergeObjects(this.defaultOptions, options);
 
     this.state = this.states.open;
 
@@ -109,7 +129,7 @@ hawk.initializeDropdowns = function() {
     });
 }
 
-hawk.OverlayerManager = function(id) {
+hawk.OverlayerManager = function(id, options) {
     this.container = $('#' + id);
     this.overlayerId = this.container.attr('data-overlayer-id');
     this.contentContainer = this.container.find('.overlayer__content').first();
@@ -117,12 +137,16 @@ hawk.OverlayerManager = function(id) {
     this.buttons = $('.overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
     this.closeButton = this.container.find('.overlayer__close');
 
-    this.options = {
+    this.defaultOptions = {
         fadeSpeed: 400
     };
 
+    this.options = hawk.mergeObjects(this.defaultOptions, options);
+
     this.show = function(callback) {
         var that = this;
+
+        $('body').css({ overflow: 'hidden' });
 
         this.container.fadeIn(that.options.fadeSpeed, function() {
             if(callback !== undefined) {
@@ -135,6 +159,8 @@ hawk.OverlayerManager = function(id) {
         var that = this;
 
         this.container.fadeOut(that.options.fadeSpeed, function() {
+            $('body').css({ overflow: 'auto' });
+
             if(callback !== undefined) {
                 callback();
             }
@@ -176,17 +202,19 @@ hawk.OverlayerManager = function(id) {
     }
 }
 
-hawk.AjaxOverlayerManager = function(id) {
+hawk.AjaxOverlayerManager = function(id, options) {
     this.container = $('#' + id);
     this.overlayerId = parseInt(this.container.attr('data-overlayer-id'));
     this.contentContainer = this.container.find('.overlayer__content');
     this.buttons = $('.ajax-overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
     this.closeButton = $(this.container.find('.overlayer__close'));
     
-    this.options = {
+    this.defaultOptions = {
         fadeSpeed: 400,
         ajaxFilePath: "/ajax.php"
     }
+
+    this.options = hawk.mergeObjects(this.defaultOptions, options);
 
     this.show = function(callback) {
         this.container.fadeIn(this.options.fadeSpeed, function() {
@@ -279,7 +307,7 @@ hawk.AjaxOverlayerManager = function(id) {
     };
 }
 
-hawk.MoreContentManager = function(id) {
+hawk.MoreContentManager = function(id, options) {
     this.id = id;
     this.moreButton = $('.more-button[data-id=' + this.id + ']');
     this.lessButton = $('.less-button[data-id=' + this.id + ']');
@@ -291,10 +319,12 @@ hawk.MoreContentManager = function(id) {
         visible: 'visible'
     };
 
-    this.options = {
+    this.defaultOptions = {
         slideSpeed: 200,
         buttonFadeSpeed: 400
     };
+
+    this.options = hawk.mergeObjects(this.defaultOptions, options);
 
     this.state;
 
@@ -406,7 +436,7 @@ hawk.SlideMenu = function(id, options) {
         mainClass: 'slide-menu',
     };
 
-    this.options = Object.assign(this.defaultOptions, options);
+    this.options = hawk.mergeObjects(this.defaultOptions, options);
 
     this.show = function() {
         var that = this;
@@ -483,9 +513,9 @@ hawk.initializeAnchors = function(options) {
         menu: undefined
     }
 
-    options = Object.assign(defaultOptions, options);
+    options = hawk.mergeObjects(defaultOptions, options);
 
-    $('a').click(function(e) {
+    $('a').unbind('click').click(function(e) {
         var regex = /#{1}.+$/;
         var link = this;
 
@@ -509,6 +539,52 @@ hawk.initializeAnchors = function(options) {
             }
         }
     });
+}
+
+hawk.BookmarksManager = function(container, options) {
+    this.container = $(container);
+    this.contentContainer = this.container.find('.bookmarks-manager__content').first();
+    this.bookmarks = this.container.find('.bookmarks-manager__bookmark');
+
+    this.current;
+
+    this.isSmallDevice = 0;
+
+    this.defaultOptions = {
+        smallDeviceWidth: 768,
+        activeBookmarkClass: 'active'
+    }
+
+    this.checkDeviceSize = function() {
+        if(hawk.w < this.options.smallDeviceWidth) {
+            this.isSmallDevice = 1;
+        } else {
+            this.isSmallDevice = 0;
+        }
+    }
+
+    this.options = hawk.mergeObjects(this.defaultOptions, options);
+
+    this.setBookmarkActive = function(bookmark, callback) {
+        this.current = $(bookmark);
+        this.current.addClass(this.options.activeBookmarkClass);
+
+        if(callback !== undefined) {
+            callback();
+        }
+    }
+
+    this.refresh = function() {
+        this.checkDeviceSize();
+    }
+
+    this.run = function() {
+        var that = this;
+
+        $(window).resize(function() {
+            that.refresh();
+        });
+    }
 }
 
 hawk.run = function() { 

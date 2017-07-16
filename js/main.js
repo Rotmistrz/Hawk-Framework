@@ -1,5 +1,61 @@
 'use strict';
 
+var getCurrentValue = function(el, prop) {
+    var style = el.currentStyle || window.getComputedStyle(el);
+
+    return style[prop];
+}
+
+var hawkSlideDown = function(element, time) {
+    var currentHeight;
+    var currentPaddingTop;
+    var currentPaddingBottom;
+    var currentMaxHeight;
+
+    element.style.display = "block";
+
+    var totalHeight = element.scrollHeight;
+
+    var a = parseFloat(totalHeight / time);
+
+    console.log(a);
+
+    var paddingTop = parseInt(getCurrentValue(element, "padding-top"));
+    var paddingBottom = parseInt(getCurrentValue(element, "padding-bottom"));
+
+    element.style.overflow = "hidden";
+    element.style.maxHeight = 0;
+    element.style.paddingTop = 0;
+    element.style.paddingBottom = 0;
+
+    var interval = setInterval(function() {
+        currentPaddingTop = parseFloat(element.style.paddingTop);
+        currentPaddingBottom = parseFloat(element.style.paddingBottom);
+        currentMaxHeight = parseFloat(element.style.maxHeight);
+
+        if(paddingTop > currentPaddingTop + a) {
+            element.style.paddingTop = currentPaddingTop + a + "px";
+        }
+
+        if(totalHeight > currentMaxHeight + a) {
+            element.style.maxHeight = currentMaxHeight + a + "px";
+        }
+
+        if(paddingBottom > currentPaddingBottom + a) {
+            element.style.paddingBottom = currentPaddingBottom + a + "px";
+        }
+
+        if(currentPaddingTop + currentMaxHeight + currentPaddingBottom >= element.scrollHeight) {
+            element.style.maxHeight = "100%";
+            element.style.overflow = "auto";
+            clearInterval(interval);
+        }
+        
+    }, 1);
+}
+
+// hawkSlideDown(document.getElementById('home-anchor'), 500);
+
 $(document).ready(function() {
 
     hawk.run();
