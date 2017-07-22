@@ -18,6 +18,7 @@
         <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
         <script src="/js/jquery.scrollTo.js"></script>
         <script src="/js/retina.js"></script>
+        <script src="/js/velocity.js"></script>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
         <link rel="stylesheet" href="/css/animate.css" />
@@ -937,15 +938,15 @@
                             </div>
 
                             <div class="button-container more-buttons">
-                                <a class="simple-button more-button simple-button--bottom-icon" data-id="1" href="">
+                                <button class="simple-button more-button simple-button--bottom-icon" data-id="1" type="button">
                                     <div class="simple-button__inner">See more</div>
                                     <div class="simple-button__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                </a>
+                                </button>
 
-                                <a class="simple-button less-button simple-button--top-icon" data-id="1" href="">
+                                <button class="simple-button less-button simple-button--top-icon" data-id="1" type="button">
                                     <div class="simple-button__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
                                     <div class="simple-button__inner">See less</div>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </article>
@@ -961,80 +962,89 @@
                     <section class="bookmarks-manager">
                         <section class="bookmarks-manager__bookmarks-container">
                             <ul class="bookmarks-manager__bookmarks">
-                                <li class="bookmarks-manager__bookmark">
-                                    <div class="bookmarks-manager__bookmark-inner">
-                                    01 Lorem ipsum
+                                <li class="bookmarks-manager__bookmark-container">
+                                    <div class="bookmarks-manager__bookmark simple-bookmark">
+                                        <div class="simple-bookmark__number">
+                                        01
+                                        </div>
+
+                                        Lorem ipsum
                                     </div>
 
                                     <div class="bookmarks-manager__bookmark-content">
-                                        <p>
-                                        Lorem ipsum dolor sit amet mauris ac orci viverra quis, aliquam eros egestas sit amet dolor. Quisque eu augue egestas turpis. Pellentesque suscipit pede tortor et nisl pede, pulvinar felis, ullamcorper in, tristique magna arcu, dapibus sit amet quam. Nam enim. Mauris tempor enim non placerat porttitor. Phasellus a laoreet viverra diam vel lorem. Nam dolor sit amet leo. Pellentesque dapibus vel, magna.
-                                        </p>
-                                        <p>
-                                        Integer mi risus commodo odio. Morbi mauris tincidunt enim. Quisque vitae mauris. Praesent in interdum arcu elementum orci luctus pellentesque. Proin in consequat wisi. Sed nec magna. Nulla facilisi. Etiam lobortis eu, semper aliquam id, ornare dapibus. Aenean quis pede cursus aliquet. In vitae risus libero, pharetra sem ipsum, tempor pede porta turpis ligula, nonummy eget, dolor. Suspendisse vestibulum et, porttitor a, urna.
-                                        </p>
-                                        <p>
-                                        Vestibulum ante ligula eleifend eget, accumsan at, consequat nunc. Phasellus tempor risus. Suspendisse sed aliquet mi risus, euismod scelerisque fermentum leo luctus orci, in erat a ante et turpis. Duis sed lorem nec diam tempor varius, leo. Suspendisse rutrum laoreet. Sed leo non orci. Nullam laoreet, ante ipsum enim, malesuada vitae, mollis tempus.
-                                        </p>
+                                        <div class="text">
+                                            <p>
+                                            Lorem ipsum dolor sit amet mauris ac orci viverra quis, aliquam eros egestas sit amet dolor. Quisque eu augue egestas turpis. Pellentesque suscipit pede tortor et nisl pede, pulvinar felis, ullamcorper in, tristique magna arcu, dapibus sit amet quam. Nam enim. Mauris tempor enim non placerat porttitor. Phasellus a laoreet viverra diam vel lorem. Nam dolor sit amet leo. Pellentesque dapibus vel, magna.
+                                            </p>
+                                        </div>
                                     </div>
                                 </li>
 
-                                <li class="bookmarks-manager__bookmark">
-                                    <div class="bookmarks-manager__bookmark-inner">
-                                    02 Dolor sit amet
+                                <li class="bookmarks-manager__bookmark-container">
+                                    <div class="bookmarks-manager__bookmark simple-bookmark">
+                                        <div class="simple-bookmark__number">
+                                        02
+                                        </div>
+                                        
+                                        Dolor sit amet
                                     </div>
 
                                     <div class="bookmarks-manager__bookmark-content">
-                                        <p>
-                                        Nullam justo. Curabitur imperdiet, lorem quam ut magna ornare interdum, diam neque tristique vitae, placerat vehicula viverra. Cras non nonummy lacinia arcu vel quam hendrerit purus. Sed in faucibus justo. Donec a dolor sit amet ultricies neque ut urna. Cras adipiscing elit. Nullam dapibus eu, pulvinar velit.
-                                        </p>
-                                        <p>
-                                        Mauris fringilla mauris. Ut sit amet augue eu tincidunt tellus quis viverra consectetuer. Aliquam erat ornare velit odio eget ipsum dolor ac nunc. Nunc non eros porttitor vitae, faucibus a, mauris. Fusce iaculis, turpis ut lacus. Vivamus justo. Fusce nisl urna quis enim enim eu odio. Morbi augue at ante. Proin vulputate tempor varius, quam sed arcu. Donec est. Vivamus faucibus lorem. Nunc a diam. In tempus. Pellentesque molestie nisl. Etiam sapien a pellentesque quis, ultricies porta. Sed ac turpis et felis.
-                                        </p>
-                                        <p>
-                                        Quisque fermentum ut, tincidunt nec, pede. Aliquam ultricies odio, in dui. Morbi tincidunt. Pellentesque placerat. Mauris nec tincidunt congue. Aliquam feugiat congue, aliquet ipsum. Duis luctus. Aenean sit amet, consectetuer tincidunt, risus elit iaculis leo. Quisque vehicula viverra. Mauris mattis ipsum ullamcorper wisi a luctus augue. Nam ipsum. Fusce in risus.
-                                        </p>
+                                        <div class="text">
+                                            <p>
+                                            Nullam justo. Curabitur imperdiet, lorem quam ut magna ornare interdum, diam neque tristique vitae, placerat vehicula viverra. Cras non nonummy lacinia arcu vel quam hendrerit purus. Sed in faucibus justo. Donec a dolor sit amet ultricies neque ut urna. Cras adipiscing elit. Nullam dapibus eu, pulvinar velit.
+                                            </p>
+
+                                            <p>
+                                            Nullam justo. Curabitur imperdiet, lorem quam ut magna ornare interdum, diam neque tristique vitae, placerat vehicula viverra. Cras non nonummy lacinia arcu vel quam hendrerit purus. Sed in faucibus justo. Donec a dolor sit amet ultricies neque ut urna. Cras adipiscing elit. Nullam dapibus eu, pulvinar velit.
+                                            </p>
+                                        </div>
                                     </div>
                                 </li>
 
-                                <li class="bookmarks-manager__bookmark">
-                                    <div class="bookmarks-manager__bookmark-inner">
-                                    03 Mauris ac orci viverra
+                                <li class="bookmarks-manager__bookmark-container">
+                                    <div class="bookmarks-manager__bookmark simple-bookmark">
+                                        <div class="simple-bookmark__number">
+                                        03
+                                        </div>
+                                        
+                                        Mauris ac orci viverra
                                     </div>
 
                                     <div class="bookmarks-manager__bookmark-content">
-                                        <p>
-                                        Cras tempus rutrum vel, purus. Sed dignissim. Pellentesque eget sapien enim non enim ac augue nec turpis egestas. Cras adipiscing non, lacus. In purus non placerat quam. Nunc varius vehicula. Aliquam sed est neque, congue eu, facilisis eget, vestibulum ipsum feugiat in, libero. Aliquam eget pede urna fringilla mollis. Cras ut metus. Maecenas eget urna. Pellentesque habitant morbi tristique in, odio.
-                                        </p>
-                                        <p>
-                                        Nullam rutrum viverra, egestas ac, varius vehicula. Integer est. Ut tempus orci luctus metus et ultrices posuere a, blandit tempus orci ipsum, ultricies a, fermentum wisi, eu convallis non, lobortis tincidunt quis, interdum arcu vitae purus. Phasellus orci ipsum, ultricies lobortis, nibh eu felis non urna quis neque. Sed placerat. Vivamus a leo elit tincidunt scelerisque. Duis sed sem. Mauris ornare nisl, blandit vestibulum mauris nec velit. Donec faucibus orci luctus.
-                                        </p>
+                                        <div class="text">
+                                            <p>
+                                            Cras tempus rutrum vel, purus. Sed dignissim. Pellentesque eget sapien enim non enim ac augue nec turpis egestas. Cras adipiscing non, lacus. In purus non placerat quam. Nunc varius vehicula. Aliquam sed est neque, congue eu, facilisis eget, vestibulum ipsum feugiat in, libero. Aliquam eget pede urna fringilla mollis. Cras ut metus. Maecenas eget urna. Pellentesque habitant morbi tristique in, odio.
+                                            </p>
+                                        </div>
                                     </div>
                                 </li>
 
-                                <li class="bookmarks-manager__bookmark">
-                                    <div class="bookmarks-manager__bookmark-inner">
-                                    04 Vestibulum vel risus
+                                <li class="bookmarks-manager__bookmark-container">
+                                    <div class="bookmarks-manager__bookmark simple-bookmark">
+                                        <div class="simple-bookmark__number">
+                                        04
+                                        </div>
+                                        
+                                        Vestibulum vel risus
                                     </div>
 
                                     <div class="bookmarks-manager__bookmark-content">
-                                        <p>
-                                        Morbi tincidunt. Nullam erat augue, vel neque vel hendrerit sollicitudin eu, facilisis faucibus orci vitae urna. Aenean sed wisi quis arcu. Sed dignissim. Aliquam orci. Vestibulum vel risus. Donec eleifend ut, lobortis venenatis, pulvinar mollis, purus dolor in aliquam at, auctor scelerisque, ante ipsum dolor urna eu pede cursus dignissim tempor, pulvinar mollis.
-                                        </p>
-                                        <p>
-                                        Sed eros. Nullam at lectus at nibh. Morbi risus commodo ipsum primis in nulla id nulla sed leo. Nullam et magnis dis parturient montes, nascetur ridiculus mus. Donec ligula condimentum est sem, eleifend lacinia, risus commodo odio. Nunc ipsum primis in est. Vestibulum lacinia dignissim, libero auctor eu, ullamcorper at, feugiat lectus feugiat augue odio tellus tristique senectus et velit tempus nunc vel pede. Etiam dapibus vitae, tempus enim sed libero in faucibus eros. Suspendisse a dolor ac felis non elit arcu, eget risus.
-                                        </p>
-                                        <p>
-                                        Suspendisse ut nulla pulvinar interdum. Nulla iaculis massa. Ut wisi ultricies tincidunt, eros sed felis. Pellentesque habitant morbi tristique senectus et ipsum. Sed eget leo felis augue imperdiet congue risus. Nam at turpis vulputate leo semper id, nunc. Nam rhoncus, dui porta.
-                                        </p>
+                                        <div class="text">
+                                            <p>
+                                            Morbi tincidunt. Nullam erat augue, vel neque vel hendrerit sollicitudin eu, facilisis faucibus orci vitae urna. Aenean sed wisi quis arcu. Sed dignissim. Aliquam orci. Vestibulum vel risus. Donec eleifend ut, lobortis venenatis, pulvinar mollis, purus dolor in aliquam at, auctor scelerisque, ante ipsum dolor urna eu pede cursus dignissim tempor, pulvinar mollis.
+                                            </p>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
                         </section>
 
                         <section class="bookmarks-manager__content-container">
-                            <div class="bookmarks-manager__content">
+                            <div class="bookmarks-manager__content-wrapper">
+                                <div id="bookmarks-content" class="bookmarks-manager__content">
 
+                                </div>
                             </div>
                         </section>
                     </section>
@@ -1058,7 +1068,7 @@
             </div>
         </footer>
 
-        <article id="overlayer" class="overlayer" data-overlayer-id="1">
+        <section id="overlayer" class="overlayer" data-overlayer-id="1">
             <div class="overlayer__inner">
                 <section class="overlayer__content">
 
@@ -1071,7 +1081,7 @@
                     </div>
                 </div>
             </div>
-        </article>
+        </section>
 
         <script src="/js/hawk.js"></script>
         <script src="/js/main.js"></script>

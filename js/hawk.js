@@ -329,6 +329,7 @@ hawk.MoreContentManager = function(id, options) {
     this.state;
 
     if(this.moreButton === undefined || this.lessButton === undefined || this.contents === undefined) {
+        console.log("false");
         return false;
     }
 
@@ -543,47 +544,224 @@ hawk.initializeAnchors = function(options) {
 
 hawk.BookmarksManager = function(container, options) {
     this.container = $(container);
-    this.contentContainer = this.container.find('.bookmarks-manager__content').first();
-    this.bookmarks = this.container.find('.bookmarks-manager__bookmark');
+    this.contentContainer;
+    this.contentWrapper;
+    this.bookmarks;
 
-    this.current;
+    this.current; // current bookmark container
+    this.currentHeight = 0;
 
-    this.isSmallDevice = 0;
+    this.loading = false;
+
+    var that = this;
 
     this.defaultOptions = {
-        smallDeviceWidth: 768,
-        activeBookmarkClass: 'active'
-    }
-
-    this.checkDeviceSize = function() {
-        if(hawk.w < this.options.smallDeviceWidth) {
-            this.isSmallDevice = 1;
-        } else {
-            this.isSmallDevice = 0;
-        }
+        responsive: true,
+        activeScroll: false,
+        activeScrollWidth: 480,
+        slideDuration: 200,
+        fadeDuration: 200,
+        activeBookmarkClass: 'active',
+        bookmarks: that.container.find('.bookmarks-manager__bookmark-container'),
+        contentContainer: that.container.find('.bookmarks-manager__content').first(),
+        contentWrapper: that.container.find('.bookmarks-manager__content-wrapper').first(),
+        bookmarkClass: 'bookmarks-manager__bookmark',
+        contentClass: 'bookmarks-manager__bookmark-content',
+        bookmarkActiveCallback: function(bookmarkContainer) {},
+        bookmarkUnactiveCallback: function(bookmarkContainer) {},
+        changeContentCallback: function(content) {},
+        changeBookmarkCallback: function(bookmarkContainer) {}
     }
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
 
-    this.setBookmarkActive = function(bookmark, callback) {
-        this.current = $(bookmark);
-        this.current.addClass(this.options.activeBookmarkClass);
+    this.isResponsive = function() {
+        return this.options.responsive;
+    }
 
-        if(callback !== undefined) {
-            callback();
+    this.isSmallDevice = function() {
+        return (this.isResponsive() && !this.contentContainer.is(':visible'));
+    }
+
+    this.changeContent = function(content, callback) {
+        var container = this.contentContainer;
+
+        var showing = function() {
+            container.hide();
+            container.html(content.show());
+
+            container.velocity("slideDown", {
+                duration: that.options.slideDuration,
+                complete: function() {
+                    container.velocity({ opacity: 1 }, {
+                        duration: that.options.fadeDuration,
+                        complete: function() {
+                            var currentHeight = that.contentWrapper.outerHeight();
+
+                            if(currentHeight > that.currentHeight) {
+                                that.currentHeight = currentHeight;
+                                that.contentWrapper.css({ 'min-height': that.currentHeight + "px" });
+                            }
+
+                            that.options.changeContentCallback(that.contentContainer);
+
+                            that.loading = false;
+                        }
+                    });
+                }
+            });
         }
+
+        if(container.css('opacity') != 0) {
+            container.velocity({ opacity: 0 }, {
+                duration: that.options.fadeDuration,
+                complete: function() {
+                    container.html('');
+                    showing();
+                }
+            });
+        } else {
+            showing();
+        }
+
+        if(this.options.activeScroll && hawk.w < this.options.activeScrollWidth) {
+            var id = this.contentContainer.attr('id');
+
+            if(id !== undefined) {
+                hawk.scrollToElement({ anchor: '#' + id });
+            }
+        }
+        
+        return this;
+    }
+
+    this.changeBookmark = function(bookmarkContainer) {
+        this.unsetBookmarkActive();
+
+        this.current = bookmarkContainer;
+
+        var bookmark = this.current.find('.' + this.options.bookmarkClass);
+        var content = this.current.find('.' + this.options.contentClass);
+
+        this.setBookmarkActive(this.current);
+
+        if(this.isSmallDevice()) {
+            content.velocity("slideDown", {
+                duration: that.options.slideDuration,
+                complete: function() {
+                    that.options.changeContentCallback(content);
+
+                    that.loading = false;
+                }
+            });
+        } else {
+            this.changeContent(content.clone(true));
+        }
+
+        return this;
+    }
+
+    this.unsetBookmarkActive = function() {
+        if(this.current !== undefined) {
+            var current = this.current;
+            current.find('.' + this.options.bookmarkClass).removeClass(this.options.activeBookmarkClass);
+
+            current.find('.' + this.options.contentClass).velocity("slideUp", {
+                duration: that.options.slideDuration
+            });
+
+            this.current = undefined;
+
+            this.options.bookmarkUnactiveCallback(current);
+        }
+
+        return this;
+    }
+
+    this.setBookmarkActive = function(bookmarkContainer) {
+        var bookmark = bookmarkContainer.find('.' + this.options.bookmarkClass);
+
+        bookmark.addClass(this.options.activeBookmarkClass);
+
+        this.options.bookmarkActiveCallback(bookmarkContainer);
+
+        return this;
+    }
+
+    this.launchBookmark = function(n) {
+        this.changeBookmark(this.bookmarks.eq(n));
+
+        return this;
+    }
+
+    this.updateOptions = function(options) {
+        this.options = hawk.mergeObjects(this.options, options);
+
+        return this;
+    }
+
+    this.clear = function(callback) {
+        //this.current = undefined;
+
+        this.unsetBookmarkActive();
+        this.contentContainer.velocity({ opacity: 0 }, {
+            duration: 200,
+            complete: function() {
+                if(callback !== undefined) {
+                    callback();
+                }
+            }
+        });
+
+        return this;
+    }
+
+    this.remindActiveBookmark = function() {
+        if(this.isSmallDevice()) {
+
+        }
+
+        return this;
     }
 
     this.refresh = function() {
-        this.checkDeviceSize();
+        var current = this.current;
+
+        this.clear(function() {
+            that.changeBookmark(current);
+        });
+
+        return this;
     }
 
     this.run = function() {
-        var that = this;
+        this.bookmarks = $(this.options.bookmarks);
+        this.contentContainer = $(this.options.contentContainer);
+        this.contentWrapper = $(this.options.contentWrapper);
+
+        var doit;
 
         $(window).resize(function() {
-            that.refresh();
+            clearTimeout(doit);
+            doit = setTimeout(function() {
+                that.refresh();
+            }, 100);
         });
+
+        this.bookmarks.click(function() {
+            if(that.loading == true) {
+                return;
+            }
+
+            if(that.current !== undefined && that.current.is($(this))) {
+                that.remindActiveBookmark();
+            } else {
+                that.changeBookmark($(this));
+                that.loading = true;
+            }
+        });
+
+        return this;
     }
 }
 
@@ -605,4 +783,7 @@ hawk.run = function() {
     mainmenu.run();
 
     this.initializeAnchors({ menu: mainmenu, delay: 100 });
+
+    var bookmarks = new this.BookmarksManager($('.bookmarks-manager').first());
+    bookmarks.run();
 }
