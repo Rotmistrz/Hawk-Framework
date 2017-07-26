@@ -40,13 +40,13 @@ hawk.scrollToElement = function(options) {
     }, options.delay);
 }
 
-hawk.Dropdown = function(element, options) {
-    this.container = $(element);
-    this.containerClass = 'dropdown';
-    this.openClass = this.containerClass + '--open';
+hawk.Dropdown = function(container, options) {
+    this.container = $(container);
+    this.containerClass;
+    this.openClass;
 
-    this.header = this.container.find('.' + this.containerClass + '__header');
-    this.list = this.container.find('.' + this.containerClass + '__list');
+    this.header;
+    this.list;
 
     this.states = {
         open: 'open',
@@ -54,7 +54,11 @@ hawk.Dropdown = function(element, options) {
     };
 
     this.defaultOptions = {
-        slideSpeed: 200
+        slideSpeed: 200,
+        containerClass: 'dropdown',
+        openClass: 'dropdown--open',
+        headerClass: 'dropdown__header',
+        listClass: 'dropdown__list'
     };
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
@@ -80,21 +84,28 @@ hawk.Dropdown = function(element, options) {
     this.show = function() {
         var that = this;
 
-        this.container.addClass(that.openClass);
-        this.list.slideDown(that.options.slideSpeed);
+        this.container.addClass(that.options.openClass);
+        this.list.velocity("slideDown", {
+            duration: that.options.slideSpeed
+        });
         this.setOpen();
     }
 
     this.hide = function() {
         var that = this;
 
-        this.container.removeClass(that.openClass);
-        this.list.slideUp(that.options.slideSpeed);
+        this.container.removeClass(that.options.openClass);
+        this.list.velocity("slideUp", {
+            duration: that.options.slideSpeed
+        });
         this.setClosed();
     }
 
     this.run = function() {
         var that = this;
+
+        this.header = this.container.find('.' + this.options.headerClass);
+        this.list = this.container.find('.' + this.options.listClass);
 
         this.hide();
 
@@ -132,37 +143,48 @@ hawk.initializeDropdowns = function() {
 hawk.OverlayerManager = function(id, options) {
     this.container = $('#' + id);
     this.overlayerId = this.container.attr('data-overlayer-id');
-    this.contentContainer = this.container.find('.overlayer__content').first();
-
+    
     this.buttons = $('.overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
-    this.closeButton = this.container.find('.overlayer__close');
+
+    this.contentContainer;
+    this.closeButton;
 
     this.defaultOptions = {
-        fadeSpeed: 400
+        fadeSpeed: 400,
+        contentContainerClass: 'overlayer__content',
+        closeButtonClass: 'overlayer__close',
+        showCallback: function(container) {},
+        hideCallback: function(container) {}
     };
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
 
-    this.show = function(callback) {
+    this.show = function() {
         var that = this;
 
         $('body').css({ overflow: 'hidden' });
 
-        this.container.fadeIn(that.options.fadeSpeed, function() {
-            if(callback !== undefined) {
-                callback();
+        this.container.velocity("fadeIn", {
+            duration: that.options.fadeSpeed,
+            complete: function() {
+                if(that.options.showCallback !== undefined) {
+                    that.options.showCallback(that.container);
+                }
             }
         });
     }
 
-    this.hide = function(callback) {
+    this.hide = function() {
         var that = this;
 
-        this.container.fadeOut(that.options.fadeSpeed, function() {
-            $('body').css({ overflow: 'auto' });
+        this.container.velocity("fadeOut", {
+            duration: that.options.fadeSpeed,
+            complete: function() {
+                $('body').css({ overflow: 'auto' });
 
-            if(callback !== undefined) {
-                callback();
+                if(that.options.hideCallback !== undefined) {
+                    that.options.hideCallback(that.container);
+                }
             }
         });
     }
@@ -173,6 +195,9 @@ hawk.OverlayerManager = function(id, options) {
 
     this.run = function() {
         var that = this;
+
+        this.contentContainer = this.container.find('.' + this.options.contentContainerClass).first();
+        this.closeButton = this.container.find('.' + this.options.closeButtonClass);
 
         this.buttons.click(function(e) {
             e.stopPropagation();
@@ -780,6 +805,7 @@ hawk.DetailsList = function(container, options) {
     }
 
     this.defaultOptions = {
+        itemClass: 'details-list__item',
         titleClass: 'details-list__title',
         contentClass: 'details-list__content',
         activeClass: 'active',
@@ -807,7 +833,7 @@ hawk.DetailsList = function(container, options) {
 
         var that = this;
 
-        var container = this.current.parents('li').first();
+        var container = this.current.parents('.' + that.options.itemClass).first();
         container.addClass(this.options.activeClass);
 
         var content = this.current.siblings('.' + this.options.contentClass);
@@ -825,7 +851,7 @@ hawk.DetailsList = function(container, options) {
     this.hide = function(title) {
         var that = this;
 
-        var container = title.parents('li').first();
+        var container = title.parents('.' + that.options.itemClass).first();
         container.removeClass(this.options.activeClass);
 
         this.options.hideCallback(container);
