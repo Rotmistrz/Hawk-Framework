@@ -1,6 +1,6 @@
-@import 'variables';
+@import 'hawk-variables';
 
-@import 'mixins';
+@import 'hawk-mixins';
 
 @import 'hawk-animates';
 
@@ -216,7 +216,6 @@ max-width: 300px;
 /***** CONTAINERS *****/
 
 .site-content {
-overflow: hidden;
 max-width: 1300px;
 margin: 0 auto;
 }
@@ -396,6 +395,35 @@ font-weight: 700;
 .simple-bookmark.active {
 color: $medium-color-01;
 }
+
+.details-list {
+list-style-type: none;
+max-width: 700px;
+margin: 0 auto;
+
+	> li {
+	display: block;
+	}
+
+	.details-list__title {
+	position: relative;
+	padding: 10px 0;
+	cursor: pointer;
+	font-weight: 700;
+	border-bottom: 1px solid $medium-color;
+	
+		.details-list__arrow {
+		position: absolute;
+		top: 10px;
+		right: 5px;
+		}
+	}
+
+	.details-list__content {
+	padding: 10px 20px;
+	}
+}
+
 
 /***** FORMS *****/
 
@@ -1045,13 +1073,14 @@ width: 14px;
 height: 14px;
 border-top: 2px solid $dark-color;
 border-right: 2px solid $dark-color;
+@include transition(all .2s linear);
 }
 .icon-arrow--left {
-@include transform(rotate(-135deg));
+@include transform(rotate(225deg));
 left: 3px;
 }
 .icon-arrow--up {
-@include transform(rotate(-45deg));
+@include transform(rotate(315deg));
 top: 3px;
 }
 .icon-arrow--right {

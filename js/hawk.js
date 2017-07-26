@@ -727,10 +727,12 @@ hawk.BookmarksManager = function(container, options) {
     this.refresh = function() {
         var current = this.current;
 
-        this.clear(function() {
-            that.changeBookmark(current);
-        });
-
+        if(current !== undefined) {
+            this.clear(function() {
+                that.changeBookmark(current);
+            });
+        }
+        
         return this;
     }
 
@@ -765,6 +767,96 @@ hawk.BookmarksManager = function(container, options) {
     }
 }
 
+hawk.DetailsList = function(container, options) {
+    this.container = $(container);
+    this.titles;
+    this.contents;
+
+    this.current;
+
+    this.states = {
+        open: 'open',
+        closed: 'closed'
+    }
+
+    this.defaultOptions = {
+        titleClass: 'details-list__title',
+        contentClass: 'details-list__content',
+        activeClass: 'active',
+        hideOther: true,
+        duration: 200,
+        showCallback: function(current) {
+            var arrow = current.find('.details-list__arrow');
+            arrow.removeClass('icon-arrow--down').addClass('icon-arrow--up');
+        },
+        hideCallback: function(current) {
+            var arrow = current.find('.details-list__arrow');
+            arrow.removeClass('icon-arrow--up').addClass('icon-arrow--down');
+        }
+    }
+
+    this.options = hawk.mergeObjects(this.defaultOptions, options);
+
+    this.show = function(title) {
+        if(this.options.hideOther && this.current !== undefined) {
+            var recent = this.current;
+            this.hide(recent);
+        }
+
+        this.current = title;
+
+        var that = this;
+
+        var container = this.current.parents('li').first();
+        container.addClass(this.options.activeClass);
+
+        var content = this.current.siblings('.' + this.options.contentClass);
+
+        this.options.showCallback(container);
+
+        content.velocity("slideDown", {
+            duration: that.options.duration,
+            complete: function() {
+                that.current.attr('data-state', that.states.open);
+            }
+        });
+    }
+
+    this.hide = function(title) {
+        var that = this;
+
+        var container = title.parents('li').first();
+        container.removeClass(this.options.activeClass);
+
+        this.options.hideCallback(container);
+
+        var content = title.siblings('.' + this.options.contentClass);
+        content.velocity("slideUp", {
+            duration: that.options.duration,
+            complete: function() {
+                title.attr('data-state', that.states.closed);
+            }
+        });
+    }
+
+    this.run = function() {
+        var that = this;
+
+        this.titles = this.container.find('.' + this.options.titleClass);
+        this.contents = this.container.find('.' + this.options.contentClass);
+
+        this.contents.hide();
+
+        this.titles.click(function() {
+            if($(this).attr('data-state') == that.states.open) {
+                that.hide($(this));
+            } else {
+                that.show($(this));
+            }
+        });
+    }
+}
+
 hawk.run = function() { 
     if(this.hash.length != 0) {
         this.scrollToElement({ anchor: this.hash + this.anchorSufix, delay: 200 });
@@ -786,4 +878,7 @@ hawk.run = function() {
 
     var bookmarks = new this.BookmarksManager($('.bookmarks-manager').first());
     bookmarks.run();
+
+    var detailsList = new this.DetailsList($('.details-list').first());
+    detailsList.run();
 }
