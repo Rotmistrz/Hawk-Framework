@@ -301,7 +301,7 @@ hawk.AjaxOverlayerManager = function(id, options) {
                     callback();
                 }
 
-                tat.currentButton = undefined;
+                that.currentButton = undefined;
             }
         });
     }
