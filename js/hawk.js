@@ -28,6 +28,7 @@ hawk.mergeObjects = function(mainObject, object) {
 
 hawk.scrollToElement = function(options) {
     var defaultOptions = {
+        container: window,
         anchor: '#top' + hawk.anchorSufix,
         callback: function() {},
         delay: 0
@@ -36,7 +37,7 @@ hawk.scrollToElement = function(options) {
     options = hawk.mergeObjects(defaultOptions, options);
 
     setTimeout(function(){
-        $.scrollTo(options.anchor, 800, {'axis': 'y', 'offset': 0, onAfter: function() { options.callback(); } });
+        $(options.container).scrollTo(options.anchor, 800, {'axis': 'y', 'offset': 0, onAfter: function() { options.callback(); } });
     }, options.delay);
 }
 
@@ -149,17 +150,19 @@ hawk.OverlayerManager = function(id, options) {
     this.contentContainer;
     this.closeButton;
 
+    this.currentButton;
+
     this.defaultOptions = {
         fadeSpeed: 400,
         contentContainerClass: 'overlayer__content',
         closeButtonClass: 'overlayer__close',
-        showCallback: function(container) {},
-        hideCallback: function(container) {}
+        showCallback: function(container, button) {},
+        hideCallback: function(container, button) {}
     };
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
 
-    this.show = function() {
+    this.show = function(callback) {
         var that = this;
 
         $('body').css({ overflow: 'hidden' });
@@ -168,13 +171,17 @@ hawk.OverlayerManager = function(id, options) {
             duration: that.options.fadeSpeed,
             complete: function() {
                 if(that.options.showCallback !== undefined) {
-                    that.options.showCallback(that.container);
+                    that.options.showCallback(that.container, that.currentButton);
+                }
+
+                if(callback !== undefined) {
+                    callback();
                 }
             }
         });
     }
 
-    this.hide = function() {
+    this.hide = function(callback) {
         var that = this;
 
         this.container.velocity("fadeOut", {
@@ -183,8 +190,14 @@ hawk.OverlayerManager = function(id, options) {
                 $('body').css({ overflow: 'auto' });
 
                 if(that.options.hideCallback !== undefined) {
-                    that.options.hideCallback(that.container);
+                    that.options.hideCallback(that.container, that.currentButton);
                 }
+
+                if(callback !== undefined) {
+                    callback();
+                }
+
+                that.currentButton = undefined;
             }
         });
     }
@@ -202,6 +215,8 @@ hawk.OverlayerManager = function(id, options) {
         this.buttons.click(function(e) {
             e.stopPropagation();
             e.preventDefault();
+
+            that.currentButton = $(this);
 
             var id = $(this).attr('data-id');
 
@@ -230,35 +245,63 @@ hawk.OverlayerManager = function(id, options) {
 hawk.AjaxOverlayerManager = function(id, options) {
     this.container = $('#' + id);
     this.overlayerId = parseInt(this.container.attr('data-overlayer-id'));
-    this.contentContainer = this.container.find('.overlayer__content');
-    this.buttons = $('.ajax-overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
-    this.closeButton = $(this.container.find('.overlayer__close'));
     
+    this.buttons = $('.ajax-overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
+
+    this.contentContainer;
+    this.closeButton;
+    
+    this.currentButton;
+
     this.defaultOptions = {
         fadeSpeed: 400,
-        ajaxFilePath: "/ajax.php"
+        ajaxFilePath: "/ajax.php",
+        contentContainerClass: 'overlayer__content',
+        closeButtonClass: 'overlayer__close',
+        showCallback: function(container, button) {},
+        hideCallback: function(container, button) {}
     }
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
 
     this.show = function(callback) {
-        this.container.fadeIn(this.options.fadeSpeed, function() {
-            $('body').css({ 'overflow': 'hidden' });
+        var that = this;
 
-            if(callback !== undefined) {
-                callback();
+        this.container.velocity("fadeIn", {
+            duration: this.options.fadeSpeed,
+            complete: function() {
+                $('body').css({ 'overflow': 'hidden' });
+
+                that.options.showCallback(that.container, that.currentButton);
+
+                if(callback !== undefined) {
+                    callback();
+                }
             }
         });
     };
 
     this.hide = function(callback) {
-        this.container.fadeOut(this.options.fadeSpeed, function() {
-            $('body').css({ 'overflow': 'auto'});
+        var that = this;
 
-            history.pushState("", document.title, window.location.pathname + window.location.search);
+        this.container.velocity("fadeOut", {
+            duration: this.options.fadeSpeed,
+            complete: function() {
+                $('body').css({ 'overflow': 'auto'});
 
-            if(callback !== undefined) {
-                callback();
+                try {
+                    history.pushState("", document.title, window.location.pathname + window.location.search);
+                } catch(e) {
+                    window.location.hash = "";
+                }
+                
+                that.options.hideCallback(that.container, that.currentButton);
+
+                if(callback !== undefined) {
+                    callback();
+                }
+
+                tat.currentButton = undefined;
             }
         });
     }
@@ -301,9 +344,14 @@ hawk.AjaxOverlayerManager = function(id, options) {
     this.run = function() {
         var that = this;
 
+        this.contentContainer = this.container.find('.' + this.options.contentContainerClass);
+        this.closeButton = $(this.container.find('.' + this.options.closeButtonClass));
+
         $(this.buttons).click(function(e) {
             e.preventDefault();
             e.stopPropagation();
+
+            that.currentButton = $(this);
 
             var id = $(this).attr('data-id');
 
@@ -354,7 +402,6 @@ hawk.MoreContentManager = function(id, options) {
     this.state;
 
     if(this.moreButton === undefined || this.lessButton === undefined || this.contents === undefined) {
-        console.log("false");
         return false;
     }
 
@@ -884,6 +931,11 @@ hawk.DetailsList = function(container, options) {
 }
 
 hawk.run = function() { 
+    var pageLoadingLayer = $('#page-loading-layer');
+    pageLoadingLayer.velocity("fadeOut", {
+        duration: 1000
+    });
+
     if(this.hash.length != 0) {
         this.scrollToElement({ anchor: this.hash + this.anchorSufix, delay: 200 });
     }
