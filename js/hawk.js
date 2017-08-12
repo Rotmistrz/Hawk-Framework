@@ -250,16 +250,32 @@ hawk.AjaxOverlayerManager = function(id, options) {
 
     this.contentContainer;
     this.closeButton;
+    this.spinnerLayer;
     
     this.currentButton;
 
     this.defaultOptions = {
         fadeSpeed: 400,
+        slideSpeed: 400,
         ajaxFilePath: "/ajax.php",
         contentContainerClass: 'overlayer__content',
         closeButtonClass: 'overlayer__close',
+        spinnerLayerClass: 'overlayer__spinner-layer',
         showCallback: function(container, button) {},
-        hideCallback: function(container, button) {}
+        hideCallback: function(container, button) {},
+        autoloadFunction: function(overlayerManager, hash) {
+            var pattern = /n_[0-9]+(-[a-zA-Z0-9]+)+/
+
+            if(pattern.test(hash)) {
+                var parts = hash.split('_');
+
+                hash = parts[1];
+
+                parts = hash.split('-');
+
+                overlayerManager.loadContent(parts[0]); 
+            }
+        }
     }
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
@@ -284,16 +300,19 @@ hawk.AjaxOverlayerManager = function(id, options) {
     this.hide = function(callback) {
         var that = this;
 
+        try {
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+        } catch(e) {
+            window.location.hash = "";
+        }
+
         this.container.velocity("fadeOut", {
             duration: this.options.fadeSpeed,
             complete: function() {
                 $('body').css({ 'overflow': 'auto'});
+                that.contentContainer.html('').hide();
 
-                try {
-                    history.pushState("", document.title, window.location.pathname + window.location.search);
-                } catch(e) {
-                    window.location.hash = "";
-                }
+                
                 
                 that.options.hideCallback(that.container, that.currentButton);
 
@@ -307,12 +326,20 @@ hawk.AjaxOverlayerManager = function(id, options) {
     }
 
     this.changeContent = function(content) {
+        var that = this;
+
         this.contentContainer.html(content);
+        this.contentContainer.velocity("slideDown", {
+            duration: that.options.slideSpeed
+        })
     }
 
     this.loadContent = function(id) {
         var that = this;
         var lang = $('html').attr('lang');
+
+        that.show();
+        that.spinnerLayer.show();
 
         $.ajax({
             type: "POST",
@@ -321,22 +348,20 @@ hawk.AjaxOverlayerManager = function(id, options) {
             data: { 'action': 'load-overlayer', 'id': id, 'lang': lang },
             success: function(result) {
                 if(result.error > 0) {
+                    // here should appear error layer
                     return;
                 }
 
                 that.changeContent(result['html']);
 
-                that.show(function() {
-                    that.closeButton.click(function() {
-                        that.hide();
-                        $(that.container).find('iframe').attr('src', 0);
-                    });
-
-                    window.location.hash = result['anchor'];
-                });
+                window.location.hash = result['anchor'];
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
+                // here should appear error layer
+                //alert(errorThrown);
+            },
+            complete: function() {
+                that.spinnerLayer.hide();
             }
         });
     }
@@ -346,6 +371,7 @@ hawk.AjaxOverlayerManager = function(id, options) {
 
         this.contentContainer = this.container.find('.' + this.options.contentContainerClass);
         this.closeButton = $(this.container.find('.' + this.options.closeButtonClass));
+        this.spinnerLayer = $(this.container.find('.' + this.options.spinnerLayerClass));
 
         $(this.buttons).click(function(e) {
             e.preventDefault();
@@ -366,25 +392,13 @@ hawk.AjaxOverlayerManager = function(id, options) {
 
         var hash = window.location.hash;
         
-        var pattern = /n_[0-9]+(-[a-zA-Z0-9]+)+/
-
-        if(pattern.test(hash)) {
-            var parts = hash.split('_');
-
-            hash = parts[1];
-
-            parts = hash.split('-');
-
-            this.loadContent(parts[0]); 
-        }
+        this.options.autoloadFunction(this, hash);
     };
 }
 
 hawk.MoreContentManager = function(id, options) {
     this.id = id;
-    this.moreButton = $('.more-button[data-id=' + this.id + ']');
-    this.lessButton = $('.less-button[data-id=' + this.id + ']');
-
+    this.button = $('.more-content-button[data-id=' + this.id + ']');
     this.contents = $('.more-content[data-id=' + this.id + ']');
 
     this.states = {
@@ -393,61 +407,77 @@ hawk.MoreContentManager = function(id, options) {
     };
 
     this.defaultOptions = {
-        slideSpeed: 200,
-        buttonFadeSpeed: 400
+        slideSpeed: 400,
+        showButtonCallback: function(button) {
+            button.velocity({ opacity: 0 }, {
+                duration: 400,
+                complete: function() {
+                    
+                }
+            });
+        },
+        hideButtonCallback: function(button) {}
     };
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
 
     this.state;
 
-    if(this.moreButton === undefined || this.lessButton === undefined || this.contents === undefined) {
+    if(this.button === undefined || this.contents === undefined) {
         return false;
     }
 
     this.show = function() {
         var that = this;
 
-        this.contents.slideDown(that.options.slideSpeed, function() {
-            that.moreButton.fadeOut(that.options.buttonFadeSpeed, function() {
-                that.lessButton.fadeIn(that.options.buttonFadeSpeed);
-            });
+        this.contents.velocity("slideDown", {
+            duration: that.options.slideSpeed,
+            complete: function() {
+                that.contents.velocity({ opacity: 1 }, {
+                    duration: 400
+                });
 
-            that.state = that.states.visible;
+                that.options.showButtonCallback(that.button);
+                that.state = that.states.visible;
+            }
         });
     }
 
     this.hide = function() {
         var that = this;
 
-        this.contents.slideUp(that.options.slideSpeed, function() {
-            that.lessButton.fadeOut(that.options.buttonFadeSpeed, function() {
-                that.moreButton.fadeIn(that.options.buttonFadeSpeed);
-            });
-
-            that.state = that.states.hidden;
+        that.contents.velocity({ opacity: 0 }, {
+            duration: 400,
+            complete: function() {
+                that.contents.velocity("slideUp", {
+                    duration: that.options.slideSpeed,
+                    complete: function() {
+                        that.options.hideButtonCallback(that.button);
+                        that.state = that.states.hidden;
+                    }
+                });
+            }
         });
+        
     }
 
     this.run = function() {
         var that = this;
 
-        this.lessButton.hide();
-        this.moreButton.show();
-        this.contents.hide();
+        this.button.show();
+        this.contents.hide().css({ opacity: 0 });
 
-        this.moreButton.click(function(e) {
+        this.state = this.states.hidden;
+
+        this.button.click(function(e) {
             e.preventDefault();
             e.stopPropagation();
 
-            that.show();
-        });
-
-        this.lessButton.click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            that.hide();
+            if(that.state == that.states.hidden) {
+                that.show();
+            } else {
+                that.hide();
+            }
         });
     }
 }
@@ -459,9 +489,32 @@ hawk.initializeMoreContentManagers = function() {
     contents.each(function() {
         var id = $(this).attr('data-id');
 
-        var moreContents;
+        var moreContents = new that.MoreContentManager(id, {
+            showButtonCallback: function(button) {
+                button.velocity({ opacity: 0 }, {
+                    duration: 400,
+                    complete: function() {
+                        button.find('.simple-button__inner').html("See less");
+                        button.find('.simple-button__icon-top').css({ opacity: 1 });
+                        button.find('.simple-button__icon-bottom').css({ opacity: 0 });
+                        button.delay(100).velocity({ opacity: 1 });
+                    }
+                });
+            },
+            hideButtonCallback: function(button) {
+                button.velocity({ opacity: 0 }, {
+                    duration: 400,
+                    complete: function() {
+                        button.find('.simple-button__inner').html("See more");
+                        button.find('.simple-button__icon-top').css({ opacity: 0 });
+                        button.find('.simple-button__icon-bottom').css({ opacity: 1 });
+                        button.delay(100).velocity({ opacity: 1 });
+                    }
+                });
+            }
+        });
 
-        if(moreContents = new that.MoreContentManager(id)) {
+        if(moreContents) {
             moreContents.run();
         }
     });
@@ -515,7 +568,9 @@ hawk.SlideMenu = function(id, options) {
         var that = this;
 
         if(this.options.mode == this.modes.fade) {
-            this.menu.fadeIn(this.options.fadeDuration);
+            this.menu.velocity("fadeIn", {
+                duration: this.options.fadeDuration
+            });
         }
 
         this.menu.addClass(this.openClassName);
@@ -528,7 +583,9 @@ hawk.SlideMenu = function(id, options) {
         var that = this;
 
         if(this.options.mode == this.modes.fade) {
-            this.menu.fadeOut(this.options.fadeDuration);
+            this.menu.velocity("fadeOut", {
+                duration: this.options.fadeDuration
+            });
         }
 
         this.menu.removeClass(this.openClassName);
@@ -600,7 +657,7 @@ hawk.initializeAnchors = function(options) {
             if($(anchor + that.anchorSufix).length) {
                 e.preventDefault();
 
-                if(options.menu !== undefined && $(link).parents(options.menu).length) {
+                if(options.menu !== undefined && $(link).parents(options.menu.menu).length) {
                     extraDelay = options.menu.totalDuration();
 
                     options.menu.hide();   
@@ -928,6 +985,23 @@ hawk.DetailsList = function(container, options) {
             }
         });
     }
+}
+
+hawk.CategorizedItems = function(container, options) {
+    this.container = $(container);
+
+    this.defaultOptions = {
+        prefix: "cat-",
+        amountInRow: {
+            0: 1,
+            550: 2,
+            768: 3,
+            1100: 4
+        },
+        itemClass: "categorized-items__item"
+    };
+
+    this.options = hawk.mergeObjects(this.defaultOptions, options);
 }
 
 hawk.run = function() { 

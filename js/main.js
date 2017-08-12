@@ -60,6 +60,8 @@ $(document).ready(function() {
 
     hawk.run();
 
+    baguetteBox.run('.baguette-box');
+
     function AjaxOverlayerManager(id) {
         this.container = $('#' + id);
         this.overlayerId = parseInt(this.container.attr('data-overlayer-id'));
