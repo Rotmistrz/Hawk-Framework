@@ -482,37 +482,14 @@ hawk.MoreContentManager = function(id, options) {
     }
 }
 
-hawk.initializeMoreContentManagers = function() {
+hawk.initializeMoreContentManagers = function(callbacks) {
     var contents = $('.more-content');
     var that = this;
 
     contents.each(function() {
         var id = $(this).attr('data-id');
 
-        var moreContents = new that.MoreContentManager(id, {
-            showButtonCallback: function(button) {
-                button.velocity({ opacity: 0 }, {
-                    duration: 400,
-                    complete: function() {
-                        button.find('.simple-button__inner').html("See less");
-                        button.find('.simple-button__icon-top').css({ opacity: 1 });
-                        button.find('.simple-button__icon-bottom').css({ opacity: 0 });
-                        button.delay(100).velocity({ opacity: 1 });
-                    }
-                });
-            },
-            hideButtonCallback: function(button) {
-                button.velocity({ opacity: 0 }, {
-                    duration: 400,
-                    complete: function() {
-                        button.find('.simple-button__inner').html("See more");
-                        button.find('.simple-button__icon-top').css({ opacity: 0 });
-                        button.find('.simple-button__icon-bottom').css({ opacity: 1 });
-                        button.delay(100).velocity({ opacity: 1 });
-                    }
-                });
-            }
-        });
+        var moreContents = new that.MoreContentManager(id, callbacks);
 
         if(moreContents) {
             moreContents.run();
@@ -560,12 +537,22 @@ hawk.SlideMenu = function(id, options) {
         toggler: $('.menu-toggler'),
         close: this.menu.find('.menu-close'),
         mainClass: 'slide-menu',
+        showCallback: function(menu) {},
+        hideCallback: function(menu, hideCall) {
+            hideCall();
+        }
     };
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
 
     this.show = function() {
         var that = this;
+
+        var timeRemaining = this.totalDuration();
+
+        setTimeout(function() {
+            that.showCallback(that.menu);
+        }, timeRemaining);
 
         if(this.options.mode == this.modes.fade) {
             this.menu.velocity("fadeIn", {
@@ -582,13 +569,16 @@ hawk.SlideMenu = function(id, options) {
     this.hide = function() {
         var that = this;
 
-        if(this.options.mode == this.modes.fade) {
-            this.menu.velocity("fadeOut", {
-                duration: this.options.fadeDuration
-            });
-        }
+        this.options.hideCallback(this.menu, function() {
+            if(that.options.mode == that.modes.fade) {
+                that.menu.velocity("fadeOut", {
+                    duration: that.options.fadeDuration
+                });
+            }
 
-        this.menu.removeClass(this.openClassName);
+            that.menu.removeClass(that.openClassName);
+        });
+
         this.state = this.states.closed;
 
         this.options.toggler.find('.icon-hamburger').removeClass('open');
@@ -870,11 +860,11 @@ hawk.BookmarksManager = function(container, options) {
         this.contentContainer = $(this.options.contentContainer);
         this.contentWrapper = $(this.options.contentWrapper);
 
-        var doit;
+        var refresh;
 
         $(window).resize(function() {
-            clearTimeout(doit);
-            doit = setTimeout(function() {
+            clearTimeout(refresh);
+            refresh = setTimeout(function() {
                 that.refresh();
             }, 100);
         });
@@ -989,6 +979,15 @@ hawk.DetailsList = function(container, options) {
 
 hawk.CategorizedItems = function(container, options) {
     this.container = $(container);
+    this.categories = this.container.find('[data-category-id]');
+    this.items;
+    this.noItems;
+    this.contentContainer;
+    this.content;
+
+    this.selectedItems;
+    this.recentItems;
+    this.currentCategory;
 
     this.defaultOptions = {
         prefix: "cat-",
@@ -998,13 +997,136 @@ hawk.CategorizedItems = function(container, options) {
             768: 3,
             1100: 4
         },
-        itemClass: "categorized-items__item"
+        itemClass: "categorized-items__item",
+        noItemsClass: "categorized-items__no-items",
+        contentContainerClass: "categorized-items__contents-container",
+        contentClass: "categorized-items__contents",
+        slideSpeed: 500,
+        fadeSpeed: 200
     };
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
+
+    this.loadCategory = function(id) {
+        var that = this;
+
+        this.currentCategory = id;
+        this.recentItems = this.selectedItems;
+
+        if(this.currentCategory == 'all') {
+            this.selectedItems = this.items;
+        } else {
+            this.selectedItems = this.items.filter('.cat-' + this.currentCategory);
+        }
+
+        if(that.selectedItems.length > 0) {
+            var itemsPerRow = this.countItemsPerRow();
+
+            var rowAmount = Math.ceil(this.selectedItems.length/itemsPerRow);
+            var itemHeight = this.selectedItems.first().outerHeight();
+
+            var necessaryHeight = rowAmount * itemHeight;
+
+            if(necessaryHeight < this.contentContainer.outerHeight()) {
+                this.contentContainer.css({ 'min-height': necessaryHeight + "px" });
+            }
+
+            that.content.velocity("slideUp", {
+                duration: that.options.slideSpeed,
+                complete: function() {
+                    that.noItems.hide();
+                    that.items.hide();
+                    that.selectedItems.show();
+
+                    that.content.velocity("slideDown", {
+                        duration: that.options.slideSpeed,
+                        complete: function() {
+                            this.contentContainer.css({ 'min-height': necessaryHeight + "px" });
+                        }
+                    });
+                }
+            });
+        } else {
+            var containerMinHeight = that.noItems.outerHeight();
+            this.contentContainer.css( { 'min-height': containerMinHeight + "px" });
+
+            that.content.velocity("slideUp", {
+                duration: that.options.slideSpeed,
+                complete: function() {
+                    that.items.hide();
+                    that.noItems.show();
+
+                    that.content.velocity("slideDown", {
+                        duration: that.options.slideSpeed
+                    });
+                }
+            });
+        }
+    }
+
+    this.countItemsPerRow = function() {
+        var amount = 0;
+
+        var object = this.options.amountInRow;
+
+        for (var property in object) {
+            if (object.hasOwnProperty(property)) {
+                if(property > hawk.w) {
+                    return amount;
+                }
+
+                amount = object[property];
+            }
+        }
+
+        return amount;
+    }
+
+    this.refresh = function() {
+        var itemsPerRow = this.countItemsPerRow();
+        var itemWidth = 1/itemsPerRow * 100;
+
+        this.items.css({ width: itemWidth + "%" });
+    }
+
+    this.run = function() {
+        var that = this;
+
+        this.items = this.container.find('.' + this.options.itemClass);
+        this.noItems = this.container.find('.' + this.options.noItemsClass);
+        this.content = this.container.find('.' + this.options.contentClass);
+        this.contentContainer = this.container.find('.' + this.options.contentContainerClass);
+
+        this.selectedItems = this.items;
+        this.noItems.hide();
+
+        this.refresh();
+
+        var refresh;
+
+        $(window).resize(function() {
+            clearTimeout(refresh);
+            refresh = setTimeout(function() {
+                that.refresh();
+            }, 100);
+        });
+
+        this.categories.click(function() {
+            var id = $(this).attr('data-category-id');
+
+            that.loadCategory(id);
+        });
+    }
 }
 
-hawk.run = function() { 
+hawk.refresh = function() {
+    this.w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    this.h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeigh;
+}
+
+hawk.run = function() {
+    var that = this;
+
     var pageLoadingLayer = $('#page-loading-layer');
     pageLoadingLayer.velocity("fadeOut", {
         duration: 1000
@@ -1014,8 +1136,35 @@ hawk.run = function() {
         this.scrollToElement({ anchor: this.hash + this.anchorSufix, delay: 200 });
     }
 
+    $(window).resize(function() {
+        that.refresh();
+    });
+
     this.initializeDropdowns();
-    this.initializeMoreContentManagers();
+    this.initializeMoreContentManagers({
+        showButtonCallback: function(button) {
+            button.velocity({ opacity: 0 }, {
+                duration: 400,
+                complete: function() {
+                    button.find('.simple-button__inner').html("See less");
+                    button.find('.simple-button__icon-top').css({ opacity: 1 });
+                    button.find('.simple-button__icon-bottom').css({ opacity: 0 });
+                    button.delay(100).velocity({ opacity: 1 });
+                }
+            });
+        },
+        hideButtonCallback: function(button) {
+            button.velocity({ opacity: 0 }, {
+                duration: 400,
+                complete: function() {
+                    button.find('.simple-button__inner').html("See more");
+                    button.find('.simple-button__icon-top').css({ opacity: 0 });
+                    button.find('.simple-button__icon-bottom').css({ opacity: 1 });
+                    button.delay(100).velocity({ opacity: 1 });
+                }
+            });
+        }
+    });
 
     var overlayer = new this.OverlayerManager('overlayer');
     overlayer.run();
@@ -1030,6 +1179,10 @@ hawk.run = function() {
 
     var bookmarks = new this.BookmarksManager($('.bookmarks-manager').first());
     bookmarks.run();
+    bookmarks.launchBookmark(0);
+
+    var categorizedItems = new this.CategorizedItems($('.categorized-items').first());
+    categorizedItems.run();
 
     var detailsList = new this.DetailsList($('.details-list').first());
     detailsList.run();

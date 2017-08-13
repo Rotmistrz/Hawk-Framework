@@ -502,6 +502,17 @@ margin: 0 auto;
 	&__item {
 	display: block;
 	}
+
+	&__no-items {
+	float: none;
+	display: block;
+	padding: 20px;
+	text-align: center;
+	}
+
+	&__content-container {
+	@include transition(all .2s linear);
+	}
 }
 
 
@@ -666,6 +677,8 @@ display: block;
 text-align: center;
 width: 100%;
 background: $light-color-02;
+overflow-x: hidden;
+overflow-y: auto;
 
 	.slide-menu__inner {
 	padding: 80px 60px;
