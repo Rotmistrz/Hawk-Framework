@@ -39,6 +39,8 @@ hawk.scrollToElement = function(options) {
     setTimeout(function(){
         $(options.container).scrollTo(options.anchor, 800, {'axis': 'y', 'offset': 0, onAfter: function() { options.callback(); } });
     }, options.delay);
+
+    return this;
 }
 
 hawk.Dropdown = function(container, options) {
@@ -68,10 +70,14 @@ hawk.Dropdown = function(container, options) {
 
     this.setOpen = function() {
         this.state = this.states.open;
+
+        return this;
     }
 
     this.setClosed = function() {
         this.state = this.states.closed;
+
+        return this;
     }
 
     this.isOpen = function() {
@@ -89,7 +95,10 @@ hawk.Dropdown = function(container, options) {
         this.list.velocity("slideDown", {
             duration: that.options.slideSpeed
         });
+
         this.setOpen();
+
+        return this;
     }
 
     this.hide = function() {
@@ -99,7 +108,10 @@ hawk.Dropdown = function(container, options) {
         this.list.velocity("slideUp", {
             duration: that.options.slideSpeed
         });
+
         this.setClosed();
+
+        return this;
     }
 
     this.run = function() {
@@ -128,6 +140,8 @@ hawk.Dropdown = function(container, options) {
         $('*').not(this.container).not(this.header).not(this.header.find('*')).not(this.list).not(this.list.find('*')).click(function() {
             that.hide();
         });
+
+        return this;
     }
 }
 
@@ -139,6 +153,8 @@ hawk.initializeDropdowns = function() {
         var dropdown = new that.Dropdown($(this));
         dropdown.run();
     });
+
+    return this;
 }
 
 hawk.OverlayerManager = function(id, options) {
@@ -147,6 +163,7 @@ hawk.OverlayerManager = function(id, options) {
     
     this.buttons = $('.overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
 
+    this.inner;
     this.contentContainer;
     this.closeButton;
 
@@ -154,6 +171,8 @@ hawk.OverlayerManager = function(id, options) {
 
     this.defaultOptions = {
         fadeSpeed: 400,
+        slideSpeed: 500,
+        innerClass: 'overlayer__inner',
         contentContainerClass: 'overlayer__content',
         closeButtonClass: 'overlayer__close',
         showCallback: function(container, button) {},
@@ -179,6 +198,8 @@ hawk.OverlayerManager = function(id, options) {
                 }
             }
         });
+
+        return this;
     }
 
     this.hide = function(callback) {
@@ -200,15 +221,25 @@ hawk.OverlayerManager = function(id, options) {
                 that.currentButton = undefined;
             }
         });
+
+        return this;
     }
 
     this.setContent = function(content) {
-        this.contentContainer.html(content);
+        var that = this;
+
+        this.contentContainer.html(content).delay(100);
+        this.contentContainer.velocity("slideDown", {
+            duration: that.options.slideSpeed
+        });
+
+        return this;
     }
 
     this.run = function() {
         var that = this;
 
+        this.inner = this.container.find('.' + this.options.innerClass);
         this.contentContainer = this.container.find('.' + this.options.contentContainerClass).first();
         this.closeButton = this.container.find('.' + this.options.closeButtonClass);
 
@@ -222,16 +253,16 @@ hawk.OverlayerManager = function(id, options) {
 
             var current = $('.overlayer-content[data-id=' + id + ']').first();
 
-            that.setContent(current.html());
-
             that.show();
+
+            that.setContent(current.html());
         });
 
         that.container.click(function() {
             that.hide();
         });
 
-        that.container.find('.overlayer__inner, .overlayer__inner :not(.overlayer__close, .overlayer__close *)').click(function(e) {
+        this.container.find('.' + that.options.innerClass + ', .' + that.options.innerClass + ' :not(.' + that.options.closeButtonClass + ', .' + that.options.closeButtonClass + ' *)').click(function(e) {
             e.stopPropagation();
             return;
         });
@@ -239,6 +270,8 @@ hawk.OverlayerManager = function(id, options) {
         this.closeButton.click(function() {
             that.hide();
         });
+
+        return this;
     }
 }
 
@@ -248,16 +281,20 @@ hawk.AjaxOverlayerManager = function(id, options) {
     
     this.buttons = $('.ajax-overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
 
+    this.inner;
     this.contentContainer;
     this.closeButton;
     this.spinnerLayer;
     
     this.currentButton;
 
+    this.open = false;
+
     this.defaultOptions = {
         fadeSpeed: 400,
         slideSpeed: 400,
         ajaxFilePath: "/ajax.php",
+        innerClass: 'overlayer__inner',
         contentContainerClass: 'overlayer__content',
         closeButtonClass: 'overlayer__close',
         spinnerLayerClass: 'overlayer__spinner-layer',
@@ -295,6 +332,8 @@ hawk.AjaxOverlayerManager = function(id, options) {
                 }
             }
         });
+
+        return this;
     };
 
     this.hide = function(callback) {
@@ -312,8 +351,6 @@ hawk.AjaxOverlayerManager = function(id, options) {
                 $('body').css({ 'overflow': 'auto'});
                 that.contentContainer.html('').hide();
 
-                
-                
                 that.options.hideCallback(that.container, that.currentButton);
 
                 if(callback !== undefined) {
@@ -321,8 +358,16 @@ hawk.AjaxOverlayerManager = function(id, options) {
                 }
 
                 that.currentButton = undefined;
+
+                that.open = false;
+
+                $(window).unbind('popstate').on('popstate', function() {
+                    
+                });
             }
         });
+
+        return this;
     }
 
     this.changeContent = function(content) {
@@ -331,7 +376,9 @@ hawk.AjaxOverlayerManager = function(id, options) {
         this.contentContainer.html(content);
         this.contentContainer.velocity("slideDown", {
             duration: that.options.slideSpeed
-        })
+        });
+
+        return this;
     }
 
     this.loadContent = function(id) {
@@ -355,6 +402,10 @@ hawk.AjaxOverlayerManager = function(id, options) {
                 that.changeContent(result['html']);
 
                 window.location.hash = result['anchor'];
+
+                $(window).unbind('popstate').on('popstate', function() {
+                    that.hide();
+                });
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // here should appear error layer
@@ -364,11 +415,14 @@ hawk.AjaxOverlayerManager = function(id, options) {
                 that.spinnerLayer.hide();
             }
         });
+        
+        return this;
     }
 
     this.run = function() {
         var that = this;
 
+        this.inner = this.container.find('.' + this.options.innerClass);
         this.contentContainer = this.container.find('.' + this.options.contentContainerClass);
         this.closeButton = $(this.container.find('.' + this.options.closeButtonClass));
         this.spinnerLayer = $(this.container.find('.' + this.options.spinnerLayerClass));
@@ -377,22 +431,35 @@ hawk.AjaxOverlayerManager = function(id, options) {
             e.preventDefault();
             e.stopPropagation();
 
-            that.currentButton = $(this);
+            if(!that.open) {
+                that.currentButton = $(this);
 
-            var id = $(this).attr('data-id');
+                var id = $(this).attr('data-id');
 
-            that.loadContent(id);
+                that.loadContent(id);
+            }
+        });
+
+        this.container.click(function() {
+            that.hide();
+        });
+
+        this.container.find('.' + that.options.innerClass + ', .' + that.options.innerClass + ' :not(.' + that.options.closeButtonClass + ', .' + that.options.closeButtonClass + ' *)').click(function(e) {
+            e.stopPropagation();
+            return;
         });
 
         this.closeButton.click(function(e) {
             e.preventDefault();
 
-            that.hide(function() { $('body').css('overflow', 'auto'); });
+            that.hide();
         });
 
         var hash = window.location.hash;
         
         this.options.autoloadFunction(this, hash);
+
+        return this;
     };
 }
 
@@ -441,6 +508,8 @@ hawk.MoreContentManager = function(id, options) {
                 that.state = that.states.visible;
             }
         });
+
+        return this;
     }
 
     this.hide = function() {
@@ -459,6 +528,7 @@ hawk.MoreContentManager = function(id, options) {
             }
         });
         
+        return this;
     }
 
     this.run = function() {
@@ -479,6 +549,8 @@ hawk.MoreContentManager = function(id, options) {
                 that.hide();
             }
         });
+
+        return this;
     }
 }
 
@@ -495,6 +567,8 @@ hawk.initializeMoreContentManagers = function(callbacks) {
             moreContents.run();
         }
     });
+
+    return this;
 }
 
 hawk.SlideMenu = function(id, options) {
@@ -564,6 +638,8 @@ hawk.SlideMenu = function(id, options) {
         this.state = this.states.open;
 
         this.toggler.find('.icon-hamburger').addClass('open');
+
+        return this;
     }
 
     this.hide = function() {
@@ -582,6 +658,8 @@ hawk.SlideMenu = function(id, options) {
         this.state = this.states.closed;
 
         this.options.toggler.find('.icon-hamburger').removeClass('open');
+
+        return this;
     }
 
     this.totalDuration = function() {
@@ -622,6 +700,8 @@ hawk.SlideMenu = function(id, options) {
         this.close.click(function() {
             that.hide();
         });
+
+        return this;
     }
 }
 
@@ -659,6 +739,8 @@ hawk.initializeAnchors = function(options) {
             }
         }
     });
+
+    return this;
 }
 
 hawk.BookmarksManager = function(container, options) {
@@ -940,6 +1022,8 @@ hawk.DetailsList = function(container, options) {
                 that.current.attr('data-state', that.states.open);
             }
         });
+
+        return this;
     }
 
     this.hide = function(title) {
@@ -957,6 +1041,8 @@ hawk.DetailsList = function(container, options) {
                 title.attr('data-state', that.states.closed);
             }
         });
+
+        return this;
     }
 
     this.run = function() {
@@ -974,6 +1060,8 @@ hawk.DetailsList = function(container, options) {
                 that.show($(this));
             }
         });
+
+        return this;
     }
 }
 
@@ -988,6 +1076,7 @@ hawk.CategorizedItems = function(container, options) {
     this.selectedItems;
     this.recentItems;
     this.currentCategory;
+    this.currentBookmark;
 
     this.defaultOptions = {
         prefix: "cat-",
@@ -1001,6 +1090,7 @@ hawk.CategorizedItems = function(container, options) {
         noItemsClass: "categorized-items__no-items",
         contentContainerClass: "categorized-items__contents-container",
         contentClass: "categorized-items__contents",
+        activeBookmarkClass: "active",
         slideSpeed: 500,
         fadeSpeed: 200
     };
@@ -1062,6 +1152,14 @@ hawk.CategorizedItems = function(container, options) {
                 }
             });
         }
+
+        return this;
+    }
+
+    this.activateBookmark = function(id) {
+        this.currentBookmark.removeClass(this.options.activeBookmarkClass);
+
+        return this;
     }
 
     this.countItemsPerRow = function() {
@@ -1087,6 +1185,8 @@ hawk.CategorizedItems = function(container, options) {
         var itemWidth = 1/itemsPerRow * 100;
 
         this.items.css({ width: itemWidth + "%" });
+
+        return this;
     }
 
     this.run = function() {
@@ -1116,12 +1216,16 @@ hawk.CategorizedItems = function(container, options) {
 
             that.loadCategory(id);
         });
+
+        return this;
     }
 }
 
 hawk.refresh = function() {
     this.w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     this.h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeigh;
+
+    return this;
 }
 
 hawk.run = function() {
@@ -1186,4 +1290,6 @@ hawk.run = function() {
 
     var detailsList = new this.DetailsList($('.details-list').first());
     detailsList.run();
+
+    return this;
 }
