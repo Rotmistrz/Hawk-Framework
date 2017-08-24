@@ -493,9 +493,19 @@ margin: 0 auto;
 	padding: 0 0 40px 0;
 
 		> li {
-		display: inline-block;
-		padding: 0 20px;
+		display: block;
+		padding: 10px 0;
 		cursor: pointer;
+
+			@media (min-width: $rwd-480) {
+			display: inline-block;
+			padding: 0 20px;
+			}
+
+			&.active {
+			color: $medium-color;
+			font-weight: 700;
+			}
 		}
 	}
 

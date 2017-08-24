@@ -31,13 +31,15 @@ hawk.scrollToElement = function(options) {
         container: window,
         anchor: '#top' + hawk.anchorSufix,
         callback: function() {},
-        delay: 0
+        delay: 0,
+        duration: 800,
+        offset: 0
     };
 
     options = hawk.mergeObjects(defaultOptions, options);
 
     setTimeout(function(){
-        $(options.container).scrollTo(options.anchor, 800, {'axis': 'y', 'offset': 0, onAfter: function() { options.callback(); } });
+        $(options.container).scrollTo(options.anchor, options.duration, {'axis': 'y', 'offset': options.offset, onAfter: function() { options.callback(); } });
     }, options.delay);
 
     return this;
@@ -1079,6 +1081,7 @@ hawk.CategorizedItems = function(container, options) {
     this.currentBookmark;
 
     this.defaultOptions = {
+        allId: 'all',
         prefix: "cat-",
         amountInRow: {
             0: 1,
@@ -1092,7 +1095,9 @@ hawk.CategorizedItems = function(container, options) {
         contentClass: "categorized-items__contents",
         activeBookmarkClass: "active",
         slideSpeed: 500,
-        fadeSpeed: 200
+        fadeSpeed: 200,
+        smallDeviceWidth: 480,
+        scrollOnSmallDevice: true
     };
 
     this.options = hawk.mergeObjects(this.defaultOptions, options);
@@ -1103,11 +1108,13 @@ hawk.CategorizedItems = function(container, options) {
         this.currentCategory = id;
         this.recentItems = this.selectedItems;
 
-        if(this.currentCategory == 'all') {
+        if(this.currentCategory == this.options.allId) {
             this.selectedItems = this.items;
         } else {
             this.selectedItems = this.items.filter('.cat-' + this.currentCategory);
         }
+
+        this.activateBookmark(this.currentCategory);
 
         if(that.selectedItems.length > 0) {
             var itemsPerRow = this.countItemsPerRow();
@@ -1128,10 +1135,20 @@ hawk.CategorizedItems = function(container, options) {
                     that.items.hide();
                     that.selectedItems.show();
 
+                    if(that.options.scrollOnSmallDevice && hawk.w < that.options.smallDeviceWidth) {
+                        var containerId = that.contentContainer.attr('id');
+
+                        if(containerId !== undefined) {
+                            console.log(containerId);
+
+                            hawk.scrollToElement({ anchor: '#' + containerId });
+                        }                        
+                    }
+
                     that.content.velocity("slideDown", {
                         duration: that.options.slideSpeed,
                         complete: function() {
-                            this.contentContainer.css({ 'min-height': necessaryHeight + "px" });
+                            that.contentContainer.css({ 'min-height': necessaryHeight + "px" });
                         }
                     });
                 }
@@ -1157,7 +1174,12 @@ hawk.CategorizedItems = function(container, options) {
     }
 
     this.activateBookmark = function(id) {
-        this.currentBookmark.removeClass(this.options.activeBookmarkClass);
+        if(this.currentBookmark !== undefined) {
+            this.currentBookmark.removeClass(this.options.activeBookmarkClass);
+        }
+        
+        this.currentBookmark = this.categories.filter('[data-category-id="' + id + '"]');
+        this.currentBookmark.addClass(this.options.activeBookmarkClass);
 
         return this;
     }
@@ -1216,6 +1238,8 @@ hawk.CategorizedItems = function(container, options) {
 
             that.loadCategory(id);
         });
+
+        this.loadCategory(this.options.allId);
 
         return this;
     }
