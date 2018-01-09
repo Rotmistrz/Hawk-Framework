@@ -140,7 +140,9 @@ hawk.Dropdown = function(container, options) {
         });
 
         $('*').not(this.container).not(this.header).not(this.header.find('*')).not(this.list).not(this.list.find('*')).click(function() {
-            that.hide();
+            if(that.isOpen()) {
+                that.hide();
+            }
         });
 
         return this;
@@ -627,7 +629,7 @@ hawk.SlideMenu = function(id, options) {
         var timeRemaining = this.totalDuration();
 
         setTimeout(function() {
-            that.showCallback(that.menu);
+            that.options.showCallback(that.menu);
         }, timeRemaining);
 
         if(this.options.mode == this.modes.fade) {
