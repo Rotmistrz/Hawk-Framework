@@ -7,7 +7,7 @@
         <meta name="Keywords" content="" />
         <meta name="Robots" content="index,follow" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="Author" content="Filip Markiewicz" />
+        <meta name="Author" content="Filip J. Markiewicz" />
         <title>Hawk Framework</title>
 
         <!--[if lt IE 9]>
@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="/css/hawk.css" />
         <link rel="stylesheet" href="/css/hover.css" />
         <link rel="stylesheet" href="/css/baguette-box.min.css" />
+        <link rel="stylesheet" href="/css/main.css" />
 
         <link rel="icon" href="/img/favicon-192x192.png" sizes="192x192" type="image/png" />
         <link rel="icon" href="/img/favicon-128x128.png" sizes="128x128" type="image/png" />
@@ -40,7 +41,7 @@
                 <nav class="menu">
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#column-layouts">Column layouts</a></li>
+                        <!--<li><a href="#column-layouts">Column layouts</a></li>-->
                         <li><a href="#icons">Icons</a></li>
                         <li><a href="#dropdowns">Dropdowns</a></li>
                         <li><a href="#forms">Forms</a></li>
@@ -55,25 +56,25 @@
         </section>
 
         <div id="main-menu-toggler" class="menu-toggler">
-            <div class="icon-hamburger">
+            <div class="icon-hamburger icon-hamburger--light">
                 <div class="icon-hamburger__inner">
                     <div></div>
                     <div></div>
                     <div></div>
-                    <div class="icon-hamburger__hover"></div>
-                    <div class="icon-hamburger__hover"></div>
-                    <div class="icon-hamburger__hover"></div>
+                    <div class="icon-hamburger__hover-item"></div>
+                    <div class="icon-hamburger__hover-item"></div>
+                    <div class="icon-hamburger__hover-item"></div>
                 </div>
             </div>
         </div>
 
         <div class="site-wrapper">
             <header id="home-anchor" class="site-header">
-                <h1 class="site-header__title">Hawk Framework</h1>
+                <h1 class="site-title">Hawk Framework</h1>
             </header>
 
             <main class="site-content">
-                <section id="column-layouts-anchor" class="section section--full-width section-01">
+                <!--<section id="column-layouts-anchor" class="section section--full-width section-01">
                     <div class="section__inner">
                         <header class="section-header">
                             <h1 class="section-header__title">Column layouts</h1>
@@ -239,1152 +240,1188 @@
                             </section>
                         </div>
                     </div>
-                </section>
+                </section>-->
 
-                <section id="icons-anchor" class="section section-02">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Icons</h1>
-                        </header>
-
-                        <section class="subsection">
-                            <header class="subsection-header">
-                                <h2 class="subsection-header__title">Hamburger</h2>
+                <section id="icons-anchor" class="site-section section-02">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">Icons</h2>
                             </header>
 
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-hamburger icon-hamburger--small">
-                                                    <div class="icon-hamburger__inner">
-                                                        <div></div>
-                                                        <div></div>
-                                                        <div></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                            <section class="site-section__content">
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-header__title">Hamburger</h3>
+                                    </header>
 
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-hamburger">
-                                                    <div class="icon-hamburger__inner">
-                                                        <div></div>
-                                                        <div></div>
-                                                        <div></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-hamburger icon-hamburger--large">
-                                                    <div class="icon-hamburger__inner">
-                                                        <div></div>
-                                                        <div></div>
-                                                        <div></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                        <div class="icon-hamburger__hover"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </section>
-
-                        <section class="subsection">
-                            <header class="subsection-header">
-                                <h2 class="subsection-header__title">Cross</h2>
-                            </header>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-cross icon-cross--small">
-                                                    <div></div>
-                                                    <div></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-cross">
-                                                    <div></div>
-                                                    <div></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-cross icon-cross--large">
-                                                    <div></div>
-                                                    <div></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </section>
-
-                        <section class="subsection">
-                            <header class="subsection-header">
-                                <h2 class="subsection-header__title">Cross rotated</h2>
-                            </header>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-cross icon-cross--small icon-cross--rotated">
-                                                    <div></div>
-                                                    <div></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-cross icon-cross--rotated">
-                                                    <div></div>
-                                                    <div></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-cross icon-cross--large icon-cross--rotated">
-                                                    <div></div>
-                                                    <div></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </section>
-
-                        <section class="subsection">
-                            <header class="subsection-header">
-                                <h2 class="subsection-header__title">Arrows</h2>
-                            </header>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--left icon-arrow--small"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--left"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--left icon-arrow--large"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--up"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--up icon-arrow--large"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--right icon-arrow--small"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--right"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--right icon-arrow--large"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--down"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-arrow icon-arrow--down icon-arrow--large"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </section>
-
-                        <section class="subsection">
-                            <header class="subsection-header">
-                                <h2 class="subsection-header__title">Trangular arrows</h2>
-                            </header>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-left icon-triangular-arrow-left--small"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-left"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-left icon-triangular-arrow-left--large"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-up icon-triangular-arrow-up--small"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-up"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-up icon-triangular-arrow-up--large"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-right icon-triangular-arrow-right--small"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-right"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-right icon-triangular-arrow-right--large"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <ul class="icons">
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-down"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="icons__icon-container">
-                                        <div class="wrapper">
-                                            <div>
-                                                <div class="icons__icon icon-triangular-arrow-down icon-triangular-arrow-down--large"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </section>
-                    </div>
-                </section>
-            
-                <section id="dropdowns-anchor" class="section section-03">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Dropdowns</h1>
-                        </header>
-
-                        <section class="dropdown">
-                            <header class="dropdown__header">
-                                <h1 class="dropdown__title">Dropdown</h1>
-                                <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
-                            </header>
-
-                            <ul class="dropdown__list">
-                                <li><a href="">Lorem ipsum dolor</a></li>
-                                <li><a href="">Sed tristique massa</a></li>
-                                <li><a href="">Orci varius natoque penatibus</a></li>
-                                <li><a href="">Aliquam in mi non dolor</a></li>
-                            </ul>
-                        </section>
-
-                        <section class="dropdown">
-                            <header class="dropdown__header">
-                                <h1 class="dropdown__title">Dropdown 2</h1>
-                                <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
-                            </header>
-
-                            <ul class="dropdown__list">
-                                <li><a href="">Orci varius natoque penatibus</a></li>
-                                <li><a href="">Aliquam in mi non dolor</a></li>
-                                <li><a href="">Lorem ipsum dolor</a></li>
-                                <li><a href="">Sed tristique massa</a></li>
-                            </ul>
-                        </section>
-                    </div>
-                </section>
-
-                <section id="forms-anchor" class="section section-04">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Forms</h1>
-                        </header>
-
-                        <form class="form" action="/" method="post">
-                            <fieldset>
-                                <label class="form__field-container">
-                                    <input id="name" class="form__field" name="name" type="text" placeholder="Your name" />
-                                </label>
-
-                                <label class="form__field-container">
-                                    <input id="email" class="form__field" name="email" type="text" placeholder="Your e-mail" />
-                                </label>
-
-                                <div class="form__field-container">
-                                    <section class="dropdown">
-                                        <header class="dropdown__header">
-                                            <h1 class="dropdown__title">Choose one or more options</h1>
-                                            <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
-                                        </header>
-
-                                        <ul class="dropdown__list">
-                                            <li>
-                                                <label class="choice-field">
-                                                    <input name="checkbox[]" type="checkbox" value="Value 4" />
-                                                    <div class="choice-field__inner">
-                                                        <div class="choice-field__field-container">
-                                                            <div class="choice-field__field"></div>
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-hamburger icon-hamburger--small">
+                                                            <div class="icon-hamburger__inner">
+                                                                <div></div>
+                                                                <div></div>
+                                                                <div></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                            </div>
                                                         </div>
-                                                        <div class="choice-field__description">Aliquam in mi non dolor</div>
                                                     </div>
-                                                </label>
-                                            </li>
+                                                </div>
+                                            </div>
+                                        </li>
 
-                                            <li>
-                                                <label class="choice-field">
-                                                    <input name="checkbox[]" type="checkbox" value="Value 4" />
-                                                    <div class="choice-field__inner">
-                                                        <div class="choice-field__field-container">
-                                                            <div class="choice-field__field"></div>
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-hamburger">
+                                                            <div class="icon-hamburger__inner">
+                                                                <div></div>
+                                                                <div></div>
+                                                                <div></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                            </div>
                                                         </div>
-                                                        <div class="choice-field__description">Lorem ipsum dolor</div>
                                                     </div>
-                                                </label>
-                                            </li>
+                                                </div>
+                                            </div>
+                                        </li>
 
-                                            <li>
-                                                <label class="choice-field">
-                                                    <input name="checkbox[]" type="checkbox" value="Value 4" />
-                                                    <div class="choice-field__inner">
-                                                        <div class="choice-field__field-container">
-                                                            <div class="choice-field__field"></div>
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-hamburger icon-hamburger--large">
+                                                            <div class="icon-hamburger__inner">
+                                                                <div></div>
+                                                                <div></div>
+                                                                <div></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                                <div class="icon-hamburger__hover"></div>
+                                                            </div>
                                                         </div>
-                                                        <div class="choice-field__description">Orci varius natoque penatibus</div>
                                                     </div>
-                                                </label>
-                                            </li>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
 
-                                            <li>
-                                                <label class="choice-field">
-                                                    <input name="checkbox[]" type="checkbox" value="Value 4" />
-                                                    <div class="choice-field__inner">
-                                                        <div class="choice-field__field-container">
-                                                            <div class="choice-field__field"></div>
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-header__title">Cross</h3>
+                                    </header>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-cross icon-cross--small">
+                                                            <div></div>
+                                                            <div></div>
                                                         </div>
-                                                        <div class="choice-field__description">Sed tristique massa</div>
                                                     </div>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </section>
-                                </div>
+                                                </div>
+                                            </div>
+                                        </li>
 
-                                <div class="form__field-container">
-                                    <section class="dropdown">
-                                        <header class="dropdown__header">
-                                            <h1 class="dropdown__title">Choose one option</h1>
-                                            <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
-                                        </header>
-
-                                        <ul class="dropdown__list">
-                                            <li>
-                                                <label class="choice-field choice-field--radio">
-                                                    <input name="radio" type="radio" value="Value 4" />
-                                                    <div class="choice-field__inner">
-                                                        <div class="choice-field__field-container">
-                                                            <div class="choice-field__field"></div>
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-cross">
+                                                            <div></div>
+                                                            <div></div>
                                                         </div>
-                                                        <div class="choice-field__description">Aliquam in mi non dolor</div>
                                                     </div>
-                                                </label>
-                                            </li>
+                                                </div>
+                                            </div>
+                                        </li>
 
-                                            <li>
-                                                <label class="choice-field choice-field--radio">
-                                                    <input name="radio" type="radio" value="Value 4" />
-                                                    <div class="choice-field__inner">
-                                                        <div class="choice-field__field-container">
-                                                            <div class="choice-field__field"></div>
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-cross icon-cross--large">
+                                                            <div></div>
+                                                            <div></div>
                                                         </div>
-                                                        <div class="choice-field__description">Lorem ipsum dolor</div>
                                                     </div>
-                                                </label>
-                                            </li>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
 
-                                            <li>
-                                                <label class="choice-field choice-field--radio">
-                                                    <input name="radio" type="radio" value="Value 4" />
-                                                    <div class="choice-field__inner">
-                                                        <div class="choice-field__field-container">
-                                                            <div class="choice-field__field"></div>
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-header__title">Cross rotated</h3>
+                                    </header>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-cross icon-cross--small icon-cross--rotated">
+                                                            <div></div>
+                                                            <div></div>
                                                         </div>
-                                                        <div class="choice-field__description">Orci varius natoque penatibus</div>
                                                     </div>
-                                                </label>
-                                            </li>
+                                                </div>
+                                            </div>
+                                        </li>
 
-                                            <li>
-                                                <label class="choice-field choice-field--radio">
-                                                    <input name="radio" type="radio" value="Value 4" />
-                                                    <div class="choice-field__inner">
-                                                        <div class="choice-field__field-container">
-                                                            <div class="choice-field__field"></div>
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-cross icon-cross--rotated">
+                                                            <div></div>
+                                                            <div></div>
                                                         </div>
-                                                        <div class="choice-field__description">Sed tristique massa</div>
                                                     </div>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </section>
-                                </div>
-
-                                <div class="form__field-container">
-                                    <div class="form__field-label">
-                                    Choose one or more options:
-                                    </div>
-
-                                    <label class="choice-field">
-                                        <input name="choice[]" type="checkbox" value="Value 4" />
-                                        <div class="choice-field__inner">
-                                            <div class="choice-field__field-container">
-                                                <div class="choice-field__field"></div>
+                                                </div>
                                             </div>
-                                            <div class="choice-field__description">Sed tristique massa</div>
-                                        </div>
-                                    </label>
+                                        </li>
 
-                                    <label class="choice-field">
-                                        <input name="choice[]" type="checkbox" value="Value 4" />
-                                        <div class="choice-field__inner">
-                                            <div class="choice-field__field-container">
-                                                <div class="choice-field__field"></div>
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-cross icon-cross--large icon-cross--rotated">
+                                                            <div></div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="choice-field__description">Orci varius natoque penatibus</div>
-                                        </div>
-                                    </label>
+                                        </li>
+                                    </ul>
+                                </section>
 
-                                    <label class="choice-field">
-                                        <input name="choice[]" type="checkbox" value="Value 4" />
-                                        <div class="choice-field__inner">
-                                            <div class="choice-field__field-container">
-                                                <div class="choice-field__field"></div>
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-header__title">Arrows</h3>
+                                    </header>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--left icon-arrow--small"></div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="choice-field__description">Lorem ipsum dolor</div>
-                                        </div>
-                                    </label>
-                                </div>
+                                        </li>
 
-                                <div class="button-container">
-                                    <button class="button" type="submit">
-                                        <div class="button__inner">Wyślij</div>
-                                    </button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </section>
-
-                <section id="overlayer-anchor" class="section section-05">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Overlayers</h1>
-                        </header>
-
-                        <div class="button-container">
-                            <button class="button overlayer-button" data-id="1" data-overlayer-id="1" type="button">See more</button>
-                        </div>
-
-                        <div class="overlayer-content" data-id="1">
-                            <article class="article">
-                                <header class="article__header">
-                                    <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
-                                </header>
-
-                                <div class="article__text">
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque sollicitudin orci nec molestie. Aliquam quis vehicula augue. Vivamus in porta tellus. Curabitur vel mollis diam. Nullam at sodales eros. Integer eu lectus consectetur ante dignissim aliquet. Maecenas varius, ante vel scelerisque faucibus, tellus ex blandit velit, ut molestie turpis mi nec tellus. Curabitur vitae nunc faucibus, bibendum eros sed, consequat sem. Vestibulum pulvinar nunc augue, et fringilla enim accumsan a. Pellentesque rutrum lectus sit amet nisl malesuada viverra. Proin pellentesque quis tellus et accumsan.
-                                    </p>
-                                    <p>
-                                    Vivamus nec gravida dolor, ac ultrices velit. Vivamus massa eros, commodo gravida feugiat vel, consequat non urna. Vivamus felis libero, tincidunt mattis luctus ut, tempor a tellus. Donec et diam iaculis, facilisis felis sed, sodales justo. Sed vel odio sed ligula suscipit dictum vel commodo nisl. Phasellus enim massa, sollicitudin ut libero vitae, ultricies porttitor turpis. Vestibulum elementum ipsum a blandit euismod. Nam id urna lorem. Phasellus hendrerit quam non mauris semper congue. Pellentesque ut finibus enim, et convallis est. Praesent ornare maximus lectus, rutrum hendrerit sem commodo id.
-                                    </p>
-                                    <p>
-                                    Morbi viverra risus turpis, at posuere nunc efficitur ac. Mauris pharetra tempus purus, at tristique tortor suscipit sit amet. Sed tempus, ipsum eget sodales pulvinar, turpis tellus consequat sapien, eu bibendum lectus quam nec diam. Integer est massa, malesuada in finibus pharetra, ornare in ante. Praesent imperdiet pellentesque est a elementum. Sed id mollis dolor, vitae ultricies tortor. Praesent magna massa, finibus eget bibendum id, fermentum a ex. In metus tellus, rutrum scelerisque elementum non, sagittis vel nisl.
-                                    </p>
-                                    <p>
-                                    Nunc a suscipit odio. Curabitur sit amet iaculis nulla, sit amet tristique leo. Maecenas rhoncus aliquet sapien ut imperdiet. Nunc lobortis nulla a nisi hendrerit, a accumsan eros accumsan. Mauris vel mauris arcu. Maecenas aliquet mi ut leo mollis, eu convallis quam pellentesque. Sed vitae accumsan lorem. Nam condimentum laoreet velit at lacinia. Duis pharetra dictum erat at molestie. Sed eu justo sagittis, molestie mi nec, aliquam erat. Nulla lacinia quis felis nec sollicitudin. Morbi nulla neque, gravida at dolor at, blandit gravida nisi. Nunc tincidunt neque ac dolor semper, ut auctor sem viverra. Curabitur egestas convallis enim, vel mollis mauris bibendum lacinia. Mauris dignissim ullamcorper sodales.
-                                    </p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="ajax-overlayer-anchor" class="section section-07">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Ajax overlayers</h1>
-                        </header>
-
-                        <div class="button-container">
-                            <button class="button ajax-overlayer-button" data-id="1" data-overlayer-id="1" type="button">See more</button>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="more-contents-anchor" class="section section-06">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">More contents</h1>
-                        </header>
-
-                        <article class="article">
-                            <header class="article__header">
-                                <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
-                            </header>
-
-                            <div class="article__text">
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque sollicitudin orci nec molestie. Aliquam quis vehicula augue. Vivamus in porta tellus. Curabitur vel mollis diam. Nullam at sodales eros. Integer eu lectus consectetur ante dignissim aliquet. Maecenas varius, ante vel scelerisque faucibus, tellus ex blandit velit, ut molestie turpis mi nec tellus. Curabitur vitae nunc faucibus, bibendum eros sed, consequat sem. Vestibulum pulvinar nunc augue, et fringilla enim accumsan a. Pellentesque rutrum lectus sit amet nisl malesuada viverra. Proin pellentesque quis tellus et accumsan.
-                                </p>
-
-                                <div class="more-content" data-id="1">
-                                    <p>
-                                    Vivamus nec gravida dolor, ac ultrices velit. Vivamus massa eros, commodo gravida feugiat vel, consequat non urna. Vivamus felis libero, tincidunt mattis luctus ut, tempor a tellus. Donec et diam iaculis, facilisis felis sed, sodales justo. Sed vel odio sed ligula suscipit dictum vel commodo nisl. Phasellus enim massa, sollicitudin ut libero vitae, ultricies porttitor turpis. Vestibulum elementum ipsum a blandit euismod. Nam id urna lorem. Phasellus hendrerit quam non mauris semper congue. Pellentesque ut finibus enim, et convallis est. Praesent ornare maximus lectus, rutrum hendrerit sem commodo id.
-                                    </p>
-                                    <p>
-                                    Morbi viverra risus turpis, at posuere nunc efficitur ac. Mauris pharetra tempus purus, at tristique tortor suscipit sit amet. Sed tempus, ipsum eget sodales pulvinar, turpis tellus consequat sapien, eu bibendum lectus quam nec diam. Integer est massa, malesuada in finibus pharetra, ornare in ante. Praesent imperdiet pellentesque est a elementum. Sed id mollis dolor, vitae ultricies tortor. Praesent magna massa, finibus eget bibendum id, fermentum a ex. In metus tellus, rutrum scelerisque elementum non, sagittis vel nisl.
-                                    </p>
-                                    <p>
-                                    Nunc a suscipit odio. Curabitur sit amet iaculis nulla, sit amet tristique leo. Maecenas rhoncus aliquet sapien ut imperdiet. Nunc lobortis nulla a nisi hendrerit, a accumsan eros accumsan. Mauris vel mauris arcu. Maecenas aliquet mi ut leo mollis, eu convallis quam pellentesque. Sed vitae accumsan lorem. Nam condimentum laoreet velit at lacinia. Duis pharetra dictum erat at molestie. Sed eu justo sagittis, molestie mi nec, aliquam erat. Nulla lacinia quis felis nec sollicitudin. Morbi nulla neque, gravida at dolor at, blandit gravida nisi. Nunc tincidunt neque ac dolor semper, ut auctor sem viverra. Curabitur egestas convallis enim, vel mollis mauris bibendum lacinia. Mauris dignissim ullamcorper sodales.
-                                    </p>
-                                </div>
-
-                                <div class="button-container">
-                                    <button class="simple-button more-content-button" data-id="1">
-                                        <div class="simple-button__icon-top icon-arrow icon-arrow--up icon-arrow--small">
-                                        </div>
-
-                                        <div class="simple-button__inner">
-                                        See more
-                                        </div>
-
-                                        <div class="simple-button__icon-bottom icon-arrow icon-arrow--down icon-arrow--small">
-                                        </div>
-                                    </button>
-                                    <!--<button class="simple-button more-button simple-button--bottom-icon" data-id="1" type="button">
-                                        <div class="simple-button__inner">See more</div>
-                                        <div class="simple-button__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                    </button>
-
-                                    <button class="simple-button less-button simple-button--top-icon" data-id="1" type="button">
-                                        <div class="simple-button__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
-                                        <div class="simple-button__inner">See less</div>
-                                    </button>-->
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-
-                <section id="bookmarks-anchor" class="section section-08">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Bookmarks</h1>
-                        </header>
-
-                        <section class="bookmarks-manager">
-                            <section class="bookmarks-manager__bookmarks-container">
-                                <ul class="bookmarks-manager__bookmarks">
-                                    <li class="bookmarks-manager__bookmark-container">
-                                        <div class="bookmarks-manager__bookmark simple-bookmark">
-                                            <div class="simple-bookmark__number">
-                                            01
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--left"></div>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </li>
 
-                                            Lorem ipsum
-                                        </div>
-
-                                        <div class="bookmarks-manager__bookmark-content">
-                                            <div class="text">
-                                                <p>
-                                                Lorem ipsum dolor sit amet mauris ac orci viverra quis, aliquam eros egestas sit amet dolor. Quisque eu augue egestas turpis. Pellentesque suscipit pede tortor et nisl pede, pulvinar felis, ullamcorper in, tristique magna arcu, dapibus sit amet quam. Nam enim. Mauris tempor enim non placerat porttitor. Phasellus a laoreet viverra diam vel lorem. Nam dolor sit amet leo. Pellentesque dapibus vel, magna.
-                                                </p>
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--left icon-arrow--large"></div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="bookmarks-manager__bookmark-container">
-                                        <div class="bookmarks-manager__bookmark simple-bookmark">
-                                            <div class="simple-bookmark__number">
-                                            02
-                                            </div>
-                                            
-                                            Dolor sit amet
-                                        </div>
-
-                                        <div class="bookmarks-manager__bookmark-content">
-                                            <div class="text">
-                                                <p>
-                                                Nullam justo. Curabitur imperdiet, lorem quam ut magna ornare interdum, diam neque tristique vitae, placerat vehicula viverra. Cras non nonummy lacinia arcu vel quam hendrerit purus. Sed in faucibus justo. Donec a dolor sit amet ultricies neque ut urna. Cras adipiscing elit. Nullam dapibus eu, pulvinar velit.
-                                                </p>
-
-                                                <p>
-                                                Nullam justo. Curabitur imperdiet, lorem quam ut magna ornare interdum, diam neque tristique vitae, placerat vehicula viverra. Cras non nonummy lacinia arcu vel quam hendrerit purus. Sed in faucibus justo. Donec a dolor sit amet ultricies neque ut urna. Cras adipiscing elit. Nullam dapibus eu, pulvinar velit.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="bookmarks-manager__bookmark-container">
-                                        <div class="bookmarks-manager__bookmark simple-bookmark">
-                                            <div class="simple-bookmark__number">
-                                            03
-                                            </div>
-                                            
-                                            Mauris ac orci viverra
-                                        </div>
-
-                                        <div class="bookmarks-manager__bookmark-content">
-                                            <div class="text">
-                                                <p>
-                                                Cras tempus rutrum vel, purus. Sed dignissim. Pellentesque eget sapien enim non enim ac augue nec turpis egestas. Cras adipiscing non, lacus. In purus non placerat quam. Nunc varius vehicula. Aliquam sed est neque, congue eu, facilisis eget, vestibulum ipsum feugiat in, libero. Aliquam eget pede urna fringilla mollis. Cras ut metus. Maecenas eget urna. Pellentesque habitant morbi tristique in, odio.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="bookmarks-manager__bookmark-container">
-                                        <div class="bookmarks-manager__bookmark simple-bookmark">
-                                            <div class="simple-bookmark__number">
-                                            04
-                                            </div>
-                                            
-                                            Vestibulum vel risus
-                                        </div>
-
-                                        <div class="bookmarks-manager__bookmark-content">
-                                            <div class="text">
-                                                <p>
-                                                Morbi tincidunt. Nullam erat augue, vel neque vel hendrerit sollicitudin eu, facilisis faucibus orci vitae urna. Aenean sed wisi quis arcu. Sed dignissim. Aliquam orci. Vestibulum vel risus. Donec eleifend ut, lobortis venenatis, pulvinar mollis, purus dolor in aliquam at, auctor scelerisque, ante ipsum dolor urna eu pede cursus dignissim tempor, pulvinar mollis.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </section>
-
-                            <section class="bookmarks-manager__content-container">
-                                <div class="bookmarks-manager__content-wrapper">
-                                    <div id="bookmarks-content" class="bookmarks-manager__content">
-
-                                    </div>
-                                </div>
-                            </section>
-                        </section>
-                    </div>
-                </section>
-
-                <section id="details-lists-anchor" class="section section-09">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Details list</h1>
-                        </header>
-
-                        <ul class="details-list">
-                            <li class="details-list__item">
-                                <div class="details-list__title">
-                                    Lorem ipsum dolor sit amet
-                                    <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                </div>
-
-                                <div class="details-list__content">
-                                Fusce iaculis mi. Nam laoreet condimentum, dapibus nisl. Curabitur interdum augue. Donec molestie nulla ut tortor. Nulla nunc faucibus orci orci, blandit libero.
-                                </div>
-                            </li>
-
-                            <li class="details-list__item">
-                                <div class="details-list__title">
-                                    Donec rutrum posuere elementum
-                                    <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                </div>
-
-                                <div class="details-list__content">
-                                Proin vel massa. Ut blandit, dui pulvinar sem in lacus pretium pellentesque. Proin venenatis pede. Aliquam gravida elit. Mauris ultrices. Nunc vehicula. Integer eu viverra enim fringilla vel, luctus sagittis.
-                                </div>
-                            </li>
-
-                            <li class="details-list__item">
-                                <div class="details-list__title">
-                                    Cum sociis natoque penatibus
-                                    <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                </div>
-
-                                <div class="details-list__content">
-                                Duis blandit eu, tortor. Vivamus nec libero. Proin ultrices magna. Integer nonummy condimentum nunc. Fusce ullamcorper. Nam lectus bibendum a, dolor. Aliquam auctor euismod. Nulla posuere. Vestibulum ligula. Vivamus fermentum ultrices posuere cubilia Curae, Donec eleifend in, gravida ornare.
-                                </div>
-                            </li>
-
-                            <li class="details-list__item">
-                                <div class="details-list__title">
-                                    Quisque et orci ut ante
-                                    <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                </div>
-
-                                <div class="details-list__content">
-                                Vivamus diam tempor elit est, et lacus nibh, dictum enim. Pellentesque dapibus ac, laoreet sapien. Vestibulum ante ipsum primis in nunc. Sed sit amet enim. Phasellus sem. Pellentesque felis.
-                                </div>
-                            </li>
-
-                            <li class="details-list__item">
-                                <div class="details-list__title">
-                                    Phasellus fermentum, enim eu ipsum
-                                    <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                </div>
-
-                                <div class="details-list__content">
-                                Lorem ipsum primis in tellus et interdum dapibus in, consequat et, placerat velit malesuada augue odio a dictum sapien massa imperdiet orci luctus quis, feugiat mattis vel, magna. Phasellus fermentum, enim eu ipsum.
-                                </div>
-                            </li>
-
-                            <li class="details-list__item">
-                                <div class="details-list__title">
-                                    Sed et pede id pharetra velit
-                                    <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                </div>
-
-                                <div class="details-list__content">
-                                Donec commodo, odio eget lectus eget elit purus, consectetuer tellus consectetuer adipiscing tortor, fermentum odio. Donec fermentum odio. Morbi tellus dolor sapien magna fringilla purus lorem, pretium nec, eros. Aliquam ut leo. Aenean bibendum vel, hendrerit purus sit.
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section id="categorized-items-anchor" class="section section--full-width section-10">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Categorized items</h1>
-                        </header>
-
-                        <section class="categorized-items">
-                            <section class="categorized-items__categories-container">
-                                <ul class="categorized-items__categories">
-                                    <li data-category-id="all">
-                                    All the beauty
-                                    </li>
-
-                                    <li data-category-id="0">
-                                    Front
-                                    </li>
-
-                                    <li data-category-id="1">
-                                    Backwards
-                                    </li>
-
-                                    <li data-category-id="2">
-                                    Nudes
-                                    </li>
-                                </ul>
-                            </section>
-
-                            <section id="categorized-items-content" class="categorized-items__contents-container">
-                                <div class="categorized-items__contents">
-                                    <ul class="boxes baguette-box">
-                                        <li class="categorized-items__item cat-0">
-                                            <a class="box" href="/img/women/woman-00.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-00-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0">
-                                            <a class="box" href="/img/women/woman-01.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-01-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-1">
-                                            <a class="box" href="/img/women/woman-08.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-08-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0">
-                                            <a class="box" href="/img/women/woman-02.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-02-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-1">
-                                            <a class="box" href="/img/women/woman-09.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-09-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0 cat-1">
-                                            <a class="box" href="/img/women/woman-10.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-10-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0">
-                                            <a class="box" href="/img/women/woman-03.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-03-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-1">
-                                            <a class="box" href="/img/women/woman-11.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-11-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0">
-                                            <a class="box" href="/img/women/woman-04.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-04-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0 cat-1">
-                                            <a class="box" href="/img/women/woman-12.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-12-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-1">
-                                            <a class="box" href="/img/women/woman-13.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-13-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-1">
-                                            <a class="box" href="/img/women/woman-14.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-14-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0">
-                                            <a class="box" href="/img/women/woman-05.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-05-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0">
-                                            <a class="box" href="/img/women/woman-06.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-06-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="categorized-items__item cat-0">
-                                            <a class="box" href="/img/women/woman-07.jpg">
-                                                <div class="box__layer" style="background-image: url('/img/women/woman-07-thumbnail.jpg')">
-
-                                                </div>
-
-                                                <div class="box__layer-02">
-
-                                                </div>
-                                            </a>
                                         </li>
                                     </ul>
 
-                                    <div class="categorized-items__no-items">
-                                    There are no items in this category.
-                                    </div>
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--up"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--up icon-arrow--large"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--right icon-arrow--small"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--right"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--right icon-arrow--large"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--down"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-arrow icon-arrow--down icon-arrow--large"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-header__title">Trangular arrows</h3>
+                                    </header>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-left icon-triangular-arrow-left--small"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-left"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-left icon-triangular-arrow-left--large"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-up icon-triangular-arrow-up--small"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-up"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-up icon-triangular-arrow-up--large"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-right icon-triangular-arrow-right--small"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-right"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-right icon-triangular-arrow-right--large"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-down"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-triangular-arrow-down icon-triangular-arrow-down--large"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="dropdowns-anchor" class="site-section section-03">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">Dropdowns</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <section class="dropdown" tabindex="0">
+                                    <header class="dropdown__header">
+                                        <h1 class="dropdown__title">Dropdown</h1>
+                                        <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                    </header>
+
+                                    <ul class="dropdown__list">
+                                        <li><a href="">Lorem ipsum dolor</a></li>
+                                        <li><a href="">Sed tristique massa</a></li>
+                                        <li><a href="">Orci varius natoque penatibus</a></li>
+                                        <li><a href="">Aliquam in mi non dolor</a></li>
+                                    </ul>
+                                </section>
+
+                                <section class="dropdown" tabindex="0">
+                                    <header class="dropdown__header">
+                                        <h1 class="dropdown__title">Dropdown 2</h1>
+                                        <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                    </header>
+
+                                    <ul class="dropdown__list">
+                                        <li><a href="">Orci varius natoque penatibus</a></li>
+                                        <li><a href="">Aliquam in mi non dolor</a></li>
+                                        <li><a href="">Lorem ipsum dolor</a></li>
+                                        <li><a href="">Sed tristique massa</a></li>
+                                    </ul>
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="forms-anchor" class="site-section section-04">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">Forms</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <form class="form" action="/" method="post">
+                                    <fieldset class="form__wrapper">
+                                        <label class="form__field-container">
+                                            <input id="name" class="form__field" name="name" type="text" placeholder="Your name" />
+                                        </label>
+
+                                        <label class="form__field-container">
+                                            <input id="email" class="form__field" name="email" type="text" placeholder="Your e-mail" />
+                                        </label>
+
+                                        <div class="form__field-container">
+                                            <section class="dropdown">
+                                                <header class="dropdown__header">
+                                                    <h1 class="dropdown__title">Choose one or more options</h1>
+                                                    <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                                </header>
+
+                                                <ul class="dropdown__list">
+                                                    <li>
+                                                        <label class="choice-field">
+                                                            <input name="checkbox[]" type="checkbox" value="Value 4" />
+                                                            <div class="choice-field__inner">
+                                                                <div class="choice-field__field-container">
+                                                                    <div class="choice-field__field"></div>
+                                                                </div>
+                                                                <div class="choice-field__description">Aliquam in mi non dolor</div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+
+                                                    <li>
+                                                        <label class="choice-field">
+                                                            <input name="checkbox[]" type="checkbox" value="Value 4" />
+                                                            <div class="choice-field__inner">
+                                                                <div class="choice-field__field-container">
+                                                                    <div class="choice-field__field"></div>
+                                                                </div>
+                                                                <div class="choice-field__description">Lorem ipsum dolor</div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+
+                                                    <li>
+                                                        <label class="choice-field">
+                                                            <input name="checkbox[]" type="checkbox" value="Value 4" />
+                                                            <div class="choice-field__inner">
+                                                                <div class="choice-field__field-container">
+                                                                    <div class="choice-field__field"></div>
+                                                                </div>
+                                                                <div class="choice-field__description">Orci varius natoque penatibus</div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+
+                                                    <li>
+                                                        <label class="choice-field">
+                                                            <input name="checkbox[]" type="checkbox" value="Value 4" />
+                                                            <div class="choice-field__inner">
+                                                                <div class="choice-field__field-container">
+                                                                    <div class="choice-field__field"></div>
+                                                                </div>
+                                                                <div class="choice-field__description">Sed tristique massa</div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </section>
+                                        </div>
+
+                                        <div class="form__field-container">
+                                            <section class="dropdown">
+                                                <header class="dropdown__header">
+                                                    <h1 class="dropdown__title">Choose one option</h1>
+                                                    <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                                </header>
+
+                                                <ul class="dropdown__list">
+                                                    <li>
+                                                        <label class="choice-field choice-field--radio">
+                                                            <input name="radio" type="radio" value="Value 4" />
+                                                            <div class="choice-field__inner">
+                                                                <div class="choice-field__field-container">
+                                                                    <div class="choice-field__field"></div>
+                                                                </div>
+                                                                <div class="choice-field__description">Aliquam in mi non dolor</div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+
+                                                    <li>
+                                                        <label class="choice-field choice-field--radio">
+                                                            <input name="radio" type="radio" value="Value 4" />
+                                                            <div class="choice-field__inner">
+                                                                <div class="choice-field__field-container">
+                                                                    <div class="choice-field__field"></div>
+                                                                </div>
+                                                                <div class="choice-field__description">Lorem ipsum dolor</div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+
+                                                    <li>
+                                                        <label class="choice-field choice-field--radio">
+                                                            <input name="radio" type="radio" value="Value 4" />
+                                                            <div class="choice-field__inner">
+                                                                <div class="choice-field__field-container">
+                                                                    <div class="choice-field__field"></div>
+                                                                </div>
+                                                                <div class="choice-field__description">Orci varius natoque penatibus</div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+
+                                                    <li>
+                                                        <label class="choice-field choice-field--radio">
+                                                            <input name="radio" type="radio" value="Value 4" />
+                                                            <div class="choice-field__inner">
+                                                                <div class="choice-field__field-container">
+                                                                    <div class="choice-field__field"></div>
+                                                                </div>
+                                                                <div class="choice-field__description">Sed tristique massa</div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </section>
+                                        </div>
+
+                                        <div class="form__field-container">
+                                            <div class="form__field-label">
+                                            Choose one or more options:
+                                            </div>
+
+                                            <label class="choice-field">
+                                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">Sed tristique massa</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="choice-field">
+                                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">Orci varius natoque penatibus</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="choice-field">
+                                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">Lorem ipsum dolor</div>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="button-container">
+                                            <button class="button" type="submit">
+                                                <div class="button__inner">Wyślij</div>
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="overlayer-anchor" class="site-section section-05">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">Overlayers</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <div class="button-container">
+                                    <button class="button overlayer-button" data-id="1" data-overlayer-id="1" type="button">See more</button>
+                                </div>
+
+                                <div class="overlayer-content" data-id="1">
+                                    <article class="article">
+                                        <header class="article__header">
+                                            <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
+                                        </header>
+
+                                        <div class="article__text">
+                                            <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque sollicitudin orci nec molestie. Aliquam quis vehicula augue. Vivamus in porta tellus. Curabitur vel mollis diam. Nullam at sodales eros. Integer eu lectus consectetur ante dignissim aliquet. Maecenas varius, ante vel scelerisque faucibus, tellus ex blandit velit, ut molestie turpis mi nec tellus. Curabitur vitae nunc faucibus, bibendum eros sed, consequat sem. Vestibulum pulvinar nunc augue, et fringilla enim accumsan a. Pellentesque rutrum lectus sit amet nisl malesuada viverra. Proin pellentesque quis tellus et accumsan.
+                                            </p>
+                                            <p>
+                                            Vivamus nec gravida dolor, ac ultrices velit. Vivamus massa eros, commodo gravida feugiat vel, consequat non urna. Vivamus felis libero, tincidunt mattis luctus ut, tempor a tellus. Donec et diam iaculis, facilisis felis sed, sodales justo. Sed vel odio sed ligula suscipit dictum vel commodo nisl. Phasellus enim massa, sollicitudin ut libero vitae, ultricies porttitor turpis. Vestibulum elementum ipsum a blandit euismod. Nam id urna lorem. Phasellus hendrerit quam non mauris semper congue. Pellentesque ut finibus enim, et convallis est. Praesent ornare maximus lectus, rutrum hendrerit sem commodo id.
+                                            </p>
+                                            <p>
+                                            Morbi viverra risus turpis, at posuere nunc efficitur ac. Mauris pharetra tempus purus, at tristique tortor suscipit sit amet. Sed tempus, ipsum eget sodales pulvinar, turpis tellus consequat sapien, eu bibendum lectus quam nec diam. Integer est massa, malesuada in finibus pharetra, ornare in ante. Praesent imperdiet pellentesque est a elementum. Sed id mollis dolor, vitae ultricies tortor. Praesent magna massa, finibus eget bibendum id, fermentum a ex. In metus tellus, rutrum scelerisque elementum non, sagittis vel nisl.
+                                            </p>
+                                            <p>
+                                            Nunc a suscipit odio. Curabitur sit amet iaculis nulla, sit amet tristique leo. Maecenas rhoncus aliquet sapien ut imperdiet. Nunc lobortis nulla a nisi hendrerit, a accumsan eros accumsan. Mauris vel mauris arcu. Maecenas aliquet mi ut leo mollis, eu convallis quam pellentesque. Sed vitae accumsan lorem. Nam condimentum laoreet velit at lacinia. Duis pharetra dictum erat at molestie. Sed eu justo sagittis, molestie mi nec, aliquam erat. Nulla lacinia quis felis nec sollicitudin. Morbi nulla neque, gravida at dolor at, blandit gravida nisi. Nunc tincidunt neque ac dolor semper, ut auctor sem viverra. Curabitur egestas convallis enim, vel mollis mauris bibendum lacinia. Mauris dignissim ullamcorper sodales.
+                                            </p>
+                                        </div>
+                                    </article>
                                 </div>
                             </section>
-                        </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="ajax-overlayer-anchor" class="site-section section-07">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">AJAX overlayers</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <div class="button-container">
+                                    <button class="button ajax-overlayer-button" data-id="1" data-overlayer-id="1" type="button">See more</button>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="more-contents-anchor" class="site-section section-06">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">More contents</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <article class="article">
+                                    <header class="article__header">
+                                        <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
+                                    </header>
+
+                                    <div class="article__text">
+                                        <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque sollicitudin orci nec molestie. Aliquam quis vehicula augue. Vivamus in porta tellus. Curabitur vel mollis diam. Nullam at sodales eros. Integer eu lectus consectetur ante dignissim aliquet. Maecenas varius, ante vel scelerisque faucibus, tellus ex blandit velit, ut molestie turpis mi nec tellus. Curabitur vitae nunc faucibus, bibendum eros sed, consequat sem. Vestibulum pulvinar nunc augue, et fringilla enim accumsan a. Pellentesque rutrum lectus sit amet nisl malesuada viverra. Proin pellentesque quis tellus et accumsan.
+                                        </p>
+
+                                        <div class="more-content" data-id="1">
+                                            <p>
+                                            Vivamus nec gravida dolor, ac ultrices velit. Vivamus massa eros, commodo gravida feugiat vel, consequat non urna. Vivamus felis libero, tincidunt mattis luctus ut, tempor a tellus. Donec et diam iaculis, facilisis felis sed, sodales justo. Sed vel odio sed ligula suscipit dictum vel commodo nisl. Phasellus enim massa, sollicitudin ut libero vitae, ultricies porttitor turpis. Vestibulum elementum ipsum a blandit euismod. Nam id urna lorem. Phasellus hendrerit quam non mauris semper congue. Pellentesque ut finibus enim, et convallis est. Praesent ornare maximus lectus, rutrum hendrerit sem commodo id.
+                                            </p>
+                                            <p>
+                                            Morbi viverra risus turpis, at posuere nunc efficitur ac. Mauris pharetra tempus purus, at tristique tortor suscipit sit amet. Sed tempus, ipsum eget sodales pulvinar, turpis tellus consequat sapien, eu bibendum lectus quam nec diam. Integer est massa, malesuada in finibus pharetra, ornare in ante. Praesent imperdiet pellentesque est a elementum. Sed id mollis dolor, vitae ultricies tortor. Praesent magna massa, finibus eget bibendum id, fermentum a ex. In metus tellus, rutrum scelerisque elementum non, sagittis vel nisl.
+                                            </p>
+                                            <p>
+                                            Nunc a suscipit odio. Curabitur sit amet iaculis nulla, sit amet tristique leo. Maecenas rhoncus aliquet sapien ut imperdiet. Nunc lobortis nulla a nisi hendrerit, a accumsan eros accumsan. Mauris vel mauris arcu. Maecenas aliquet mi ut leo mollis, eu convallis quam pellentesque. Sed vitae accumsan lorem. Nam condimentum laoreet velit at lacinia. Duis pharetra dictum erat at molestie. Sed eu justo sagittis, molestie mi nec, aliquam erat. Nulla lacinia quis felis nec sollicitudin. Morbi nulla neque, gravida at dolor at, blandit gravida nisi. Nunc tincidunt neque ac dolor semper, ut auctor sem viverra. Curabitur egestas convallis enim, vel mollis mauris bibendum lacinia. Mauris dignissim ullamcorper sodales.
+                                            </p>
+                                        </div>
+
+                                        <div class="button-container">
+                                            <button class="simple-button more-content-button" data-id="1">
+                                                <div class="simple-button__icon-top icon-arrow icon-arrow--up icon-arrow--small">
+                                                </div>
+
+                                                <div class="simple-button__inner">
+                                                See more
+                                                </div>
+
+                                                <div class="simple-button__icon-bottom icon-arrow icon-arrow--down icon-arrow--small">
+                                                </div>
+                                            </button>
+                                            <!--<button class="simple-button more-button simple-button--bottom-icon" data-id="1" type="button">
+                                                <div class="simple-button__inner">See more</div>
+                                                <div class="simple-button__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                            </button>
+
+                                            <button class="simple-button less-button simple-button--top-icon" data-id="1" type="button">
+                                                <div class="simple-button__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
+                                                <div class="simple-button__inner">See less</div>
+                                            </button>-->
+                                        </div>
+                                    </div>
+                                </article>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="bookmarks-anchor" class="site-section section-08">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">Bookmarks</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <section class="bookmarks-manager">
+                                    <section class="bookmarks-manager__bookmarks-container">
+                                        <ul class="bookmarks-manager__bookmarks">
+                                            <li class="bookmarks-manager__bookmark-container">
+                                                <div class="bookmarks-manager__bookmark simple-bookmark">
+                                                    <div class="simple-bookmark__number">
+                                                    01
+                                                    </div>
+
+                                                    Lorem ipsum
+                                                </div>
+
+                                                <div class="bookmarks-manager__bookmark-content">
+                                                    <div class="text">
+                                                        <p>
+                                                        Lorem ipsum dolor sit amet mauris ac orci viverra quis, aliquam eros egestas sit amet dolor. Quisque eu augue egestas turpis. Pellentesque suscipit pede tortor et nisl pede, pulvinar felis, ullamcorper in, tristique magna arcu, dapibus sit amet quam. Nam enim. Mauris tempor enim non placerat porttitor. Phasellus a laoreet viverra diam vel lorem. Nam dolor sit amet leo. Pellentesque dapibus vel, magna.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="bookmarks-manager__bookmark-container">
+                                                <div class="bookmarks-manager__bookmark simple-bookmark">
+                                                    <div class="simple-bookmark__number">
+                                                    02
+                                                    </div>
+                                                    
+                                                    Dolor sit amet
+                                                </div>
+
+                                                <div class="bookmarks-manager__bookmark-content">
+                                                    <div class="text">
+                                                        <p>
+                                                        Nullam justo. Curabitur imperdiet, lorem quam ut magna ornare interdum, diam neque tristique vitae, placerat vehicula viverra. Cras non nonummy lacinia arcu vel quam hendrerit purus. Sed in faucibus justo. Donec a dolor sit amet ultricies neque ut urna. Cras adipiscing elit. Nullam dapibus eu, pulvinar velit.
+                                                        </p>
+
+                                                        <p>
+                                                        Nullam justo. Curabitur imperdiet, lorem quam ut magna ornare interdum, diam neque tristique vitae, placerat vehicula viverra. Cras non nonummy lacinia arcu vel quam hendrerit purus. Sed in faucibus justo. Donec a dolor sit amet ultricies neque ut urna. Cras adipiscing elit. Nullam dapibus eu, pulvinar velit.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="bookmarks-manager__bookmark-container">
+                                                <div class="bookmarks-manager__bookmark simple-bookmark">
+                                                    <div class="simple-bookmark__number">
+                                                    03
+                                                    </div>
+                                                    
+                                                    Mauris ac orci viverra
+                                                </div>
+
+                                                <div class="bookmarks-manager__bookmark-content">
+                                                    <div class="text">
+                                                        <p>
+                                                        Cras tempus rutrum vel, purus. Sed dignissim. Pellentesque eget sapien enim non enim ac augue nec turpis egestas. Cras adipiscing non, lacus. In purus non placerat quam. Nunc varius vehicula. Aliquam sed est neque, congue eu, facilisis eget, vestibulum ipsum feugiat in, libero. Aliquam eget pede urna fringilla mollis. Cras ut metus. Maecenas eget urna. Pellentesque habitant morbi tristique in, odio.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="bookmarks-manager__bookmark-container">
+                                                <div class="bookmarks-manager__bookmark simple-bookmark">
+                                                    <div class="simple-bookmark__number">
+                                                    04
+                                                    </div>
+                                                    
+                                                    Vestibulum vel risus
+                                                </div>
+
+                                                <div class="bookmarks-manager__bookmark-content">
+                                                    <div class="text">
+                                                        <p>
+                                                        Morbi tincidunt. Nullam erat augue, vel neque vel hendrerit sollicitudin eu, facilisis faucibus orci vitae urna. Aenean sed wisi quis arcu. Sed dignissim. Aliquam orci. Vestibulum vel risus. Donec eleifend ut, lobortis venenatis, pulvinar mollis, purus dolor in aliquam at, auctor scelerisque, ante ipsum dolor urna eu pede cursus dignissim tempor, pulvinar mollis.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </section>
+
+                                    <section class="bookmarks-manager__content-container">
+                                        <div class="bookmarks-manager__content-wrapper">
+                                            <div id="bookmarks-content" class="bookmarks-manager__content">
+
+                                            </div>
+                                        </div>
+                                    </section>
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="details-lists-anchor" class="site-section section-09">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">Details lists</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <ul class="details-list">
+                                    <li class="details-list__item">
+                                        <div class="details-list__title">
+                                            Lorem ipsum dolor sit amet
+                                            <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                        </div>
+
+                                        <div class="details-list__content">
+                                        Fusce iaculis mi. Nam laoreet condimentum, dapibus nisl. Curabitur interdum augue. Donec molestie nulla ut tortor. Nulla nunc faucibus orci orci, blandit libero.
+                                        </div>
+                                    </li>
+
+                                    <li class="details-list__item">
+                                        <div class="details-list__title">
+                                            Donec rutrum posuere elementum
+                                            <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                        </div>
+
+                                        <div class="details-list__content">
+                                        Proin vel massa. Ut blandit, dui pulvinar sem in lacus pretium pellentesque. Proin venenatis pede. Aliquam gravida elit. Mauris ultrices. Nunc vehicula. Integer eu viverra enim fringilla vel, luctus sagittis.
+                                        </div>
+                                    </li>
+
+                                    <li class="details-list__item">
+                                        <div class="details-list__title">
+                                            Cum sociis natoque penatibus
+                                            <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                        </div>
+
+                                        <div class="details-list__content">
+                                        Duis blandit eu, tortor. Vivamus nec libero. Proin ultrices magna. Integer nonummy condimentum nunc. Fusce ullamcorper. Nam lectus bibendum a, dolor. Aliquam auctor euismod. Nulla posuere. Vestibulum ligula. Vivamus fermentum ultrices posuere cubilia Curae, Donec eleifend in, gravida ornare.
+                                        </div>
+                                    </li>
+
+                                    <li class="details-list__item">
+                                        <div class="details-list__title">
+                                            Quisque et orci ut ante
+                                            <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                        </div>
+
+                                        <div class="details-list__content">
+                                        Vivamus diam tempor elit est, et lacus nibh, dictum enim. Pellentesque dapibus ac, laoreet sapien. Vestibulum ante ipsum primis in nunc. Sed sit amet enim. Phasellus sem. Pellentesque felis.
+                                        </div>
+                                    </li>
+
+                                    <li class="details-list__item">
+                                        <div class="details-list__title">
+                                            Phasellus fermentum, enim eu ipsum
+                                            <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                        </div>
+
+                                        <div class="details-list__content">
+                                        Lorem ipsum primis in tellus et interdum dapibus in, consequat et, placerat velit malesuada augue odio a dictum sapien massa imperdiet orci luctus quis, feugiat mattis vel, magna. Phasellus fermentum, enim eu ipsum.
+                                        </div>
+                                    </li>
+
+                                    <li class="details-list__item">
+                                        <div class="details-list__title">
+                                            Sed et pede id pharetra velit
+                                            <div class="details-list__arrow icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                        </div>
+
+                                        <div class="details-list__content">
+                                        Donec commodo, odio eget lectus eget elit purus, consectetuer tellus consectetuer adipiscing tortor, fermentum odio. Donec fermentum odio. Morbi tellus dolor sapien magna fringilla purus lorem, pretium nec, eros. Aliquam ut leo. Aenean bibendum vel, hendrerit purus sit.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="categorized-items-anchor" class="site-section site-section--full-width section-10">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">Categorized items</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <section class="categorized-items">
+                                    <section class="categorized-items__categories-container">
+                                        <ul class="categorized-items__categories">
+                                            <li data-category-id="all">
+                                            All the beauty
+                                            </li>
+
+                                            <li data-category-id="0">
+                                            Front
+                                            </li>
+
+                                            <li data-category-id="1">
+                                            Backwards
+                                            </li>
+
+                                            <li data-category-id="2">
+                                            Nudes
+                                            </li>
+                                        </ul>
+                                    </section>
+
+                                    <section id="categorized-items-content" class="categorized-items__contents-container">
+                                        <div class="categorized-items__contents">
+                                            <ul class="boxes baguette-box">
+                                                <li class="categorized-items__item cat-0">
+                                                    <a class="box" href="/img/women/woman-00.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-00-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0">
+                                                    <a class="box" href="/img/women/woman-01.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-01-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-1">
+                                                    <a class="box" href="/img/women/woman-08.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-08-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0">
+                                                    <a class="box" href="/img/women/woman-02.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-02-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-1">
+                                                    <a class="box" href="/img/women/woman-09.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-09-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0 cat-1">
+                                                    <a class="box" href="/img/women/woman-10.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-10-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0">
+                                                    <a class="box" href="/img/women/woman-03.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-03-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-1">
+                                                    <a class="box" href="/img/women/woman-11.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-11-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0">
+                                                    <a class="box" href="/img/women/woman-04.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-04-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0 cat-1">
+                                                    <a class="box" href="/img/women/woman-12.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-12-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-1">
+                                                    <a class="box" href="/img/women/woman-13.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-13-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-1">
+                                                    <a class="box" href="/img/women/woman-14.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-14-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0">
+                                                    <a class="box" href="/img/women/woman-05.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-05-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0">
+                                                    <a class="box" href="/img/women/woman-06.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-06-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="categorized-items__item cat-0">
+                                                    <a class="box" href="/img/women/woman-07.jpg">
+                                                        <div class="box__layer" style="background-image: url('/img/women/woman-07-thumbnail.jpg')">
+
+                                                        </div>
+
+                                                        <div class="box__layer-02">
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="categorized-items__no-items">
+                                            There are no items in this category.
+                                            </div>
+                                        </div>
+                                    </section>
+                                </section>
+                            </section>
+                        </div>
                     </div>
                 </section>
             </main>

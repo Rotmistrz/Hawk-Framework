@@ -58,7 +58,7 @@ var hawkSlideDown = function(element, time) {
 
 $(document).ready(function() {
 
-    hawk.run();
+    Hawk.run();
 
     baguetteBox.run('.baguette-box');
 

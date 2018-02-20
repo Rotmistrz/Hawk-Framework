@@ -1,6 +1,6 @@
-var hawk = {};
+var Hawk = {};
 
-hawk = {
+Hawk = {
     w: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
     h: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
 
@@ -8,7 +8,7 @@ hawk = {
     anchorSufix: '-anchor',
 }
 
-hawk.mergeObjects = function(mainObject, object) {
+Hawk.mergeObjects = function(mainObject, object) {
     var result = {};
 
     if(object === undefined) {
@@ -26,17 +26,17 @@ hawk.mergeObjects = function(mainObject, object) {
     return result;
 }
 
-hawk.scrollToElement = function(options) {
+Hawk.scrollToElement = function(options) {
     var defaultOptions = {
         container: window,
-        anchor: '#top' + hawk.anchorSufix,
+        anchor: '#top' + Hawk.anchorSufix,
         callback: function() {},
         delay: 0,
         duration: 800,
         offset: 0
     };
 
-    options = hawk.mergeObjects(defaultOptions, options);
+    options = Hawk.mergeObjects(defaultOptions, options);
 
     setTimeout(function(){
         $(options.container).scrollTo(options.anchor, options.duration, {'axis': 'y', 'offset': options.offset, onAfter: function() { options.callback(); } });
@@ -45,7 +45,7 @@ hawk.scrollToElement = function(options) {
     return this;
 }
 
-hawk.Dropdown = function(container, options) {
+Hawk.Dropdown = function(container, options) {
     this.container = $(container);
     this.containerClass;
     this.openClass;
@@ -66,7 +66,7 @@ hawk.Dropdown = function(container, options) {
         listClass: 'dropdown__list'
     };
 
-    this.options = hawk.mergeObjects(this.defaultOptions, options);
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.state = this.states.open;
 
@@ -149,7 +149,7 @@ hawk.Dropdown = function(container, options) {
     }
 }
 
-hawk.initializeDropdowns = function() {
+Hawk.initializeDropdowns = function() {
     var dropdowns = $('.dropdown');
     var that = this;
 
@@ -161,7 +161,7 @@ hawk.initializeDropdowns = function() {
     return this;
 }
 
-hawk.OverlayerManager = function(id, options) {
+Hawk.OverlayerManager = function(id, options) {
     this.container = $('#' + id);
     this.overlayerId = this.container.attr('data-overlayer-id');
     
@@ -183,7 +183,7 @@ hawk.OverlayerManager = function(id, options) {
         hideCallback: function(container, button) {}
     };
 
-    this.options = hawk.mergeObjects(this.defaultOptions, options);
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.show = function(callback) {
         var that = this;
@@ -279,7 +279,7 @@ hawk.OverlayerManager = function(id, options) {
     }
 }
 
-hawk.AjaxOverlayerManager = function(id, options) {
+Hawk.AjaxOverlayerManager = function(id, options) {
     this.container = $('#' + id);
     this.overlayerId = parseInt(this.container.attr('data-overlayer-id'));
     
@@ -319,7 +319,7 @@ hawk.AjaxOverlayerManager = function(id, options) {
         }
     }
 
-    this.options = hawk.mergeObjects(this.defaultOptions, options);
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.show = function(callback) {
         var that = this;
@@ -467,7 +467,7 @@ hawk.AjaxOverlayerManager = function(id, options) {
     };
 }
 
-hawk.MoreContentManager = function(id, options) {
+Hawk.MoreContentManager = function(id, options) {
     this.id = id;
     this.button = $('.more-content-button[data-id=' + this.id + ']');
     this.contents = $('.more-content[data-id=' + this.id + ']');
@@ -490,7 +490,7 @@ hawk.MoreContentManager = function(id, options) {
         hideButtonCallback: function(button) {}
     };
 
-    this.options = hawk.mergeObjects(this.defaultOptions, options);
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.state;
 
@@ -558,7 +558,7 @@ hawk.MoreContentManager = function(id, options) {
     }
 }
 
-hawk.initializeMoreContentManagers = function(callbacks) {
+Hawk.initializeMoreContentManagers = function(callbacks) {
     var contents = $('.more-content');
     var that = this;
 
@@ -575,7 +575,7 @@ hawk.initializeMoreContentManagers = function(callbacks) {
     return this;
 }
 
-hawk.SlideMenu = function(id, options) {
+Hawk.SlideMenu = function(id, options) {
     this.menu = $('#' + id);
     this.wrapper = this.menu.find('> div');
 
@@ -621,7 +621,7 @@ hawk.SlideMenu = function(id, options) {
         }
     };
 
-    this.options = hawk.mergeObjects(this.defaultOptions, options);
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.show = function() {
         var that = this;
@@ -709,7 +709,7 @@ hawk.SlideMenu = function(id, options) {
     }
 }
 
-hawk.initializeAnchors = function(options) {
+Hawk.initializeAnchors = function(options) {
     var that = this;
 
     var defaultOptions = {
@@ -717,7 +717,7 @@ hawk.initializeAnchors = function(options) {
         menu: undefined
     }
 
-    options = hawk.mergeObjects(defaultOptions, options);
+    options = Hawk.mergeObjects(defaultOptions, options);
 
     $('a').unbind('click').click(function(e) {
         var regex = /#{1}.+$/;
@@ -747,7 +747,7 @@ hawk.initializeAnchors = function(options) {
     return this;
 }
 
-hawk.BookmarksManager = function(container, options) {
+Hawk.BookmarksManager = function(container, options) {
     this.container = $(container);
     this.contentContainer;
     this.contentWrapper;
@@ -778,7 +778,7 @@ hawk.BookmarksManager = function(container, options) {
         changeBookmarkCallback: function(bookmarkContainer) {}
     }
 
-    this.options = hawk.mergeObjects(this.defaultOptions, options);
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.isResponsive = function() {
         return this.options.responsive;
@@ -829,11 +829,11 @@ hawk.BookmarksManager = function(container, options) {
             showing();
         }
 
-        if(this.options.activeScroll && hawk.w < this.options.activeScrollWidth) {
+        if(this.options.activeScroll && Hawk.w < this.options.activeScrollWidth) {
             var id = this.contentContainer.attr('id');
 
             if(id !== undefined) {
-                hawk.scrollToElement({ anchor: '#' + id });
+                Hawk.scrollToElement({ anchor: '#' + id });
             }
         }
         
@@ -900,7 +900,7 @@ hawk.BookmarksManager = function(container, options) {
     }
 
     this.updateOptions = function(options) {
-        this.options = hawk.mergeObjects(this.options, options);
+        this.options = Hawk.mergeObjects(this.options, options);
 
         return this;
     }
@@ -972,7 +972,7 @@ hawk.BookmarksManager = function(container, options) {
     }
 }
 
-hawk.DetailsList = function(container, options) {
+Hawk.DetailsList = function(container, options) {
     this.container = $(container);
     this.titles;
     this.contents;
@@ -1001,7 +1001,7 @@ hawk.DetailsList = function(container, options) {
         }
     }
 
-    this.options = hawk.mergeObjects(this.defaultOptions, options);
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.show = function(title) {
         if(this.options.hideOther && this.current !== undefined) {
@@ -1069,7 +1069,7 @@ hawk.DetailsList = function(container, options) {
     }
 }
 
-hawk.CategorizedItems = function(container, options) {
+Hawk.CategorizedItems = function(container, options) {
     this.container = $(container);
     this.categories = this.container.find('[data-category-id]');
     this.items;
@@ -1102,7 +1102,7 @@ hawk.CategorizedItems = function(container, options) {
         scrollOnSmallDevice: true
     };
 
-    this.options = hawk.mergeObjects(this.defaultOptions, options);
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.loadCategory = function(id) {
         var that = this;
@@ -1137,13 +1137,13 @@ hawk.CategorizedItems = function(container, options) {
                     that.items.hide();
                     that.selectedItems.show();
 
-                    if(that.options.scrollOnSmallDevice && hawk.w < that.options.smallDeviceWidth) {
+                    if(that.options.scrollOnSmallDevice && Hawk.w < that.options.smallDeviceWidth) {
                         var containerId = that.contentContainer.attr('id');
 
                         if(containerId !== undefined) {
                             console.log(containerId);
 
-                            hawk.scrollToElement({ anchor: '#' + containerId });
+                            Hawk.scrollToElement({ anchor: '#' + containerId });
                         }                        
                     }
 
@@ -1193,7 +1193,7 @@ hawk.CategorizedItems = function(container, options) {
 
         for (var property in object) {
             if (object.hasOwnProperty(property)) {
-                if(property > hawk.w) {
+                if(property > Hawk.w) {
                     return amount;
                 }
 
@@ -1247,14 +1247,14 @@ hawk.CategorizedItems = function(container, options) {
     }
 }
 
-hawk.refresh = function() {
+Hawk.refresh = function() {
     this.w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     this.h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeigh;
 
     return this;
 }
 
-hawk.run = function() {
+Hawk.run = function() {
     var that = this;
 
     var pageLoadingLayer = $('#page-loading-layer');
