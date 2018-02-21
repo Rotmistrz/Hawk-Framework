@@ -804,8 +804,6 @@ ul {
   position: relative;
   display: block;
   max-width: 300px; }
-  .dropdown:focus .dropdown__list {
-    display: block !important; }
   .dropdown .dropdown__header {
     padding: 10px 50px 10px 15px;
     border: 1px solid #444;
@@ -1025,6 +1023,8 @@ ul {
     border-radius: 0; }
   .form .form__field:focus {
     border-color: #000; }
+  .form .form__field--textarea {
+    height: 100px; }
   .form .form__field::-webkit-input-placeholder {
     color: #000;
     letter-spacing: 1px;

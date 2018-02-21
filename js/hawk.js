@@ -8,6 +8,54 @@ Hawk = {
     anchorSufix: '-anchor',
 }
 
+Hawk.Validator = {};
+
+Hawk.Validator.isEmail = function(email) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {  
+        return true;  
+    } else {
+        return false;
+    }
+}
+
+Hawk.Validator.isPhoneNumber = function(number) {
+    if (/^\+?[0-9\s]+$/.test(number)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+Hawk.Validator.isNotEmpty = function(value) {
+    if(value.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+Hawk.Validator.longerThan = function(str, length) {
+    if (str.length > length) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+Hawk.isInObject = function(value, obj) {
+    for (var k in obj) {
+        if (!obj.hasOwnProperty(k)) {
+            continue;
+        }
+
+        if (obj[k] === value) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 Hawk.mergeObjects = function(mainObject, object) {
     var result = {};
 
@@ -801,12 +849,10 @@ Hawk.BookmarksManager = function(container, options) {
                     container.velocity({ opacity: 1 }, {
                         duration: that.options.fadeDuration,
                         complete: function() {
-                            var currentHeight = that.contentWrapper.outerHeight();
+                            var currentHeight = that.contentContainer.outerHeight();
 
-                            if(currentHeight > that.currentHeight) {
-                                that.currentHeight = currentHeight;
-                                that.contentWrapper.css({ 'min-height': that.currentHeight + "px" });
-                            }
+                            that.currentHeight = currentHeight;
+                            that.contentWrapper.css({ 'min-height': that.currentHeight + "px" });
 
                             that.options.changeContentCallback(that.contentContainer);
 
@@ -1244,6 +1290,311 @@ Hawk.CategorizedItems = function(container, options) {
         this.loadCategory(this.options.allId);
 
         return this;
+    }
+}
+
+Hawk.formFieldTypes = {
+    TEXT: 'text',
+    CHECKBOX: 'checkbox',
+    RADIO: 'radio',
+    TEXTAREA: 'textarea'
+};
+
+Hawk.FormField = function(name, type, wrapperClass, required, callback) {
+    var that = this;
+
+    this.name = name;
+    this.type = type;
+    this.wrapperClass = wrapperClass;
+    this.required = required;
+    this.callback = callback;
+
+    this.wrapper;
+    this.field;
+
+    this.errorClass = "error";
+
+    this.bind = function(form) {
+        if (this.type == Hawk.formFieldTypes.TEXTAREA) {
+            this.field = $(form).find('textarea[name="' + this.name + '"]');
+        } else {
+            this.field = $(form).find('input[name="' + this.name + '"]');
+        }
+        
+        if (this.field.length > 0) {
+            this.wrapper = this.field.parents('.' + this.wrapperClass);
+        }
+    }
+
+    this.isBinded = function() {
+        return (this.wrapper !== undefined && this.field !== undefined);
+    }
+
+    this.disable = function() {
+        if (this.isBinded()) {
+            this.field.attr('disabled', 'disabled');
+        }
+
+        return this;
+    }
+
+    this.validate = function() {
+        if (callback !== undefined) {
+            if(that.type == Hawk.formFieldTypes.CHECKBOX) {
+                return callback(that.field);
+            } else {
+                return callback(that.field.val());
+            }
+        }
+
+        return true;
+    }
+
+    this.markIncorrect = function() {
+        this.wrapper.addClass(this.errorClass);
+
+        return this;
+    }
+
+    this.clear = function() {
+        this.wrapper.removeClass(this.errorClass);
+
+        return this;
+    }
+
+    this.run = function(form) {
+        this.bind(form);
+
+        this.field.change(function() {
+            if (that.validate()) {
+                that.clear();
+            } else {
+                that.markIncorrect();
+            }
+        });
+    }
+}
+
+Hawk.Mailer = function(id, fields, options) {
+    var that = this;
+
+    this.id = id;
+    this.rawForm = document.getElementById(this.id);
+    this.form = $(this.rawForm);
+
+    this.fields = fields;
+
+    this.defaultOptions = {
+        ajaxPath: '/ajax.php',
+        extraData: {},
+        incorrectFieldClass: 'error',
+        button: that.form.find('button[type="submit"]'),
+        infoContainerClass: 'form__info-container',
+        infoWrapperClass: 'form__info-wrapper',
+        infoClass: 'form__info',
+        spinnerClass: 'form__spinner',
+        correctCallback: function() {},
+        errorCallback: function() {},
+        callback: function() {}
+    };
+
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
+
+    this.infoContainer = this.form.find('.' + this.options.infoContainerClass);
+    this.infoWrapper = this.form.find('.' + this.options.infoWrapperClass);
+    this.info = this.form.find('.' + this.options.infoClass);
+    this.spinner = this.form.find('.' + this.options.spinnerClass);
+    this.button = this.options.button;
+
+    this.validate = function() {
+        var result = true;
+
+        for (var i in this.fields) {
+            var current = this.fields[i];
+
+            if (!current.validate()) {
+                current.markIncorrect();
+
+                result = false;
+            } else {
+                current.clear();
+            }
+        }
+
+        return result;
+    }
+
+    this.clear = function() {
+        for (var i in this.fields) {
+            var current = this.fields[i];
+
+            current.clear();
+        }
+
+        return this;
+    }
+
+    this.checkFields = function(incorrectFields) {
+        for (var i in this.fields) {
+            var current = this.fields[i];
+
+            if (Hawk.isInObject(current.name, incorrectFields)) {
+                current.markIncorrect();
+            } else {
+                current.clear();
+            }
+        }
+
+        return this;
+    }
+
+    this.changeMessage = function(message) {
+        var showing = function() {
+            that.info.html(message);
+
+            that.infoWrapper.velocity("slideDown", {
+                duration: 200,
+                complete: function() {
+                    that.infoContainer.css({ 'min-height': that.infoContainer.outerHeight() + "px" });
+
+                    that.showMessage();
+                }
+            });
+        }
+
+        if (this.infoWrapper.is(':hidden')) {
+            showing();
+        } else {
+            that.hideMessage(showing);
+        }
+
+        return this;
+    }
+
+    this.showMessage = function(message) {
+        that.info.velocity({ opacity: 1 }, {
+            duration: 200
+        });
+
+        return this;
+    }
+
+    this.hideMessage = function(callback) {
+        this.info.velocity({ opacity: 0 }, {
+            duration: 200,
+            complete: function() {
+                if (callback !== undefined) {
+                    callback();
+                }
+            }
+        });
+
+        return this;
+    }
+
+    this.clearMessage = function(callback) {
+        this.info.velocity({ opacity: 0 }, {
+            duration: 200,
+            complete: function() {
+                that.infoWrapper.velocity("slideUp", {
+                    duration: 200,
+                    complete: function() {
+                        that.infoContainer.css({ 'min-height': 0 });
+
+                        if (callback !== undefined) {
+                            callback();
+                        }
+                    }
+                });
+            }
+        });
+
+        return this;
+    }
+
+    this.hideButton = function() {
+        this.button.velocity({ opacity: 0 }, {
+            duration: 200,
+            complete: function() {
+                that.button.css({ visibility: 'hidden' });
+            }
+        });
+    }
+
+    this.disable = function() {
+        this.form.attr('disabled', 'disabled');
+
+        this.form.find('input, textarea').attr('disabled', 'disabled');
+
+        return this;
+    }
+
+    this.send = function() {
+        this.spinner.show();
+
+        var data = new FormData(that.rawForm);
+
+        for (var key in that.options.extraData) {
+            console.log(key);
+            console.log(that.options.extraData[key]);
+
+            data.append(key, that.options.extraData[key]);
+        }
+
+        $.ajax({
+            url: that.options.ajaxPath,
+            type: 'POST',
+            data: data,
+            cache: false,
+            processData: false, // Don't process the files
+            contentType: false,
+            dataType: 'json',
+            success: function(result) {
+                console.log(result);
+
+                if (!result.error) {
+                    that.changeMessage(result.message);
+                    
+                    that.clear();
+
+                    that.hideButton();
+
+                    that.disable();
+                } else {
+                    that.checkFields(result.errorFields);
+
+                    that.changeMessage(result.message);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('ERRORS: ' + textStatus);
+
+                that.changeMessage("Wystąpił nieoczekiwany problem podczas wysyłania wiadomości. Proszę spróbować ponownie później.");
+            },
+            complete: function(jqXHR) {
+                that.spinner.hide();
+            }
+        });  
+    }
+
+    this.bindFields = function() {
+        for (var i in this.fields) {
+            var current = this.fields[i];
+
+            current.run(that.form);
+        }
+
+        return this;
+    }
+
+    this.run = function() {
+        this.bindFields();
+
+        this.form.submit(function(e) {
+            e.preventDefault();
+
+            that.send();
+        });
     }
 }
 

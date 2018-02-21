@@ -60,6 +60,24 @@ $(document).ready(function() {
 
     Hawk.run();
 
+
+    var fields = [
+        new Hawk.FormField("name", Hawk.formFieldTypes.TEXT, "form__field-container", true, function(value) { if (value.length > 0) return true; else return false; }),
+        new Hawk.FormField("email", Hawk.formFieldTypes.TEXT, "form__field-container", true, Hawk.Validator.isEmail),
+        new Hawk.FormField("message", Hawk.formFieldTypes.TEXTAREA, "form__field-container", true, function(value) { return Validator.longerThan(value, 5); })
+    ];
+
+    var mailer = new Hawk.Mailer('form-opinion', fields, {
+        extraData: {
+           action: 'send-opinion' 
+        }
+    });
+    mailer.run();
+
+
+
+
+
     baguetteBox.run('.baguette-box');
 
     function AjaxOverlayerManager(id) {

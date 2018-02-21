@@ -144,12 +144,6 @@ position: relative;
 display: block;
 max-width: 300px;
 
-    &:focus {
-        .dropdown__list {
-        display: block !important;
-        }
-    }
-
     .dropdown__header {
     padding: 10px 50px 10px 15px;
     border: 1px solid $grey;
@@ -407,6 +401,9 @@ padding: 0;
     }
     .form__field:focus {
     border-color: $dark-color;
+    }
+    .form__field--textarea {
+    height: 100px;
     }
 
     .form__field::-webkit-input-placeholder {

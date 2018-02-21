@@ -729,17 +729,21 @@
                             </header>
 
                             <section class="site-section__content">
-                                <form class="form" action="/" method="post">
+                                <form id="form-opinion" class="form" action="/" method="post">
                                     <fieldset class="form__wrapper">
-                                        <label class="form__field-container">
-                                            <input id="name" class="form__field" name="name" type="text" placeholder="Your name" />
-                                        </label>
-
-                                        <label class="form__field-container">
-                                            <input id="email" class="form__field" name="email" type="text" placeholder="Your e-mail" />
-                                        </label>
+                                        <div class="form__field-container">
+                                            <label class="form__field-wrapper">
+                                                <input id="form-opinion-name" class="form__field" name="name" type="text" placeholder="Your name" />
+                                            </label>
+                                        </div>
 
                                         <div class="form__field-container">
+                                            <label class="form__field-wrapper">
+                                                <input id="form-opinion-email" class="form__field" name="email" type="text" placeholder="Your e-mail" />
+                                            </label>
+                                        </div>
+
+                                        <!--<div class="form__field-container">
                                             <section class="dropdown">
                                                 <header class="dropdown__header">
                                                     <h1 class="dropdown__title">Choose one or more options</h1>
@@ -855,48 +859,146 @@
                                                     </li>
                                                 </ul>
                                             </section>
+                                        </div>-->
+
+                                        <div class="form__field-container">
+                                            <div class="form__field-label">
+                                            Give your opinion (there is consciously a possibility to mark counter-opinions to show usage of multiple-choice options with section that makes sense)
+                                            </div>
+
+                                            <label class="choice-field">
+                                                <input name="note" type="checkbox" value="well-coded" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">It is well-coded.</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="choice-field">
+                                                <input name="note" type="checkbox" value="badly-coded" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">It is badly-coded.</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="choice-field">
+                                                <input name="note" type="checkbox" value="will-use-it" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">I will use it.</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="choice-field">
+                                                <input name="note" type="checkbox" value="wont-use-it" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">I won't use it.</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="choice-field">
+                                                <input name="note" type="checkbox" value="helpful" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">It could be helpful.</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="choice-field">
+                                                <input name="note" type="checkbox" value="not-helpful" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">It isn't helpful.</div>
+                                                </div>
+                                            </label>
                                         </div>
 
                                         <div class="form__field-container">
                                             <div class="form__field-label">
-                                            Choose one or more options:
+                                            What do you generally think about this project?
                                             </div>
 
-                                            <label class="choice-field">
-                                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                            <label class="choice-field choice-field--radio">
+                                                <input name="general-opinion" type="radio" value="very-good" />
                                                 <div class="choice-field__inner">
                                                     <div class="choice-field__field-container">
                                                         <div class="choice-field__field"></div>
                                                     </div>
-                                                    <div class="choice-field__description">Sed tristique massa</div>
+                                                    <div class="choice-field__description">Very good</div>
                                                 </div>
                                             </label>
 
-                                            <label class="choice-field">
-                                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                            <label class="choice-field choice-field--radio">
+                                                <input name="general-opinion" type="radio" value="good" />
                                                 <div class="choice-field__inner">
                                                     <div class="choice-field__field-container">
                                                         <div class="choice-field__field"></div>
                                                     </div>
-                                                    <div class="choice-field__description">Orci varius natoque penatibus</div>
+                                                    <div class="choice-field__description">Good</div>
                                                 </div>
                                             </label>
 
-                                            <label class="choice-field">
-                                                <input name="choice[]" type="checkbox" value="Value 4" />
+                                            <label class="choice-field choice-field--radio">
+                                                <input name="general-opinion" type="radio" value="medium" />
                                                 <div class="choice-field__inner">
                                                     <div class="choice-field__field-container">
                                                         <div class="choice-field__field"></div>
                                                     </div>
-                                                    <div class="choice-field__description">Lorem ipsum dolor</div>
+                                                    <div class="choice-field__description">Medium</div>
                                                 </div>
+                                            </label>
+
+                                            <label class="choice-field choice-field--radio">
+                                                <input name="general-opinion" type="radio" value="bad" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">Bad</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="choice-field choice-field--radio">
+                                                <input name="general-opinion" type="radio" value="very-bad" />
+                                                <div class="choice-field__inner">
+                                                    <div class="choice-field__field-container">
+                                                        <div class="choice-field__field"></div>
+                                                    </div>
+                                                    <div class="choice-field__description">Very bad</div>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="form__field-container">
+                                            <label class="form__field-wrapper">
+                                                <textarea id="message" class="form__field form__field--textarea" name="message" placeholder="Leave wider review"></textarea>
                                             </label>
                                         </div>
 
                                         <div class="button-container">
                                             <button class="button" type="submit">
-                                                <div class="button__inner">Wyślij</div>
+                                                <div class="button__inner">Send</div>
                                             </button>
+                                        </div>
+
+                                        <div class="form__info-container">
+                                            <div class="form__info-wrapper">
+                                                <div class="form__info"></div>
+                                            </div>
                                         </div>
                                     </fieldset>
                                 </form>
