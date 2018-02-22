@@ -93,7 +93,7 @@ Morbi et nisl id justo vulputate euismod. Duis vel diam vel lorem dictum varius.
         $Mailer = new PHPMailer();    //utworzenie nowej klasy phpmailer
         $Mailer->From = "e-mail";    //Pełny adres e-mail
         $Mailer->FromName = "WWW";    //imię i nazwisko lub nazwa użyta do wysyłania wiadomości
-        $Mailer->Host = "n28.netmark.pl";    //adres serwera SMTP wysyłającego e-mail
+        $Mailer->Host = "host";    //adres serwera SMTP wysyłającego e-mail
         $Mailer->Mailer = "smtp";    //do wysłania zostanie użyty serwer SMTP
         $Mailer->SMTPAuth = true;    //włączenie autoryzacji do serwera SMTP
         $Mailer->SMTPSecure = "ssl";
