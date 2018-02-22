@@ -88,24 +88,24 @@ Morbi et nisl id justo vulputate euismod. Duis vel diam vel lorem dictum varius.
         $mail .= "</body>\n";
         $mail .= "</html>";
         
-        $emailSubject = "Wiadomość ze strony filipmarkiewicz.pl";
+        $emailSubject = "Wiadomość ze strony";
 
         $Mailer = new PHPMailer();    //utworzenie nowej klasy phpmailer
-        $Mailer->From = "www@filipmarkiewicz.pl";    //Pełny adres e-mail
+        $Mailer->From = "e-mail";    //Pełny adres e-mail
         $Mailer->FromName = "WWW";    //imię i nazwisko lub nazwa użyta do wysyłania wiadomości
         $Mailer->Host = "n28.netmark.pl";    //adres serwera SMTP wysyłającego e-mail
         $Mailer->Mailer = "smtp";    //do wysłania zostanie użyty serwer SMTP
         $Mailer->SMTPAuth = true;    //włączenie autoryzacji do serwera SMTP
         $Mailer->SMTPSecure = "ssl";
-        $Mailer->Username = "www@filipmarkiewicz.pl";    //nazwa użytkownika do skrzynki e-mail
-        $Mailer->Password = "www123";    //hasło użytkownika do skrzynki e-mail
+        $Mailer->Username = "username";    //nazwa użytkownika do skrzynki e-mail
+        $Mailer->Password = "password";    //hasło użytkownika do skrzynki e-mail
         $Mailer->Port = 465; //port serwera SMTP
         $Mailer->isHTML(true);
         $Mailer->CharSet = "UTF-8";
         $Mailer->Subject = $emailSubject;    //Temat wiadomości, można stosować zmienne i znaczniki HTML
         $Mailer->Body = $mail;    //Treść wiadomości, można stosować zmienne i znaczniki HTML 
         $Mailer->SMTPAutoTLS = false;   //wyłączenie TLS
-        $Mailer->AddAddress("filip.markiewicz96@gmail.com");
+        $Mailer->AddAddress("receiver@domain.pl");
 
         if($Mailer->Send()) {
             $json['error'] = false;
