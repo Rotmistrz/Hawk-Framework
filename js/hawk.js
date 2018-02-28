@@ -42,6 +42,14 @@ Hawk.Validator.longerThan = function(str, length) {
     }
 }
 
+Hawk.Validator.isSomethingChecked = function(field) {
+    if (field.is(':checked')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 Hawk.isInObject = function(value, obj) {
     for (var k in obj) {
         if (!obj.hasOwnProperty(k)) {
@@ -1317,6 +1325,12 @@ Hawk.FormField = function(name, type, wrapperClass, required, callback) {
     this.bind = function(form) {
         if (this.type == Hawk.formFieldTypes.TEXTAREA) {
             this.field = $(form).find('textarea[name="' + this.name + '"]');
+        } else if (this.type == Hawk.formFieldTypes.CHECKBOX) {
+            this.field = $(form).find('input[name="' + this.name + '"]');
+
+            if(this.field.length == 0) {
+                this.field = $(form).find('input[name="' + this.name + '[]"]');
+            }
         } else {
             this.field = $(form).find('input[name="' + this.name + '"]');
         }
@@ -1340,7 +1354,7 @@ Hawk.FormField = function(name, type, wrapperClass, required, callback) {
 
     this.validate = function() {
         if (callback !== undefined) {
-            if(that.type == Hawk.formFieldTypes.CHECKBOX) {
+            if(that.type == Hawk.formFieldTypes.CHECKBOX || that.type == Hawk.formFieldTypes.RADIO) {
                 return callback(that.field);
             } else {
                 return callback(that.field.val());
@@ -1375,7 +1389,7 @@ Hawk.FormField = function(name, type, wrapperClass, required, callback) {
     }
 }
 
-Hawk.Mailer = function(id, fields, options) {
+Hawk.FormSender = function(id, fields, options) {
     var that = this;
 
     this.id = id;
@@ -1535,9 +1549,6 @@ Hawk.Mailer = function(id, fields, options) {
         var data = new FormData(that.rawForm);
 
         for (var key in that.options.extraData) {
-            console.log(key);
-            console.log(that.options.extraData[key]);
-
             data.append(key, that.options.extraData[key]);
         }
 

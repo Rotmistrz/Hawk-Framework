@@ -862,125 +862,129 @@
                                         </div>-->
 
                                         <div class="form__field-container">
-                                            <div class="form__field-label">
-                                            Give your opinion (there is consciously a possibility to mark counter-opinions to show usage of multiple-choice options with section that makes sense)
+                                            <div class="form__multifields-wrapper">
+                                                <div class="form__field-label">
+                                                Give your opinion (there is consciously a possibility to select counter-opinions to show usage of multiple-choice options with section that makes sense)
+                                                </div>
+
+                                                <label class="choice-field">
+                                                    <input name="note[]" type="checkbox" value="well-coded" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">It is well-coded.</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field">
+                                                    <input name="note[]" type="checkbox" value="badly-coded" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">It is badly-coded.</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field">
+                                                    <input name="note[]" type="checkbox" value="will-use-it" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">I will use it.</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field">
+                                                    <input name="note[]" type="checkbox" value="wont-use-it" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">I won't use it.</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field">
+                                                    <input name="note[]" type="checkbox" value="helpful" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">It could be helpful.</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field">
+                                                    <input name="note[]" type="checkbox" value="not-helpful" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">It isn't helpful.</div>
+                                                    </div>
+                                                </label>
                                             </div>
-
-                                            <label class="choice-field">
-                                                <input name="note" type="checkbox" value="well-coded" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">It is well-coded.</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field">
-                                                <input name="note" type="checkbox" value="badly-coded" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">It is badly-coded.</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field">
-                                                <input name="note" type="checkbox" value="will-use-it" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">I will use it.</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field">
-                                                <input name="note" type="checkbox" value="wont-use-it" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">I won't use it.</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field">
-                                                <input name="note" type="checkbox" value="helpful" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">It could be helpful.</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field">
-                                                <input name="note" type="checkbox" value="not-helpful" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">It isn't helpful.</div>
-                                                </div>
-                                            </label>
                                         </div>
 
                                         <div class="form__field-container">
-                                            <div class="form__field-label">
-                                            What do you generally think about this project?
+                                            <div class="form__multifields-wrapper">
+                                                <div class="form__field-label">
+                                                What do you generally think about this project?
+                                                </div>
+
+                                                <label class="choice-field choice-field--radio">
+                                                    <input name="general-opinion" type="radio" value="very-good" tabindex="0" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">Very good</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field choice-field--radio">
+                                                    <input name="general-opinion" type="radio" value="good" tabindex="0" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">Good</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field choice-field--radio">
+                                                    <input name="general-opinion" type="radio" value="medium" tabindex="0" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">Medium</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field choice-field--radio">
+                                                    <input name="general-opinion" type="radio" value="bad" tabindex="0" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">Bad</div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="choice-field choice-field--radio">
+                                                    <input name="general-opinion" type="radio" value="very-bad" tabindex="0" />
+                                                    <div class="choice-field__inner">
+                                                        <div class="choice-field__field-container">
+                                                            <div class="choice-field__field"></div>
+                                                        </div>
+                                                        <div class="choice-field__description">Very bad</div>
+                                                    </div>
+                                                </label>
                                             </div>
-
-                                            <label class="choice-field choice-field--radio">
-                                                <input name="general-opinion" type="radio" value="very-good" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">Very good</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field choice-field--radio">
-                                                <input name="general-opinion" type="radio" value="good" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">Good</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field choice-field--radio">
-                                                <input name="general-opinion" type="radio" value="medium" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">Medium</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field choice-field--radio">
-                                                <input name="general-opinion" type="radio" value="bad" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">Bad</div>
-                                                </div>
-                                            </label>
-
-                                            <label class="choice-field choice-field--radio">
-                                                <input name="general-opinion" type="radio" value="very-bad" />
-                                                <div class="choice-field__inner">
-                                                    <div class="choice-field__field-container">
-                                                        <div class="choice-field__field"></div>
-                                                    </div>
-                                                    <div class="choice-field__description">Very bad</div>
-                                                </div>
-                                            </label>
                                         </div>
 
                                         <div class="form__field-container">

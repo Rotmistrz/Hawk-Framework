@@ -1,11 +1,12 @@
 <?php
 
-require 'includes/Language.php';
-require 'includes/Validator.php';
+require_once 'includes/hawk-config.php';
+require_once 'includes/Language.php';
+require_once 'includes/Validator.php';
 
-require 'includes/phpmailer/PHPMailer.php';
-require 'includes/phpmailer/SMTP.php';
-require 'includes/phpmailer/PHPMailerAutoload.php';
+require_once 'includes/phpmailer/PHPMailer.php';
+require_once 'includes/phpmailer/SMTP.php';
+require_once 'includes/phpmailer/PHPMailerAutoload.php';
 
 $resultMessages = [
     Language::PL => [
@@ -52,6 +53,9 @@ Morbi et nisl id justo vulputate euismod. Duis vel diam vel lorem dictum varius.
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $message = nl2br(htmlspecialchars(trim($_POST['message'])));
+    $generalOpinion = (isset($_POST['general-opinion'])) ? $_POST['general-opinion'] : false;
+    $noteValues = (isset($_POST['note'])) ? $_POST['note'] : false;
+    $note = "";
 
     $errorFields = [];
 
@@ -65,8 +69,16 @@ Morbi et nisl id justo vulputate euismod. Duis vel diam vel lorem dictum varius.
         $errorFields[] = 'email';
     }
 
-    if (!$Validator->longerThan($message, 5)) {
-        $errorFields[] = 'message';
+    if (!$generalOpinion) {
+        $errorFields[] = 'general-opinion';
+        $Validator->reportError('general-opinion');
+    }
+
+    if (!$noteValues) {
+        $errorFields[] = 'note';
+        $Validator->reportError('note');
+    } else {
+        $note = implode('<br />', $noteValues);
     }
 
     $json['errorFields'] = $errorFields;
@@ -82,6 +94,8 @@ Morbi et nisl id justo vulputate euismod. Duis vel diam vel lorem dictum varius.
         $mail .= "<h1 style=\"font-family: 'Times New Roman', Georgia, serif; font-weight: normal; font-size: 18px; padding: 0 0 20px 0;\">Wiadomość wysłana za pomocą formularza na stronie www</h1>\n\t\t";
         $mail .= "<p><b>Od:</b> ".$name."</p>\n\t\t";
         $mail .= "<p><b>E-mail:</b> ".$email."</p>\n\t\t";
+        $mail .= "<p><b>Ogólna opinia:</b> ".$generalOpinion."</p>\n\t\t";
+        $mail .= "<p><b>Ocena:</b> ".$note."</p>\n\t\t";
         $mail .= "<p><b>Treść wiadomości:</b></p>\n\t\t";
         $mail .= "<p>".$message."</p>";
 
@@ -91,21 +105,21 @@ Morbi et nisl id justo vulputate euismod. Duis vel diam vel lorem dictum varius.
         $emailSubject = "Wiadomość ze strony";
 
         $Mailer = new PHPMailer();    //utworzenie nowej klasy phpmailer
-        $Mailer->From = "e-mail";    //Pełny adres e-mail
+        $Mailer->From = MAILER_FROM;    //Pełny adres e-mail
         $Mailer->FromName = "WWW";    //imię i nazwisko lub nazwa użyta do wysyłania wiadomości
-        $Mailer->Host = "host";    //adres serwera SMTP wysyłającego e-mail
+        $Mailer->Host = MAILER_HOST;    //adres serwera SMTP wysyłającego e-mail
         $Mailer->Mailer = "smtp";    //do wysłania zostanie użyty serwer SMTP
         $Mailer->SMTPAuth = true;    //włączenie autoryzacji do serwera SMTP
         $Mailer->SMTPSecure = "ssl";
-        $Mailer->Username = "username";    //nazwa użytkownika do skrzynki e-mail
-        $Mailer->Password = "password";    //hasło użytkownika do skrzynki e-mail
+        $Mailer->Username = MAILER_USERNAME;    //nazwa użytkownika do skrzynki e-mail
+        $Mailer->Password = MAILER_PASSWORD;    //hasło użytkownika do skrzynki e-mail
         $Mailer->Port = 465; //port serwera SMTP
         $Mailer->isHTML(true);
         $Mailer->CharSet = "UTF-8";
         $Mailer->Subject = $emailSubject;    //Temat wiadomości, można stosować zmienne i znaczniki HTML
         $Mailer->Body = $mail;    //Treść wiadomości, można stosować zmienne i znaczniki HTML 
         $Mailer->SMTPAutoTLS = false;   //wyłączenie TLS
-        $Mailer->AddAddress("receiver@domain.pl");
+        $Mailer->AddAddress("filip.markiewicz96@gmail.com");
 
         if($Mailer->Send()) {
             $json['error'] = false;

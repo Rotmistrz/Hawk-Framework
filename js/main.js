@@ -64,17 +64,18 @@ $(document).ready(function() {
     var fields = [
         new Hawk.FormField("name", Hawk.formFieldTypes.TEXT, "form__field-container", true, function(value) { if (value.length > 0) return true; else return false; }),
         new Hawk.FormField("email", Hawk.formFieldTypes.TEXT, "form__field-container", true, Hawk.Validator.isEmail),
-        new Hawk.FormField("message", Hawk.formFieldTypes.TEXTAREA, "form__field-container", true, function(value) { return Validator.longerThan(value, 5); })
+        new Hawk.FormField("general-opinion", Hawk.formFieldTypes.RADIO, "form__multifields-wrapper", true, Hawk.Validator.isSomethingChecked)
+        //new Hawk.FormField("note", Hawk.formFieldTypes.CHECKBOX, "form__multifields-wrapper", false, Hawk.Validator.isSomethingChecked)
     ];
 
-    var mailer = new Hawk.Mailer('form-opinion', fields, {
+    var mailer = new Hawk.FormSender('form-opinion', fields, {
         extraData: {
            action: 'send-opinion' 
         }
     });
     mailer.run();
 
-
+    console.log($('input[name="note[]"]'));
 
 
 

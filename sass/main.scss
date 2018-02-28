@@ -374,16 +374,48 @@ width: auto;
 margin: 0 auto;
 padding: 0;
 
-    fieldset {
+    &__wrapper {
     border: 0;
     }
-    .form__field-container {
+
+    &__field-container {
     display: block;
     margin: 0 auto;
     padding: 10px 0;
     }
+    &__field-container.error {
+        .form__field {
+        //border-color: $error-color;
+        background: $error-color-01;
+        }
+    }
 
-    .form__field {
+    &__multifields-wrapper {
+    position: relative;
+    @include transition(all .2s linear);
+
+        &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        border: 1px solid $error-color;
+        @include transition(all .2s linear);
+        }
+    }
+    &__multifields-wrapper.error {
+    padding: 10px;
+
+        &:before {
+        opacity: 1;
+        }
+    }
+
+    &__field {
     display: block;
     letter-spacing: 1px;
     padding: 10px 15px;
@@ -398,33 +430,35 @@ padding: 0;
     @include transition(all .2s linear);
     @include box-sizing(border-box);
     @include border-radius(0);
+
+        &:focus {
+        border-color: $dark-color;
+        }
     }
-    .form__field:focus {
-    border-color: $dark-color;
-    }
-    .form__field--textarea {
+
+    &__field--textarea {
     height: 100px;
     }
 
-    .form__field::-webkit-input-placeholder {
+    &__field::-webkit-input-placeholder {
     color: $dark-color;
     letter-spacing: 1px;
     font-weight: 400;
     opacity: 1; 
     }
-    .form__field:-moz-placeholder {
+    &__field:-moz-placeholder {
     color: $dark-color;
     letter-spacing: 1px;
     font-weight: 400;
     opacity: 1; 
     }
-    .form__field::-moz-placeholder {
+    &__field::-moz-placeholder {
     color: $dark-color;
     letter-spacing: 1px;
     font-weight: 400;
     opacity: 1; 
     }
-    .form__field:-ms-input-placeholder {
+    &__field:-ms-input-placeholder {
     color: $dark-color;
     letter-spacing: 1px;
     font-weight: 400;
@@ -443,13 +477,27 @@ padding: 0;
     padding: 30px 0 0 0;
     text-align: center;
     }
+
+    &__info-container {
+
+    }
+
+    &__info-wrapper {
+    display: none;
+    padding: 20px 0 0 0;
+    }
+
+    &__info {
+    text-align: center;
+    }
 }
 
 .choice-field {
 cursor: pointer;
 
     input {
-    display: none;
+    width: 0;
+    height: 0;
     }
 
     .choice-field__inner {
@@ -473,6 +521,13 @@ cursor: pointer;
     input[type="checkbox"] + .choice-field__inner,
     input[type="radio"] + .choice-field__inner  {
 
+    }
+
+    input[type="checkbox"]:focus + .choice-field__inner,
+    input[type="radio"]:focus + .choice-field__inner {
+        .choice-field__field {
+        
+        }
     }
 
     input[type="checkbox"]:checked + .choice-field__inner,
