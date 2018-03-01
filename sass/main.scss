@@ -125,7 +125,7 @@ max-width: 900px;
     margin: 0 auto 20px auto;
     width: 100px;
     height: 100px;
-    background: $light-color-02;
+    //background: $light-color-02;
     @include border-radius(50%);
     }
 
@@ -136,63 +136,6 @@ max-width: 900px;
     .icons__header {
     font-size: $icons-header-font-size;
     font-weight: 400;
-    }
-}
-
-.dropdown {
-position: relative;
-display: block;
-max-width: 300px;
-
-    .dropdown__header {
-    padding: 10px 50px 10px 15px;
-    border: 1px solid $grey;
-    position: relative;
-    cursor: pointer;
-
-        .icon {
-        position: absolute;
-        top: 50%;
-        right: 16px;
-        margin: -4px 0 0 0;
-        @include animation-name(arrowTurnDown);
-        @include animation-duration(.2s);
-        }
-    }
-
-    .dropdown__title {
-    font-weight: 400;
-    letter-spacing: 1px;
-    font-size: $small-font-size;
-    }
-
-    .dropdown__list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 100%;
-    font-size: $small-font-size;
-    padding: 15px 10px;
-    background: $light-color-04;
-    border: 1px solid $light-color-03;
-    @include box-sizing(border-box);
-    z-index: 10;
-
-        > li {
-        display: block;
-        padding: 5px 0;
-        }
-        a {
-        display: block;
-        }
-    }
-}
-.dropdown.dropdown--open {
-    .dropdown__header {
-        .icon {
-        @include animation-name(arrowTurnUp);
-        @include transform(rotate(180deg));
-        }
     }
 }
 
@@ -248,7 +191,7 @@ text-align: left;
 padding: 0 0 30px 0;
 
     @media (min-width: $rwd-768) {
-    padding-bottom: 50px;
+    
     }
 }
 
@@ -364,6 +307,35 @@ list-style-type: none;
         @media (min-width: $rwd-1300) {
         width: 25%;
         }
+    }
+}
+
+.listing {
+    &__wrapper {
+    padding: 10px 0 20px 0;
+    }
+
+    &__header {
+    padding: 0 0 5px 0;
+    }
+
+    &__title {
+    font-size: $small-font-size;
+    }
+
+    &__name {
+    font-weight: 700;
+    }
+
+    &__description {
+    font-weight: 400;
+    font-style: italic;
+    }
+
+    &__code {
+    border: 1px solid $medium-color-02;
+    background: $light-color-02;
+    padding: 15px 20px;
     }
 }
 
@@ -740,6 +712,14 @@ padding-top: 50px;
         }
         .column:nth-child(2n + 2) {
         background: $light-color-01;
+        }
+    }
+}
+
+.section-03 {
+    .listing {
+        &__wrapper {
+        padding-bottom: 40px;
         }
     }
 }

@@ -1,3 +1,8 @@
+<?php
+    require_once 'includes/CodeManager.php';
+
+    $codeManager = new CodeManager('listings');
+?>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -249,11 +254,36 @@
                                 <h2 class="section-title">Icons</h2>
                             </header>
 
+                            <div class="text">
+                                <p>
+                                This is a set of the most often used icons. Every icon is prepared in three sizes and colours. To use small or large version of icon, you should add a class with <code class="inline-code">--small</code> or <code class="inline-code">--large</code> sufix. If you want to make icon medium or light colour, add... guess what? Yes, of course class with <code class="inline-code">--medium</code> or <code class="inline-code">--light</code> sufix!
+                                </p>
+                            </div>
+
                             <section class="site-section__content">
                                 <section class="subsection">
                                     <header class="subsection-header">
                                         <h3 class="subsection-header__title">Hamburger</h3>
                                     </header>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 1</span>
+                                                    <span class="listing__description">&ndash; icon hamburger</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-001.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
 
                                     <ul class="icons">
                                         <li>
@@ -320,15 +350,31 @@
                                         <h3 class="subsection-header__title">Cross</h3>
                                     </header>
 
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 2</span>
+                                                    <span class="listing__description">&ndash; icon cross</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-002.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
                                     <ul class="icons">
                                         <li>
                                             <div class="icons__icon-container">
                                                 <div class="wrapper">
                                                     <div>
-                                                        <div class="icons__icon icon-cross icon-cross--small">
-                                                            <div></div>
-                                                            <div></div>
-                                                        </div>
+                                                        <div class="icons__icon icon-cross icon-cross--small"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -338,10 +384,7 @@
                                             <div class="icons__icon-container">
                                                 <div class="wrapper">
                                                     <div>
-                                                        <div class="icons__icon icon-cross">
-                                                            <div></div>
-                                                            <div></div>
-                                                        </div>
+                                                        <div class="icons__icon icon-cross"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -351,10 +394,7 @@
                                             <div class="icons__icon-container">
                                                 <div class="wrapper">
                                                     <div>
-                                                        <div class="icons__icon icon-cross icon-cross--large">
-                                                            <div></div>
-                                                            <div></div>
-                                                        </div>
+                                                        <div class="icons__icon icon-cross icon-cross--large"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -367,15 +407,31 @@
                                         <h3 class="subsection-header__title">Cross rotated</h3>
                                     </header>
 
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 3</span>
+                                                    <span class="listing__description">&ndash; icon cross rotated</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-003.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
                                     <ul class="icons">
                                         <li>
                                             <div class="icons__icon-container">
                                                 <div class="wrapper">
                                                     <div>
-                                                        <div class="icons__icon icon-cross icon-cross--small icon-cross--rotated">
-                                                            <div></div>
-                                                            <div></div>
-                                                        </div>
+                                                        <div class="icons__icon icon-cross icon-cross--small icon-cross--rotated"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -385,10 +441,7 @@
                                             <div class="icons__icon-container">
                                                 <div class="wrapper">
                                                     <div>
-                                                        <div class="icons__icon icon-cross icon-cross--rotated">
-                                                            <div></div>
-                                                            <div></div>
-                                                        </div>
+                                                        <div class="icons__icon icon-cross icon-cross--rotated"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -398,10 +451,7 @@
                                             <div class="icons__icon-container">
                                                 <div class="wrapper">
                                                     <div>
-                                                        <div class="icons__icon icon-cross icon-cross--large icon-cross--rotated">
-                                                            <div></div>
-                                                            <div></div>
-                                                        </div>
+                                                        <div class="icons__icon icon-cross icon-cross--large icon-cross--rotated"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -413,6 +463,25 @@
                                     <header class="subsection-header">
                                         <h3 class="subsection-header__title">Arrows</h3>
                                     </header>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 4</span>
+                                                    <span class="listing__description">&ndash; icon arrow left</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-004.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
 
                                     <ul class="icons">
                                         <li>
@@ -446,6 +515,25 @@
                                         </li>
                                     </ul>
 
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 5</span>
+                                                    <span class="listing__description">&ndash; icon arrow up</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-005.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
                                     <ul class="icons">
                                         <li>
                                             <div class="icons__icon-container">
@@ -478,6 +566,25 @@
                                         </li>
                                     </ul>
 
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 6</span>
+                                                    <span class="listing__description">&ndash; icon arrow right</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-006.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
                                     <ul class="icons">
                                         <li>
                                             <div class="icons__icon-container">
@@ -509,6 +616,25 @@
                                             </div>
                                         </li>
                                     </ul>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 7</span>
+                                                    <span class="listing__description">&ndash; icon arrow down</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-007.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
 
                                     <ul class="icons">
                                         <li>
@@ -548,6 +674,25 @@
                                         <h3 class="subsection-header__title">Trangular arrows</h3>
                                     </header>
 
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 8</span>
+                                                    <span class="listing__description">&ndash; icon triangular arrow left</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-008.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
                                     <ul class="icons">
                                         <li>
                                             <div class="icons__icon-container">
@@ -579,6 +724,25 @@
                                             </div>
                                         </li>
                                     </ul>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 9</span>
+                                                    <span class="listing__description">&ndash; icon triangular arrow up</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-009.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
 
                                     <ul class="icons">
                                         <li>
@@ -612,6 +776,25 @@
                                         </li>
                                     </ul>
 
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 10</span>
+                                                    <span class="listing__description">&ndash; icon triangular arrow right</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-010.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
                                     <ul class="icons">
                                         <li>
                                             <div class="icons__icon-container">
@@ -643,6 +826,25 @@
                                             </div>
                                         </li>
                                     </ul>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 11</span>
+                                                    <span class="listing__description">&ndash; icon triangular arrow down</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('listing-011.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
 
                                     <ul class="icons">
                                         <li>
@@ -689,10 +891,29 @@
                             </header>
 
                             <section class="site-section__content">
-                                <section class="dropdown" tabindex="0">
+                                <article class="listing">
+                                    <div class="listing__wrapper">
+                                        <header class="listing__header">
+                                            <h4 class="listing__title">
+                                                <span class="listing__name">Listing 12</span>
+                                                <span class="listing__description">&ndash; dropdown</span>
+                                            </h4>
+                                        </header>
+
+                                        <section class="listing__code">
+                                            <?php
+
+                                                echo $codeManager->transformFile('listing-012.html');
+
+                                            ?>
+                                        </section>
+                                    </div>
+                                </article>
+
+                                <section class="dropdown">
                                     <header class="dropdown__header">
                                         <h1 class="dropdown__title">Dropdown</h1>
-                                        <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                        <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
                                     </header>
 
                                     <ul class="dropdown__list">
@@ -700,20 +921,6 @@
                                         <li><a href="">Sed tristique massa</a></li>
                                         <li><a href="">Orci varius natoque penatibus</a></li>
                                         <li><a href="">Aliquam in mi non dolor</a></li>
-                                    </ul>
-                                </section>
-
-                                <section class="dropdown" tabindex="0">
-                                    <header class="dropdown__header">
-                                        <h1 class="dropdown__title">Dropdown 2</h1>
-                                        <div class="icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
-                                    </header>
-
-                                    <ul class="dropdown__list">
-                                        <li><a href="">Orci varius natoque penatibus</a></li>
-                                        <li><a href="">Aliquam in mi non dolor</a></li>
-                                        <li><a href="">Lorem ipsum dolor</a></li>
-                                        <li><a href="">Sed tristique massa</a></li>
                                     </ul>
                                 </section>
                             </section>
