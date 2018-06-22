@@ -81,3 +81,12 @@
 	-ms-background: -ms-linear-gradient(top, $color-01, $color-02, $color-03);
 	background: linear-gradient(to bottom, $color-01, $color-02, $color-03);
 }
+
+@mixin user-select($select) {
+    -webkit-touch-callout: $select; /* iOS Safari */
+    -webkit-user-select: $select; /* Safari */
+     -khtml-user-select: $select; /* Konqueror HTML */
+       -moz-user-select: $select; /* Firefox */
+        -ms-user-select: $select; /* Internet Explorer/Edge */
+            user-select: $select;
+}

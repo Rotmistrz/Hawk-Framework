@@ -27,7 +27,7 @@ Hawk.Validator.isPhoneNumber = function(number) {
 }
 
 Hawk.Validator.isNotEmpty = function(value) {
-    if(value.length > 0) {
+    if (value.length > 0) {
         return true;
     } else {
         return false;
@@ -67,7 +67,7 @@ Hawk.isInObject = function(value, obj) {
 Hawk.mergeObjects = function(mainObject, object) {
     var result = {};
 
-    if(object === undefined) {
+    if (object === undefined) {
         return mainObject;
     }
 
@@ -101,57 +101,94 @@ Hawk.scrollToElement = function(options) {
     return this;
 }
 
+Hawk.DropdownConstants = {
+    modes: {
+        PLAIN: 0,
+        CHECKBOX: 1,
+        RADIO: 2
+    },
+
+    types: {
+        OVERLAYER: 0,
+        EXPANDING: 1
+    }
+}
+
 Hawk.Dropdown = function(container, options) {
-    this.container = $(container);
-    this.containerClass;
-    this.openClass;
+    this.container = $(container).first();
 
     this.header;
+    this.title;
     this.list;
+    this.listContainer;
+
+    this.fields;
 
     this.states = {
-        open: 'open',
-        closed: 'closed'
-    };
+        CLOSED: 0,
+        OPEN: 1
+    }
 
     this.defaultOptions = {
         slideSpeed: 200,
+
+        mode: Hawk.DropdownConstants.modes.PLAIN,
+        type: Hawk.DropdownConstants.types.OVERLAYER,
+
         containerClass: 'dropdown',
+        expandingTypeClass: 'dropdown--expanding',
         openClass: 'dropdown--open',
         headerClass: 'dropdown__header',
-        listClass: 'dropdown__list'
+        titleClass: 'dropdown__title',
+        listClass: 'dropdown__list',
+        listContainerClass: 'dropdown__list-container',
+
+        onShow: function(dropdown) {},
+        onHide: function(dropdown) {},
+        onRadioSelected: function(dropdown, radio) {
+            var description = radio.parent().find('.dropdown-item__description').html();
+
+            dropdown.title.html(description);
+
+            dropdown.hide();
+        }
     };
 
     this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
-    this.state = this.states.open;
+    this.state = this.states.CLOSED;
+
+    this.mode = this.options.mode;
+    this.type = this.options.type;
 
     this.setOpen = function() {
-        this.state = this.states.open;
+        this.state = this.states.OPEN;
 
         return this;
     }
 
     this.setClosed = function() {
-        this.state = this.states.closed;
+        this.state = this.states.CLOSED;
 
         return this;
     }
 
     this.isOpen = function() {
-        if(this.state == this.states.open) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.state == this.states.OPEN;
     }
 
     this.show = function() {
         var that = this;
 
         this.container.addClass(that.options.openClass);
-        this.list.velocity("slideDown", {
-            duration: that.options.slideSpeed
+
+        this.listContainer.velocity("slideDown", {
+            duration: that.options.slideSpeed,
+            complete: function() {
+                if (typeof that.options.onShow === 'function') {
+                    that.options.onShow(that);
+                }
+            }
         });
 
         this.setOpen();
@@ -163,8 +200,14 @@ Hawk.Dropdown = function(container, options) {
         var that = this;
 
         this.container.removeClass(that.options.openClass);
-        this.list.velocity("slideUp", {
-            duration: that.options.slideSpeed
+
+        this.listContainer.velocity("slideUp", {
+            duration: that.options.slideSpeed,
+            complete: function() {
+                if (typeof that.options.onHide === 'function') {
+                    that.options.onHide(that);
+                }
+            }
         });
 
         this.setClosed();
@@ -176,7 +219,15 @@ Hawk.Dropdown = function(container, options) {
         var that = this;
 
         this.header = this.container.find('.' + this.options.headerClass);
+        this.title = this.container.find('.' + this.options.titleClass);
         this.list = this.container.find('.' + this.options.listClass);
+        this.listContainer = this.container.find('.' + this.options.listContainerClass);
+
+        this.fields = this.list.find('input[type="radio"]');
+
+        if (this.options.type == Hawk.DropdownConstants.types.EXPANDING) {
+            this.container.addClass(this.options.expandingTypeClass);
+        }
 
         this.hide();
 
@@ -188,18 +239,26 @@ Hawk.Dropdown = function(container, options) {
             e.preventDefault();
             e.stopPropagation();
 
-            if(that.isOpen()) {
+            if (that.isOpen()) {
                 that.hide();
             } else {
                 that.show();
             }
         });
 
-        $('*').not(this.container).not(this.header).not(this.header.find('*')).not(this.list).not(this.list.find('*')).click(function() {
-            if(that.isOpen()) {
+        this.container.parent().click(function() {
+            if (that.isOpen()) {
                 that.hide();
             }
         });
+
+        if (this.fields.length > 0) {
+            this.fields.change(function() {
+                if (typeof that.options.onRadioSelected == 'function') {
+                    that.options.onRadioSelected(that, $(this));
+                }
+            });
+        }
 
         return this;
     }
@@ -1632,7 +1691,25 @@ Hawk.run = function() {
         that.refresh();
     });
 
-    this.initializeDropdowns();
+    //this.initializeDropdowns();
+    var defaultDropdown = new this.Dropdown($('#default-dropdown'), {
+        onShow: function(defaultDropdown) {
+            console.log("Otwarto");
+        },
+        onHide: function(defaultDropdown) {
+            console.log("Ukryto");
+        }
+    });
+    defaultDropdown.run();
+
+    var expandingDropdown = new this.Dropdown($('#expanding-dropdown'), {
+        type: Hawk.DropdownConstants.types.EXPANDING
+    });
+    expandingDropdown.run();
+
+    var radioDropdown = new this.Dropdown($('#radio-dropdown'));
+    radioDropdown.run();
+
     this.initializeMoreContentManagers({
         showButtonCallback: function(button) {
             button.velocity({ opacity: 0 }, {

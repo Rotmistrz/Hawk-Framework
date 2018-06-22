@@ -1,8 +1,3 @@
-<?php
-    require_once 'includes/CodeManager.php';
-
-    $codeManager = new CodeManager('listings');
-?>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -26,7 +21,9 @@
         <script src="/js/velocity.js"></script>
         <script src="/js/baguette-box.min.js"></script>
 
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/css/fonts.css" />
         <link rel="stylesheet" href="/css/animate.css" />
         <link rel="stylesheet" href="/css/hawk.css" />
         <link rel="stylesheet" href="/css/hover.css" />
@@ -73,6 +70,12 @@
             </div>
         </div>
 
+        <?php
+            require_once 'includes/CodeManager.php';
+
+            $codeManager = new CodeManager('listings');
+        ?>
+
         <div class="site-wrapper">
             <header id="home-anchor" class="site-header">
                 <h1 class="site-title">Hawk Framework</h1>
@@ -88,7 +91,7 @@
                         <div class="container">
                             <section class="column col-6">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum</h1>
+                                    <h1 class="subsection-title">Lorem ipsum</h1>
                                 </header>
 
                                 <div class="text">
@@ -100,7 +103,7 @@
 
                             <section class="column col-6">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum dolor sit amet</h1>
+                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
                                 </header>
 
                                 <div class="text">
@@ -114,7 +117,7 @@
                         <div class="container">
                             <section class="column col-4">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum</h1>
+                                    <h1 class="subsection-title">Lorem ipsum</h1>
                                 </header>
 
                                 <div class="text">
@@ -126,7 +129,7 @@
 
                             <section class="column col-8">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum dolor sit amet</h1>
+                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
                                 </header>
 
                                 <div class="text">
@@ -140,7 +143,7 @@
                         <div class="container">
                             <section class="column col-9">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum</h1>
+                                    <h1 class="subsection-title">Lorem ipsum</h1>
                                 </header>
 
                                 <div class="text">
@@ -152,7 +155,7 @@
 
                             <section class="column col-3">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum dolor sit amet</h1>
+                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
                                 </header>
 
                                 <div class="text">
@@ -166,7 +169,7 @@
                         <div class="container">
                             <section class="column col-4">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum</h1>
+                                    <h1 class="subsection-title">Lorem ipsum</h1>
                                 </header>
 
                                 <div class="text">
@@ -178,7 +181,7 @@
 
                             <section class="column col-4">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum dolor sit amet</h1>
+                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
                                 </header>
 
                                 <div class="text">
@@ -190,7 +193,7 @@
 
                             <section class="column col-4">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum dolor sit amet</h1>
+                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
                                 </header>
 
                                 <div class="text">
@@ -204,7 +207,7 @@
                         <div class="container">
                             <section class="column col-6">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum</h1>
+                                    <h1 class="subsection-title">Lorem ipsum</h1>
                                 </header>
 
                                 <div class="text">
@@ -234,7 +237,7 @@
 
                             <section class="column col-6">
                                 <header class="subsection-header">
-                                    <h1 class="subsection-header__title">Lorem ipsum dolor sit amet</h1>
+                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
                                 </header>
 
                                 <div class="text">
@@ -263,7 +266,7 @@
                             <section class="site-section__content">
                                 <section class="subsection">
                                     <header class="subsection-header">
-                                        <h3 class="subsection-header__title">Hamburger</h3>
+                                        <h3 class="subsection-title">Hamburger</h3>
                                     </header>
 
                                     <article class="listing">
@@ -278,7 +281,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-001.html');
+                                                    echo $codeManager->transformFile('icons/listing-icon-hamburger.html');
 
                                                 ?>
                                             </section>
@@ -347,7 +350,7 @@
 
                                 <section class="subsection">
                                     <header class="subsection-header">
-                                        <h3 class="subsection-header__title">Cross</h3>
+                                        <h3 class="subsection-title">Arrows</h3>
                                     </header>
 
                                     <article class="listing">
@@ -355,120 +358,6 @@
                                             <header class="listing__header">
                                                 <h4 class="listing__title">
                                                     <span class="listing__name">Listing 2</span>
-                                                    <span class="listing__description">&ndash; icon cross</span>
-                                                </h4>
-                                            </header>
-
-                                            <section class="listing__code">
-                                                <?php
-
-                                                    echo $codeManager->transformFile('listing-002.html');
-
-                                                ?>
-                                            </section>
-                                        </div>
-                                    </article>
-
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-cross icon-cross--small"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-cross"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-cross icon-cross--large"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </section>
-
-                                <section class="subsection">
-                                    <header class="subsection-header">
-                                        <h3 class="subsection-header__title">Cross rotated</h3>
-                                    </header>
-
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 3</span>
-                                                    <span class="listing__description">&ndash; icon cross rotated</span>
-                                                </h4>
-                                            </header>
-
-                                            <section class="listing__code">
-                                                <?php
-
-                                                    echo $codeManager->transformFile('listing-003.html');
-
-                                                ?>
-                                            </section>
-                                        </div>
-                                    </article>
-
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-cross icon-cross--small icon-cross--rotated"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-cross icon-cross--rotated"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-cross icon-cross--large icon-cross--rotated"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </section>
-
-                                <section class="subsection">
-                                    <header class="subsection-header">
-                                        <h3 class="subsection-header__title">Arrows</h3>
-                                    </header>
-
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 4</span>
                                                     <span class="listing__description">&ndash; icon arrow left</span>
                                                 </h4>
                                             </header>
@@ -476,7 +365,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-004.html');
+                                                    echo $codeManager->transformFile('icons/listing-icon-arrow-left.html');
 
                                                 ?>
                                             </section>
@@ -519,7 +408,7 @@
                                         <div class="listing__wrapper">
                                             <header class="listing__header">
                                                 <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 5</span>
+                                                    <span class="listing__name">Listing 3</span>
                                                     <span class="listing__description">&ndash; icon arrow up</span>
                                                 </h4>
                                             </header>
@@ -527,7 +416,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-005.html');
+                                                    echo $codeManager->transformFile('icons/listing-arrow-up.html');
 
                                                 ?>
                                             </section>
@@ -570,7 +459,7 @@
                                         <div class="listing__wrapper">
                                             <header class="listing__header">
                                                 <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 6</span>
+                                                    <span class="listing__name">Listing 4</span>
                                                     <span class="listing__description">&ndash; icon arrow right</span>
                                                 </h4>
                                             </header>
@@ -578,7 +467,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-006.html');
+                                                    echo $codeManager->transformFile('icons/listing-arrow-right.html');
 
                                                 ?>
                                             </section>
@@ -621,7 +510,7 @@
                                         <div class="listing__wrapper">
                                             <header class="listing__header">
                                                 <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 7</span>
+                                                    <span class="listing__name">Listing 5</span>
                                                     <span class="listing__description">&ndash; icon arrow down</span>
                                                 </h4>
                                             </header>
@@ -629,7 +518,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-007.html');
+                                                    echo $codeManager->transformFile('icons/listing-icon-arrow-down.html');
 
                                                 ?>
                                             </section>
@@ -671,14 +560,14 @@
 
                                 <section class="subsection">
                                     <header class="subsection-header">
-                                        <h3 class="subsection-header__title">Trangular arrows</h3>
+                                        <h3 class="subsection-title">Trangular arrows</h3>
                                     </header>
 
                                     <article class="listing">
                                         <div class="listing__wrapper">
                                             <header class="listing__header">
                                                 <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 8</span>
+                                                    <span class="listing__name">Listing 6</span>
                                                     <span class="listing__description">&ndash; icon triangular arrow left</span>
                                                 </h4>
                                             </header>
@@ -686,7 +575,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-008.html');
+                                                    echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-left.html');
 
                                                 ?>
                                             </section>
@@ -729,7 +618,7 @@
                                         <div class="listing__wrapper">
                                             <header class="listing__header">
                                                 <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 9</span>
+                                                    <span class="listing__name">Listing 7</span>
                                                     <span class="listing__description">&ndash; icon triangular arrow up</span>
                                                 </h4>
                                             </header>
@@ -737,7 +626,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-009.html');
+                                                    echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-up.html');
 
                                                 ?>
                                             </section>
@@ -780,7 +669,7 @@
                                         <div class="listing__wrapper">
                                             <header class="listing__header">
                                                 <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 10</span>
+                                                    <span class="listing__name">Listing 8</span>
                                                     <span class="listing__description">&ndash; icon triangular arrow right</span>
                                                 </h4>
                                             </header>
@@ -788,7 +677,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-010.html');
+                                                    echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-right.html');
 
                                                 ?>
                                             </section>
@@ -831,7 +720,7 @@
                                         <div class="listing__wrapper">
                                             <header class="listing__header">
                                                 <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 11</span>
+                                                    <span class="listing__name">Listing 9</span>
                                                     <span class="listing__description">&ndash; icon triangular arrow down</span>
                                                 </h4>
                                             </header>
@@ -839,7 +728,7 @@
                                             <section class="listing__code">
                                                 <?php
 
-                                                    echo $codeManager->transformFile('listing-011.html');
+                                                    echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-down.html');
 
                                                 ?>
                                             </section>
@@ -878,6 +767,120 @@
                                         </li>
                                     </ul>
                                 </section>
+
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Plus</h3>
+                                    </header>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 10</span>
+                                                    <span class="listing__description">&ndash; icon plus</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('icons/listing-icon-plus.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-plus icon-plus--small"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-plus"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-plus icon-plus--large"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Plus rotated</h3>
+                                    </header>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 11</span>
+                                                    <span class="listing__description">&ndash; icon plus rotated</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('icons/listing-icon-plus-rotated.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
+                                    <ul class="icons">
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-plus icon-plus--small icon-plus--rotated"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-plus icon-plus--rotated"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="icons__icon-container">
+                                                <div class="wrapper">
+                                                    <div>
+                                                        <div class="icons__icon icon-plus icon-plus--large icon-plus--rotated"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
                             </section>
                         </div>
                     </div>
@@ -903,25 +906,203 @@
                                         <section class="listing__code">
                                             <?php
 
-                                                echo $codeManager->transformFile('listing-012.html');
+                                                echo $codeManager->transformFile('listing-dropdown.html');
 
                                             ?>
                                         </section>
                                     </div>
                                 </article>
 
-                                <section class="dropdown">
+                                <section id="default-dropdown" class="dropdown">
                                     <header class="dropdown__header">
-                                        <h1 class="dropdown__title">Dropdown</h1>
+                                        <h1 class="dropdown__title">Default dropdown</h1>
                                         <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
                                     </header>
 
-                                    <ul class="dropdown__list">
-                                        <li><a href="">Lorem ipsum dolor</a></li>
-                                        <li><a href="">Sed tristique massa</a></li>
-                                        <li><a href="">Orci varius natoque penatibus</a></li>
-                                        <li><a href="">Aliquam in mi non dolor</a></li>
-                                    </ul>
+                                    <section class="dropdown__list-container">
+                                        <ul class="dropdown__list">
+                                            <li>Lorem ipsum dolor</li>
+                                            <li>Sed tristique massa</li>
+                                            <li>Orci varius natoque penatibus</li>
+                                            <li>Aliquam in mi non dolor</li>
+                                        </ul>
+                                    </section>
+                                </section>
+
+                                <section id="expanding-dropdown" class="dropdown">
+                                    <header class="dropdown__header">
+                                        <h1 class="dropdown__title">Expanding dropdown</h1>
+                                        <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                    </header>
+
+                                    <section class="dropdown__list-container">
+                                        <ul class="dropdown__list">
+                                            <li>Lorem ipsum dolor</li>
+                                            <li>Sed tristique massa</li>
+                                            <li>Orci varius natoque penatibus</li>
+                                            <li>Aliquam in mi non dolor</li>
+                                        </ul>
+                                    </section>
+                                </section>
+
+                                <section id="radio-dropdown" class="dropdown">
+                                    <header class="dropdown__header">
+                                        <h1 class="dropdown__title">Radio dropdown</h1>
+                                        <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                    </header>
+
+                                    <section class="dropdown__list-container">
+                                        <ul class="dropdown__list">
+                                            <li>
+                                                <label class="choice-field choice-field--radio dropdown-item">
+                                                    <input name="dropdown" type="radio" value="0" />
+
+                                                    <div class="choice-field__wrapper">
+                                                        <div class="choice-field__inner">
+                                                            <div class="choice-field__field-container">
+                                                                <div class="choice-field__field">
+                                                                    <div class="choice-field__field-inner"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="choice-field__description dropdown-item__description">Lorem ipsum dolor</div>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                            <li>Sed tristique massa</li>
+                                            <li>Orci varius natoque penatibus</li>
+                                            <li>Aliquam in mi non dolor</li>
+                                        </ul>
+                                    </section>
+                                </section>
+                            </section>
+
+                            <section class="site-section__content">
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Options</h3>
+                                    </header>
+
+                                    <section class="table properties-table">
+                                        <div class="table__wrapper">
+                                            <header class="table__row table__row--header">
+                                                <div class="table__cell properties-table__name-cell">
+                                                Name
+                                                </div>
+
+                                                <div class="table__cell properties-table__default-value-cell">
+                                                Default value
+                                                </div>
+
+                                                <div class="table__cell properties-table__description-cell">
+                                                Description
+                                                </div>
+                                            </header>
+
+                                            <section class="table__row">
+                                                <div class="table__cell properties-table__name-cell">
+                                                    <article class="property">
+                                                        <section class="property__name">slideSpeed</section>
+                                                        <section class="property__type">integer</section>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell properties-table__default-value-cell">
+                                                200
+                                                </div>
+
+                                                <div class="table__cell properties-table__description-cell">
+                                                Speed of expanding the dropdown (in miliseconds)
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell properties-table__name-cell">
+                                                    <article class="property">
+                                                        <section class="property__name">containerClass</section>
+                                                        <section class="property__type">string</section>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell properties-table__default-value-cell">
+                                                dropdown
+                                                </div>
+
+                                                <div class="table__cell properties-table__description-cell">
+                                                name of the container&apos;s class
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell properties-table__name-cell">
+                                                    <article class="property">
+                                                        <section class="property__name">openClass</section>
+                                                        <section class="property__type">string</section>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell properties-table__default-value-cell">
+                                                dropdown--open
+                                                </div>
+
+                                                <div class="table__cell properties-table__description-cell">
+                                                classname of the open container
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell properties-table__name-cell">
+                                                    <article class="property">
+                                                        <section class="property__name">headerClass</section>
+                                                        <section class="property__type">string</section>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell properties-table__default-value-cell">
+                                                dropdown__header
+                                                </div>
+
+                                                <div class="table__cell properties-table__description-cell">
+                                                classname of the header
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell properties-table__name-cell">
+                                                    <article class="property">
+                                                        <section class="property__name">titleClass</section>
+                                                        <section class="property__type">string</section>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell properties-table__default-value-cell">
+                                                dropdown__title
+                                                </div>
+
+                                                <div class="table__cell properties-table__description-cell">
+                                                classname of the title
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell properties-table__name-cell">
+                                                    <article class="property">
+                                                        <section class="property__name">listClass</section>
+                                                        <section class="property__type">string</section>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell properties-table__default-value-cell">
+                                                dropdown__list
+                                                </div>
+
+                                                <div class="table__cell properties-table__description-cell">
+                                                classname of the list
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </section>
                                 </section>
                             </section>
                         </div>
