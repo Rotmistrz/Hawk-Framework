@@ -138,7 +138,7 @@
     padding: 0 0 5px 0; }
 
 .simple-bookmark.active {
-  color: #8f0700; }
+  color: #213988; }
 
 .details-list {
   list-style-type: none;
@@ -151,7 +151,7 @@
     padding: 10px 0;
     cursor: pointer;
     font-weight: 700;
-    border-bottom: 1px solid #a90800; }
+    border-bottom: 1px solid #0f2672; }
     .details-list .details-list__title .details-list__arrow {
       position: absolute;
       top: 13px;
@@ -172,7 +172,7 @@
         display: inline-block;
         padding: 0 20px; } }
     .categorized-items__categories > li.active {
-      color: #a90800;
+      color: #0f2672;
       font-weight: 700; }
 .categorized-items__item {
   display: block; }
@@ -440,7 +440,7 @@
       -o-transition: all 0.6s linear;
       transition: all 0.6s linear; }
     .icon-hamburger__inner > .icon-hamburger__hover-item {
-      background: #a90800;
+      background: #0f2672;
       left: -100%; }
       .icon-hamburger__inner > .icon-hamburger__hover-item:nth-child(4) {
         -webkit-transition: all 0.6s linear;
@@ -482,7 +482,7 @@
     transform: rotate(-135deg); }
 
 .icon-hamburger--medium .icon-hamburger__inner > div {
-  background: #a90800; }
+  background: #0f2672; }
 
 .icon-hamburger--light .icon-hamburger__inner > div {
   background: #fff; }
@@ -583,7 +583,7 @@
   border-width: 3px; }
 
 .icon-arrow--medium {
-  border-color: #a90800; }
+  border-color: #0f2672; }
 
 .icon-arrow--light {
   border-color: #fff; }
@@ -606,7 +606,7 @@
   border-bottom-width: 8px; }
 
 .icon-triangular-arrow-left--medium {
-  border-right-color: #a90800; }
+  border-right-color: #0f2672; }
 
 .icon-triangular-arrow-left--light {
   border-right-color: #fff; }
@@ -628,7 +628,7 @@
   border-left-width: 8px; }
 
 .icon-triangular-arrow-up--medium {
-  border-bottom-color: #a90800; }
+  border-bottom-color: #0f2672; }
 
 .icon-triangular-arrow-up--light {
   border-bottom-color: #fff; }
@@ -650,7 +650,7 @@
   border-bottom-width: 8px; }
 
 .icon-triangular-arrow-right--medium {
-  border-left-color: #a90800; }
+  border-left-color: #0f2672; }
 
 .icon-triangular-arrow-right--light {
   border-left-color: #fff; }
@@ -672,7 +672,7 @@
   border-left-width: 8px; }
 
 .icon-triangular-arrow-down--medium {
-  border-top-color: #a90800; }
+  border-top-color: #0f2672; }
 
 .icon-triangular-arrow-down--light {
   border-top-color: #fff; }

@@ -82,174 +82,6 @@
             </header>
 
             <main class="site-content">
-                <!--<section id="column-layouts-anchor" class="section section--full-width section-01">
-                    <div class="section__inner">
-                        <header class="section-header">
-                            <h1 class="section-header__title">Column layouts</h1>
-                        </header>
-
-                        <div class="container">
-                            <section class="column col-6">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta volutpat enim vel eleifend. Vestibulum tincidunt sapien lacus, at eleifend ex finibus eu. Nulla varius tincidunt laoreet.
-                                    </p>
-                                </div>
-                            </section>
-
-                            <section class="column col-6">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean commodo finibus urna nec finibus.
-                                    </p>
-                                </div>
-                            </section>
-                        </div>
-
-                        <div class="container">
-                            <section class="column col-4">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta volutpat enim vel eleifend. Vestibulum tincidunt sapien lacus, at eleifend ex finibus eu. Nulla varius tincidunt laoreet.
-                                    </p>
-                                </div>
-                            </section>
-
-                            <section class="column col-8">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean commodo finibus urna nec finibus.
-                                    </p>
-                                </div>
-                            </section>
-                        </div>
-
-                        <div class="container">
-                            <section class="column col-9">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta volutpat enim vel eleifend. Vestibulum tincidunt sapien lacus, at eleifend ex finibus eu. Nulla varius tincidunt laoreet.
-                                    </p>
-                                </div>
-                            </section>
-
-                            <section class="column col-3">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean commodo finibus urna nec finibus.
-                                    </p>
-                                </div>
-                            </section>
-                        </div>
-
-                        <div class="container">
-                            <section class="column col-4">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta volutpat enim vel eleifend. Vestibulum tincidunt sapien lacus, at eleifend ex finibus eu. Nulla varius tincidunt laoreet.
-                                    </p>
-                                </div>
-                            </section>
-
-                            <section class="column col-4">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean commodo finibus urna nec finibus.
-                                    </p>
-                                </div>
-                            </section>
-
-                            <section class="column col-4">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean commodo finibus urna nec finibus.
-                                    </p>
-                                </div>
-                            </section>
-                        </div>
-
-                        <div class="container">
-                            <section class="column col-6">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta volutpat enim vel eleifend. Vestibulum tincidunt sapien lacus, at eleifend ex finibus eu. Nulla varius tincidunt laoreet.
-                                    </p>
-                                </div>
-
-                                <div class="container">
-                                    <section class="column col-9">
-                                        <div class="text">
-                                            <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta volutpat enim vel eleifend. Vestibulum tincidunt sapien lacus, at eleifend ex finibus eu. Nulla varius tincidunt laoreet.
-                                            </p>
-                                        </div>
-                                    </section>
-
-                                    <section class="column col-3">
-                                        <div class="text">
-                                            <p>
-                                            In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean commodo finibus urna nec finibus.
-                                            </p>
-                                        </div>
-                                    </section>
-                                </div>
-                            </section>
-
-                            <section class="column col-6">
-                                <header class="subsection-header">
-                                    <h1 class="subsection-title">Lorem ipsum dolor sit amet</h1>
-                                </header>
-
-                                <div class="text">
-                                    <p>
-                                    In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean commodo finibus urna nec finibus.
-                                    </p>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </section>-->
-
                 <section id="icons-anchor" class="site-section section-02">
                     <div class="site-section__layer">
                         <div class="site-section__inner">
@@ -269,83 +101,85 @@
                                         <h3 class="subsection-title">Hamburger</h3>
                                     </header>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 1</span>
-                                                    <span class="listing__description">&ndash; icon hamburger</span>
-                                                </h4>
-                                            </header>
+                                    <section class="subsection__content">
+                                        <article class="listing">
+                                            <div class="listing__wrapper">
+                                                <header class="listing__header">
+                                                    <h4 class="listing__title">
+                                                        <span class="listing__name">Listing 1</span>
+                                                        <span class="listing__description">&ndash; icon hamburger</span>
+                                                    </h4>
+                                                </header>
 
-                                            <section class="listing__code">
-                                                <?php
+                                                <section class="listing__code">
+                                                    <?php
 
-                                                    echo $codeManager->transformFile('icons/listing-icon-hamburger.html');
+                                                        echo $codeManager->transformFile('icons/listing-icon-hamburger.html');
 
-                                                ?>
-                                            </section>
-                                        </div>
-                                    </article>
+                                                    ?>
+                                                </section>
+                                            </div>
+                                        </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-hamburger icon-hamburger--small">
-                                                            <div class="icon-hamburger__inner">
-                                                                <div></div>
-                                                                <div></div>
-                                                                <div></div>
-                                                                <div class="icon-hamburger__hover"></div>
-                                                                <div class="icon-hamburger__hover"></div>
-                                                                <div class="icon-hamburger__hover"></div>
+                                        <ul class="icons">
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-hamburger icon-hamburger--small">
+                                                                <div class="icon-hamburger__inner">
+                                                                    <div></div>
+                                                                    <div></div>
+                                                                    <div></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-hamburger">
-                                                            <div class="icon-hamburger__inner">
-                                                                <div></div>
-                                                                <div></div>
-                                                                <div></div>
-                                                                <div class="icon-hamburger__hover"></div>
-                                                                <div class="icon-hamburger__hover"></div>
-                                                                <div class="icon-hamburger__hover"></div>
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-hamburger">
+                                                                <div class="icon-hamburger__inner">
+                                                                    <div></div>
+                                                                    <div></div>
+                                                                    <div></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-hamburger icon-hamburger--large">
-                                                            <div class="icon-hamburger__inner">
-                                                                <div></div>
-                                                                <div></div>
-                                                                <div></div>
-                                                                <div class="icon-hamburger__hover"></div>
-                                                                <div class="icon-hamburger__hover"></div>
-                                                                <div class="icon-hamburger__hover"></div>
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-hamburger icon-hamburger--large">
+                                                                <div class="icon-hamburger__inner">
+                                                                    <div></div>
+                                                                    <div></div>
+                                                                    <div></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                    <div class="icon-hamburger__hover"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
+                                    </section>
                                 </section>
 
                                 <section class="subsection">
@@ -353,209 +187,219 @@
                                         <h3 class="subsection-title">Arrows</h3>
                                     </header>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 2</span>
-                                                    <span class="listing__description">&ndash; icon arrow left</span>
-                                                </h4>
-                                            </header>
+                                    <section class="subsection__content">
+                                        <div class="subsection__row">
+                                            <article class="listing">
+                                                <div class="listing__wrapper">
+                                                    <header class="listing__header">
+                                                        <h4 class="listing__title">
+                                                            <span class="listing__name">Listing 2</span>
+                                                            <span class="listing__description">&ndash; icon arrow left</span>
+                                                        </h4>
+                                                    </header>
 
-                                            <section class="listing__code">
-                                                <?php
+                                                    <section class="listing__code">
+                                                        <?php
 
-                                                    echo $codeManager->transformFile('icons/listing-icon-arrow-left.html');
+                                                            echo $codeManager->transformFile('icons/listing-icon-arrow-left.html');
 
-                                                ?>
-                                            </section>
+                                                        ?>
+                                                    </section>
+                                                </div>
+                                            </article>
+
+                                            <ul class="icons">
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--left icon-arrow--small"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--left"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--left icon-arrow--large"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--left icon-arrow--small"></div>
-                                                    </div>
+                                        <div class="subsection__row">
+                                            <article class="listing">
+                                                <div class="listing__wrapper">
+                                                    <header class="listing__header">
+                                                        <h4 class="listing__title">
+                                                            <span class="listing__name">Listing 3</span>
+                                                            <span class="listing__description">&ndash; icon arrow up</span>
+                                                        </h4>
+                                                    </header>
+
+                                                    <section class="listing__code">
+                                                        <?php
+
+                                                            echo $codeManager->transformFile('icons/listing-arrow-up.html');
+
+                                                        ?>
+                                                    </section>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </article>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--left"></div>
+                                            <ul class="icons">
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                                </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--left icon-arrow--large"></div>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--up"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                </li>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 3</span>
-                                                    <span class="listing__description">&ndash; icon arrow up</span>
-                                                </h4>
-                                            </header>
-
-                                            <section class="listing__code">
-                                                <?php
-
-                                                    echo $codeManager->transformFile('icons/listing-arrow-up.html');
-
-                                                ?>
-                                            </section>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--up icon-arrow--large"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
-                                                    </div>
+                                        <div class="subsection__row">
+                                            <article class="listing">
+                                                <div class="listing__wrapper">
+                                                    <header class="listing__header">
+                                                        <h4 class="listing__title">
+                                                            <span class="listing__name">Listing 4</span>
+                                                            <span class="listing__description">&ndash; icon arrow right</span>
+                                                        </h4>
+                                                    </header>
+
+                                                    <section class="listing__code">
+                                                        <?php
+
+                                                            echo $codeManager->transformFile('icons/listing-arrow-right.html');
+
+                                                        ?>
+                                                    </section>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </article>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--up"></div>
+                                            <ul class="icons">
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--right icon-arrow--small"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                                </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--up icon-arrow--large"></div>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--right"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                </li>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 4</span>
-                                                    <span class="listing__description">&ndash; icon arrow right</span>
-                                                </h4>
-                                            </header>
-
-                                            <section class="listing__code">
-                                                <?php
-
-                                                    echo $codeManager->transformFile('icons/listing-arrow-right.html');
-
-                                                ?>
-                                            </section>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--right icon-arrow--large"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--right icon-arrow--small"></div>
-                                                    </div>
+                                        <div class="subsection__row">
+                                            <article class="listing">
+                                                <div class="listing__wrapper">
+                                                    <header class="listing__header">
+                                                        <h4 class="listing__title">
+                                                            <span class="listing__name">Listing 5</span>
+                                                            <span class="listing__description">&ndash; icon arrow down</span>
+                                                        </h4>
+                                                    </header>
+
+                                                    <section class="listing__code">
+                                                        <?php
+
+                                                            echo $codeManager->transformFile('icons/listing-icon-arrow-down.html');
+
+                                                        ?>
+                                                    </section>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </article>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--right"></div>
+                                            <ul class="icons">
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                                </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--right icon-arrow--large"></div>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--down"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                </li>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 5</span>
-                                                    <span class="listing__description">&ndash; icon arrow down</span>
-                                                </h4>
-                                            </header>
-
-                                            <section class="listing__code">
-                                                <?php
-
-                                                    echo $codeManager->transformFile('icons/listing-icon-arrow-down.html');
-
-                                                ?>
-                                            </section>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-arrow icon-arrow--down icon-arrow--large"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </article>
-
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--down"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-arrow icon-arrow--down icon-arrow--large"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    </section>
                                 </section>
 
                                 <section class="subsection">
@@ -563,209 +407,219 @@
                                         <h3 class="subsection-title">Trangular arrows</h3>
                                     </header>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 6</span>
-                                                    <span class="listing__description">&ndash; icon triangular arrow left</span>
-                                                </h4>
-                                            </header>
+                                    <section class="subsection__content">
+                                        <div class="subsection__row">
+                                            <article class="listing">
+                                                <div class="listing__wrapper">
+                                                    <header class="listing__header">
+                                                        <h4 class="listing__title">
+                                                            <span class="listing__name">Listing 6</span>
+                                                            <span class="listing__description">&ndash; icon triangular arrow left</span>
+                                                        </h4>
+                                                    </header>
 
-                                            <section class="listing__code">
-                                                <?php
+                                                    <section class="listing__code">
+                                                        <?php
 
-                                                    echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-left.html');
+                                                            echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-left.html');
 
-                                                ?>
-                                            </section>
+                                                        ?>
+                                                    </section>
+                                                </div>
+                                            </article>
+
+                                            <ul class="icons">
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-left icon-triangular-arrow-left--small"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-left"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-left icon-triangular-arrow-left--large"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-left icon-triangular-arrow-left--small"></div>
-                                                    </div>
+                                        <div class="subsection__row">
+                                            <article class="listing">
+                                                <div class="listing__wrapper">
+                                                    <header class="listing__header">
+                                                        <h4 class="listing__title">
+                                                            <span class="listing__name">Listing 7</span>
+                                                            <span class="listing__description">&ndash; icon triangular arrow up</span>
+                                                        </h4>
+                                                    </header>
+
+                                                    <section class="listing__code">
+                                                        <?php
+
+                                                            echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-up.html');
+
+                                                        ?>
+                                                    </section>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </article>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-left"></div>
+                                            <ul class="icons">
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-up icon-triangular-arrow-up--small"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                                </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-left icon-triangular-arrow-left--large"></div>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-up"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                </li>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 7</span>
-                                                    <span class="listing__description">&ndash; icon triangular arrow up</span>
-                                                </h4>
-                                            </header>
-
-                                            <section class="listing__code">
-                                                <?php
-
-                                                    echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-up.html');
-
-                                                ?>
-                                            </section>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-up icon-triangular-arrow-up--large"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-up icon-triangular-arrow-up--small"></div>
-                                                    </div>
+                                        <div class="subsection__row">
+                                            <article class="listing">
+                                                <div class="listing__wrapper">
+                                                    <header class="listing__header">
+                                                        <h4 class="listing__title">
+                                                            <span class="listing__name">Listing 8</span>
+                                                            <span class="listing__description">&ndash; icon triangular arrow right</span>
+                                                        </h4>
+                                                    </header>
+
+                                                    <section class="listing__code">
+                                                        <?php
+
+                                                            echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-right.html');
+
+                                                        ?>
+                                                    </section>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </article>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-up"></div>
+                                            <ul class="icons">
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-right icon-triangular-arrow-right--small"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                                </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-up icon-triangular-arrow-up--large"></div>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-right"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                </li>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 8</span>
-                                                    <span class="listing__description">&ndash; icon triangular arrow right</span>
-                                                </h4>
-                                            </header>
-
-                                            <section class="listing__code">
-                                                <?php
-
-                                                    echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-right.html');
-
-                                                ?>
-                                            </section>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-right icon-triangular-arrow-right--large"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-right icon-triangular-arrow-right--small"></div>
-                                                    </div>
+                                        <div class="subsection__row">
+                                            <article class="listing">
+                                                <div class="listing__wrapper">
+                                                    <header class="listing__header">
+                                                        <h4 class="listing__title">
+                                                            <span class="listing__name">Listing 9</span>
+                                                            <span class="listing__description">&ndash; icon triangular arrow down</span>
+                                                        </h4>
+                                                    </header>
+
+                                                    <section class="listing__code">
+                                                        <?php
+
+                                                            echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-down.html');
+
+                                                        ?>
+                                                    </section>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </article>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-right"></div>
+                                            <ul class="icons">
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                                </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-right icon-triangular-arrow-right--large"></div>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-down"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                </li>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 9</span>
-                                                    <span class="listing__description">&ndash; icon triangular arrow down</span>
-                                                </h4>
-                                            </header>
-
-                                            <section class="listing__code">
-                                                <?php
-
-                                                    echo $codeManager->transformFile('icons/listing-icon-triangular-arrow-down.html');
-
-                                                ?>
-                                            </section>
+                                                <li>
+                                                    <div class="icons__icon-container">
+                                                        <div class="wrapper">
+                                                            <div>
+                                                                <div class="icons__icon icon-triangular-arrow-down icon-triangular-arrow-down--large"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </article>
-
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-down"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-triangular-arrow-down icon-triangular-arrow-down--large"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    </section>
                                 </section>
 
                                 <section class="subsection">
@@ -773,56 +627,58 @@
                                         <h3 class="subsection-title">Plus</h3>
                                     </header>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 10</span>
-                                                    <span class="listing__description">&ndash; icon plus</span>
-                                                </h4>
-                                            </header>
+                                    <section class="subsection__content">
+                                        <article class="listing">
+                                            <div class="listing__wrapper">
+                                                <header class="listing__header">
+                                                    <h4 class="listing__title">
+                                                        <span class="listing__name">Listing 10</span>
+                                                        <span class="listing__description">&ndash; icon plus</span>
+                                                    </h4>
+                                                </header>
 
-                                            <section class="listing__code">
-                                                <?php
+                                                <section class="listing__code">
+                                                    <?php
 
-                                                    echo $codeManager->transformFile('icons/listing-icon-plus.html');
+                                                        echo $codeManager->transformFile('icons/listing-icon-plus.html');
 
-                                                ?>
-                                            </section>
-                                        </div>
-                                    </article>
+                                                    ?>
+                                                </section>
+                                            </div>
+                                        </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-plus icon-plus--small"></div>
+                                        <ul class="icons">
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-plus icon-plus--small"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-plus"></div>
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-plus"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-plus icon-plus--large"></div>
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-plus icon-plus--large"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
+                                    </section>
                                 </section>
 
                                 <section class="subsection">
@@ -830,56 +686,58 @@
                                         <h3 class="subsection-title">Plus rotated</h3>
                                     </header>
 
-                                    <article class="listing">
-                                        <div class="listing__wrapper">
-                                            <header class="listing__header">
-                                                <h4 class="listing__title">
-                                                    <span class="listing__name">Listing 11</span>
-                                                    <span class="listing__description">&ndash; icon plus rotated</span>
-                                                </h4>
-                                            </header>
+                                    <section class="subsection__content">
+                                        <article class="listing">
+                                            <div class="listing__wrapper">
+                                                <header class="listing__header">
+                                                    <h4 class="listing__title">
+                                                        <span class="listing__name">Listing 11</span>
+                                                        <span class="listing__description">&ndash; icon plus rotated</span>
+                                                    </h4>
+                                                </header>
 
-                                            <section class="listing__code">
-                                                <?php
+                                                <section class="listing__code">
+                                                    <?php
 
-                                                    echo $codeManager->transformFile('icons/listing-icon-plus-rotated.html');
+                                                        echo $codeManager->transformFile('icons/listing-icon-plus-rotated.html');
 
-                                                ?>
-                                            </section>
-                                        </div>
-                                    </article>
+                                                    ?>
+                                                </section>
+                                            </div>
+                                        </article>
 
-                                    <ul class="icons">
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-plus icon-plus--small icon-plus--rotated"></div>
+                                        <ul class="icons">
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-plus icon-plus--small icon-plus--rotated"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-plus icon-plus--rotated"></div>
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-plus icon-plus--rotated"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li>
-                                            <div class="icons__icon-container">
-                                                <div class="wrapper">
-                                                    <div>
-                                                        <div class="icons__icon icon-plus icon-plus--large icon-plus--rotated"></div>
+                                            <li>
+                                                <div class="icons__icon-container">
+                                                    <div class="wrapper">
+                                                        <div>
+                                                            <div class="icons__icon icon-plus icon-plus--large icon-plus--rotated"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
+                                    </section>
                                 </section>
                             </section>
                         </div>
@@ -893,217 +751,715 @@
                                 <h2 class="section-title">Dropdowns</h2>
                             </header>
 
+                            <div class="text">
+                                <p>
+                                Dropdowns are often used in many cases on websites.
+                                </p>
+                            </div>
+
                             <section class="site-section__content">
-                                <article class="listing">
-                                    <div class="listing__wrapper">
-                                        <header class="listing__header">
-                                            <h4 class="listing__title">
-                                                <span class="listing__name">Listing 12</span>
-                                                <span class="listing__description">&ndash; dropdown</span>
-                                            </h4>
-                                        </header>
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Default dropdown</h3>
+                                    </header>
 
-                                        <section class="listing__code">
-                                            <?php
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 12</span>
+                                                    <span class="listing__description">&ndash; dropdown &ndash; HTML code</span>
+                                                </h4>
+                                            </header>
 
-                                                echo $codeManager->transformFile('listing-dropdown.html');
+                                            <section class="listing__code">
+                                                <?php
 
-                                            ?>
+                                                    echo $codeManager->transformFile('dropdowns/listing-dropdown.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 13</span>
+                                                    <span class="listing__description">&ndash; dropdown &ndash; default</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('dropdowns/listing-dropdown-js.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
+                                    <div class="single-dropdown-container">
+                                        <section id="exemplary-dropdown" class="dropdown">
+                                            <header class="dropdown__header">
+                                                <h4 class="dropdown__title">Exemplary dropdown</h4>
+                                                <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                            </header>
+
+                                            <section class="dropdown__list-container">
+                                                <ul class="dropdown__list">
+                                                    <li>Lorem ipsum dolor</li>
+                                                    <li>Sed tristique massa</li>
+                                                    <li>Orci varius natoque penatibus</li>
+                                                    <li>Aliquam in mi non dolor</li>
+                                                </ul>
+                                            </section>
                                         </section>
                                     </div>
-                                </article>
-
-                                <section id="default-dropdown" class="dropdown">
-                                    <header class="dropdown__header">
-                                        <h1 class="dropdown__title">Default dropdown</h1>
-                                        <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
-                                    </header>
-
-                                    <section class="dropdown__list-container">
-                                        <ul class="dropdown__list">
-                                            <li>Lorem ipsum dolor</li>
-                                            <li>Sed tristique massa</li>
-                                            <li>Orci varius natoque penatibus</li>
-                                            <li>Aliquam in mi non dolor</li>
-                                        </ul>
-                                    </section>
                                 </section>
 
-                                <section id="expanding-dropdown" class="dropdown">
-                                    <header class="dropdown__header">
-                                        <h1 class="dropdown__title">Expanding dropdown</h1>
-                                        <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Expanding dropdown</h3>
                                     </header>
 
-                                    <section class="dropdown__list-container">
-                                        <ul class="dropdown__list">
-                                            <li>Lorem ipsum dolor</li>
-                                            <li>Sed tristique massa</li>
-                                            <li>Orci varius natoque penatibus</li>
-                                            <li>Aliquam in mi non dolor</li>
-                                        </ul>
-                                    </section>
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 14</span>
+                                                    <span class="listing__description">&ndash; dropdown &ndash; expanding type</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('dropdowns/listing-dropdown-expanding-js.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
+                                    <div class="single-dropdown-container">
+                                        <section id="expanding-dropdown" class="dropdown">
+                                            <header class="dropdown__header">
+                                                <h4 class="dropdown__title">Expanding dropdown</h4>
+                                                <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                            </header>
+
+                                            <section class="dropdown__list-container">
+                                                <ul class="dropdown__list">
+                                                    <li>Lorem ipsum dolor</li>
+                                                    <li>Sed tristique massa</li>
+                                                    <li>Orci varius natoque penatibus</li>
+                                                    <li>Aliquam in mi non dolor</li>
+                                                </ul>
+                                            </section>
+                                        </section>
+                                    </div>
                                 </section>
 
-                                <section id="radio-dropdown" class="dropdown">
-                                    <header class="dropdown__header">
-                                        <h1 class="dropdown__title">Radio dropdown</h1>
-                                        <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Dropdown with radio buttons</h3>
                                     </header>
 
-                                    <section class="dropdown__list-container">
-                                        <ul class="dropdown__list">
-                                            <li>
-                                                <label class="choice-field choice-field--radio dropdown-item">
-                                                    <input name="dropdown" type="radio" value="0" />
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 15</span>
+                                                    <span class="listing__description">&ndash; dropdown with radio buttons</span>
+                                                </h4>
+                                            </header>
 
-                                                    <div class="choice-field__wrapper">
-                                                        <div class="choice-field__inner">
-                                                            <div class="choice-field__field-container">
-                                                                <div class="choice-field__field">
-                                                                    <div class="choice-field__field-inner"></div>
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('dropdowns/listing-dropdown-radio.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
+                                    <article class="listing">
+                                        <div class="listing__wrapper">
+                                            <header class="listing__header">
+                                                <h4 class="listing__title">
+                                                    <span class="listing__name">Listing 16</span>
+                                                    <span class="listing__description">&ndash; dropdown &ndash; choosable mode</span>
+                                                </h4>
+                                            </header>
+
+                                            <section class="listing__code">
+                                                <?php
+
+                                                    echo $codeManager->transformFile('dropdowns/listing-dropdown-radio-js.html');
+
+                                                ?>
+                                            </section>
+                                        </div>
+                                    </article>
+
+                                    <div class="single-dropdown-container">
+                                        <section id="radio-dropdown" class="dropdown">
+                                            <header class="dropdown__header">
+                                                <h4 class="dropdown__title">Radio dropdown</h4>
+                                                <div class="dropdown__icon icon-triangular-arrow-down icon-triangular-arrow-down--small"></div>
+                                            </header>
+
+                                            <section class="dropdown__list-container">
+                                                <ul class="dropdown__list">
+                                                    <li>
+                                                        <label class="list-choice-field dropdown-item">
+                                                            <input name="dropdown" type="radio" value="0" />
+
+                                                            <div class="list-choice-field__wrapper">
+                                                                <div class="list-choice-field__inner">
+                                                                    <div class="list-choice-field__description dropdown-item__description">Lorem ipsum dolor</div>
                                                                 </div>
                                                             </div>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="list-choice-field dropdown-item">
+                                                            <input name="dropdown" type="radio" value="1" />
 
-                                                            <div class="choice-field__description dropdown-item__description">Lorem ipsum dolor</div>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                            </li>
-                                            <li>Sed tristique massa</li>
-                                            <li>Orci varius natoque penatibus</li>
-                                            <li>Aliquam in mi non dolor</li>
-                                        </ul>
-                                    </section>
+                                                            <div class="list-choice-field__wrapper">
+                                                                <div class="list-choice-field__inner">
+                                                                    <div class="list-choice-field__description dropdown-item__description">Sed tristique massa</div>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="list-choice-field dropdown-item">
+                                                            <input name="dropdown" type="radio" value="2" />
+
+                                                            <div class="list-choice-field__wrapper">
+                                                                <div class="list-choice-field__inner">
+                                                                    <div class="list-choice-field__description dropdown-item__description">Orci varius natoque penatibus</div>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="list-choice-field dropdown-item">
+                                                            <input name="dropdown" type="radio" value="3" />
+
+                                                            <div class="list-choice-field__wrapper">
+                                                                <div class="list-choice-field__inner">
+                                                                    <div class="list-choice-field__description dropdown-item__description">Aliquam in mi non dolor</div>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </section>
+                                        </section>
+                                    </div>
                                 </section>
                             </section>
 
                             <section class="site-section__content">
                                 <section class="subsection">
                                     <header class="subsection-header">
-                                        <h3 class="subsection-title">Options</h3>
+                                        <h3 class="subsection-title">General</h3>
                                     </header>
 
-                                    <section class="table properties-table">
+                                    <section class="subsection__content">
+                                        <section class="subsection__row">
+                                            <div class="text">
+                                                <p>
+                                                All the constants are available in Hawk.DropdownConstants object properties:
+                                                </p>
+
+                                                <ul class="simple-list">
+                                                    <li>
+                                                        <code class="inline-code">Hawk.DropdownConstants.modes</code>: <span class="variable">PLAIN</span>, <span class="variable">CHOOSABLE</span>
+                                                    </li>
+
+                                                    <li>
+                                                        <code class="inline-code">Hawk.DropdownConstants.types</code>: <span class="variable">OVERLAYER</span>, <span class="variable">EXPANDING</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </section>
+                                        
+                                        <section class="subsection__row">
+                                            <section class="table properties-table">
+                                                <div class="table__wrapper">
+                                                    <header class="table__row table__row--header">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                        Name
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        Default value
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Description
+                                                        </div>
+                                                    </header>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">slideSpeed</section>
+                                                                <section class="property__type">integer</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        200
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Speed of expanding the dropdown (in miliseconds)
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">mode</section>
+                                                                <section class="property__type">PLAIN, CHOOSABLE</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        PLAIN
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Dropdown working mode. In <span class="variable">CHOOSABLE</span> mode, the description of radio button will be set as a title of dropdown.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">type</section>
+                                                                <section class="property__type">OVERLAYER, EXPANDING</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        OVERLAYER
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Dropdown working type.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">containerClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        dropdown
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        name of the container&apos;s class
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">openClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        dropdown--open
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        classname of the open container
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">choosableModeClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        dropdown--choosable
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        name of the container&apos;s class of dropdown working in choosable mode
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">expandingTypeClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        dropdown--expanding
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        name of the container&apos;s class of dropdown working in expanding type
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">headerClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        dropdown__header
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        classname of the header
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">titleClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        dropdown__title
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        classname of the title
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">listContainerClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        dropdown__list-container
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        classname of the list container
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">listClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        dropdown__list
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        classname of the list
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Callbacks</h3>
+                                    </header>
+
+                                    <section class="table functions-table">
                                         <div class="table__wrapper">
                                             <header class="table__row table__row--header">
-                                                <div class="table__cell properties-table__name-cell">
+                                                <div class="table__cell functions-table__name-cell">
                                                 Name
                                                 </div>
 
-                                                <div class="table__cell properties-table__default-value-cell">
-                                                Default value
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                Arguments
                                                 </div>
 
-                                                <div class="table__cell properties-table__description-cell">
+                                                <div class="table__cell functions-table__description-cell">
                                                 Description
                                                 </div>
                                             </header>
 
                                             <section class="table__row">
-                                                <div class="table__cell properties-table__name-cell">
-                                                    <article class="property">
-                                                        <section class="property__name">slideSpeed</section>
-                                                        <section class="property__type">integer</section>
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        onShow
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+
+                                                        </div>
                                                     </article>
                                                 </div>
 
-                                                <div class="table__cell properties-table__default-value-cell">
-                                                200
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    <article class="function-parameter">
+                                                        <div class="function-parameter__name">
+                                                        dropdown
+                                                        </div>
+
+                                                        <div class="function-parameter__description">
+                                                        current dropdown
+                                                        </div>
+                                                    </article>
                                                 </div>
 
-                                                <div class="table__cell properties-table__description-cell">
-                                                Speed of expanding the dropdown (in miliseconds)
+                                                <div class="table__cell functions-table__description-cell">
+                                                Executes immediately after the dropdown&apos;s list is shown.
                                                 </div>
                                             </section>
 
                                             <section class="table__row">
-                                                <div class="table__cell properties-table__name-cell">
-                                                    <article class="property">
-                                                        <section class="property__name">containerClass</section>
-                                                        <section class="property__type">string</section>
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        onHide
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        
+                                                        </div>
                                                     </article>
                                                 </div>
 
-                                                <div class="table__cell properties-table__default-value-cell">
-                                                dropdown
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    <article class="function-parameter">
+                                                        <div class="function-parameter__name">
+                                                        dropdown
+                                                        </div>
+
+                                                        <div class="function-parameter__description">
+                                                        current dropdown
+                                                        </div>
+                                                    </article>
                                                 </div>
 
-                                                <div class="table__cell properties-table__description-cell">
-                                                name of the container&apos;s class
+                                                <div class="table__cell functions-table__description-cell">
+                                                Executes immediately after the dropdown&apos;s list is hidden.
                                                 </div>
                                             </section>
 
                                             <section class="table__row">
-                                                <div class="table__cell properties-table__name-cell">
-                                                    <article class="property">
-                                                        <section class="property__name">openClass</section>
-                                                        <section class="property__type">string</section>
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        onRadioSelected
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        
+                                                        </div>
                                                     </article>
                                                 </div>
 
-                                                <div class="table__cell properties-table__default-value-cell">
-                                                dropdown--open
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    <ul class="function-parameters-list">
+                                                        <li>
+                                                            <article class="function-parameter">
+                                                                <div class="function-parameter__name">
+                                                                dropdown
+                                                                </div>
+
+                                                                <div class="function-parameter__description">
+                                                                current dropdown
+                                                                </div>
+                                                            </article>
+                                                        </li>
+
+                                                        <li>
+                                                            <article class="function-parameter">
+                                                                <div class="function-parameter__name">
+                                                                radio
+                                                                </div>
+
+                                                                <div class="function-parameter__description">
+                                                                current radio button selected
+                                                                </div>
+                                                            </article>
+                                                        </li>
+                                                    </ul>
                                                 </div>
 
-                                                <div class="table__cell properties-table__description-cell">
-                                                classname of the open container
-                                                </div>
-                                            </section>
-
-                                            <section class="table__row">
-                                                <div class="table__cell properties-table__name-cell">
-                                                    <article class="property">
-                                                        <section class="property__name">headerClass</section>
-                                                        <section class="property__type">string</section>
-                                                    </article>
-                                                </div>
-
-                                                <div class="table__cell properties-table__default-value-cell">
-                                                dropdown__header
-                                                </div>
-
-                                                <div class="table__cell properties-table__description-cell">
-                                                classname of the header
-                                                </div>
-                                            </section>
-
-                                            <section class="table__row">
-                                                <div class="table__cell properties-table__name-cell">
-                                                    <article class="property">
-                                                        <section class="property__name">titleClass</section>
-                                                        <section class="property__type">string</section>
-                                                    </article>
-                                                </div>
-
-                                                <div class="table__cell properties-table__default-value-cell">
-                                                dropdown__title
-                                                </div>
-
-                                                <div class="table__cell properties-table__description-cell">
-                                                classname of the title
-                                                </div>
-                                            </section>
-
-                                            <section class="table__row">
-                                                <div class="table__cell properties-table__name-cell">
-                                                    <article class="property">
-                                                        <section class="property__name">listClass</section>
-                                                        <section class="property__type">string</section>
-                                                    </article>
-                                                </div>
-
-                                                <div class="table__cell properties-table__default-value-cell">
-                                                dropdown__list
-                                                </div>
-
-                                                <div class="table__cell properties-table__description-cell">
-                                                classname of the list
+                                                <div class="table__cell functions-table__description-cell">
+                                                Executes when the radio button is selected.
                                                 </div>
                                             </section>
                                         </div>
                                     </section>
                                 </section>
+
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Public methods</h3>
+                                    </header>
+
+                                    <section class="table functions-table">
+                                        <div class="table__wrapper">
+                                            <header class="table__row table__row--header">
+                                                <div class="table__cell functions-table__name-cell">
+                                                Name
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                Arguments
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Description
+                                                </div>
+                                            </header>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        show
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        Dropdown
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Shows the dropdown.
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        hide
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        Dropdown
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Hides the dropdown.
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        isOpen
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        boolean
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Says whether the dropdown is open at this moment or not.
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </section>
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="overlayers-anchor" class="site-section section-07">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">Overlayers</h2>
+                            </header>
+
+                            <div class="text">
+                                <p>
+                                Overlayers are very useful way to present contents.
+                                </p>
+                            </div>
+
+                            <section class="site-section__content">
+                                <article class="listing">
+                                    <div class="listing__wrapper">
+                                        <header class="listing__header">
+                                            <h4 class="listing__title">
+                                                <span class="listing__name">Listing 12</span>
+                                                <span class="listing__description">&ndash; dropdown &ndash; HTML code</span>
+                                            </h4>
+                                        </header>
+
+                                        <section class="listing__code">
+                                            <?php
+
+                                                echo $codeManager->transformFile('dropdowns/listing-dropdown.html');
+
+                                            ?>
+                                        </section>
+                                    </div>
+                                </article>
+
+                                <div class="button-container">
+                                    <button class="button ajax-overlayer-button" data-id="1" data-overlayer-id="1" type="button">See more</button>
+                                </div>
                             </section>
                         </div>
                     </div>
@@ -1399,7 +1755,8 @@
                     </div>
                 </section>
 
-                <section id="overlayer-anchor" class="site-section section-05">
+                <!---
+                    <section id="overlayer-anchor" class="site-section section-05">
                     <div class="site-section__layer">
                         <div class="site-section__inner">
                             <header class="section-header">
@@ -1437,22 +1794,7 @@
                         </div>
                     </div>
                 </section>
-
-                <section id="ajax-overlayer-anchor" class="site-section section-07">
-                    <div class="site-section__layer">
-                        <div class="site-section__inner">
-                            <header class="section-header">
-                                <h2 class="section-title">AJAX overlayers</h2>
-                            </header>
-
-                            <section class="site-section__content">
-                                <div class="button-container">
-                                    <button class="button ajax-overlayer-button" data-id="1" data-overlayer-id="1" type="button">See more</button>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </section>
+            -->
 
                 <section id="more-contents-anchor" class="site-section section-06">
                     <div class="site-section__layer">

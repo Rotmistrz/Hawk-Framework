@@ -104,8 +104,7 @@ Hawk.scrollToElement = function(options) {
 Hawk.DropdownConstants = {
     modes: {
         PLAIN: 0,
-        CHECKBOX: 1,
-        RADIO: 2
+        CHOOSABLE: 1
     },
 
     types: {
@@ -137,6 +136,7 @@ Hawk.Dropdown = function(container, options) {
 
         containerClass: 'dropdown',
         expandingTypeClass: 'dropdown--expanding',
+        choosableModeClass: 'dropdown--choosable',
         openClass: 'dropdown--open',
         headerClass: 'dropdown__header',
         titleClass: 'dropdown__title',
@@ -227,6 +227,10 @@ Hawk.Dropdown = function(container, options) {
 
         if (this.options.type == Hawk.DropdownConstants.types.EXPANDING) {
             this.container.addClass(this.options.expandingTypeClass);
+        }
+
+        if (this.options.mode == Hawk.DropdownConstants.modes.CHOOSABLE) {
+            this.container.addClass(this.options.choosableModeClass);
         }
 
         this.hide();
@@ -1692,22 +1696,17 @@ Hawk.run = function() {
     });
 
     //this.initializeDropdowns();
-    var defaultDropdown = new this.Dropdown($('#default-dropdown'), {
-        onShow: function(defaultDropdown) {
-            console.log("Otwarto");
-        },
-        onHide: function(defaultDropdown) {
-            console.log("Ukryto");
-        }
-    });
-    defaultDropdown.run();
+    var exemplaryDropdown = new this.Dropdown($('#exemplary-dropdown'));
+    exemplaryDropdown.run();
 
     var expandingDropdown = new this.Dropdown($('#expanding-dropdown'), {
         type: Hawk.DropdownConstants.types.EXPANDING
     });
     expandingDropdown.run();
 
-    var radioDropdown = new this.Dropdown($('#radio-dropdown'));
+    var radioDropdown = new this.Dropdown($('#radio-dropdown'), {
+        mode: Hawk.DropdownConstants.modes.CHOOSABLE
+    });
     radioDropdown.run();
 
     this.initializeMoreContentManagers({
