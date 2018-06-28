@@ -467,8 +467,14 @@ max-width: 300px;
     }
 }
 
-.single-dropdown-container {
+.spinner {
 
+}
+.spinner--medium {
+color: $medium-color;
+}
+.spinner--large {
+font-size: 36px;
 }
 
 /***** FORMS *****/
@@ -726,7 +732,7 @@ padding: 40px 0;
 .button-container {
 text-align: center;
 clear: both;
-padding: 0 5px;
+padding: 20px 5px;
 @include box-sizing(border-box);
 }
 
@@ -744,18 +750,65 @@ display: inline-block;
 margin: 0 0 0 -5px;
 border: 0;
 cursor: pointer;
-font-weight: 400;
-padding: 13px 50px;
-font-size: $button-font-size;
+font-size: $large-font-size;
 font-family: $sans-serif-font-family;
 letter-spacing: 1px;
-border: 1px solid $light-color-03;
+border: 2px solid $medium-color;
+color: $medium-color;
+font-weight: 700;
+background: none;
 @include box-sizing(border-box);
 @include transition(all .2s linear);
-@include background-gradient-down($light-color 10%, $light-color-02 50%, $light-color-02 100%);
+
+    &__wrapper {
+    padding: 13px 50px;
+    position: relative;
+    overflow: hidden;
+    
+        &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include transition(all .2s linear);
+        background: $medium-color;
+        }
+    }
+
+    &__inner {
+    position: relative;
+    z-index: 5;
+    }
+
+    &:hover {
+    color: $light-color;
+    @include transition(all .2s linear .2s);
+
+        .button__wrapper {
+            &:after {
+            top: 0;
+            }
+        }
+    }
 }
-.button:hover {
-border-color: $grey;
+.button--filled {
+border: 0;
+color: $light-color;
+
+    .button__wrapper {
+    background: $medium-color;
+
+        &:after {
+        background: $dark-color;
+        }
+    }
+
+    &:hover {
+
+    }
 }
 
 .simple-button {

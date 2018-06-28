@@ -1072,7 +1072,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
-                                                        name of the container&apos;s class
+                                                        Name of the container&apos;s class.
                                                         </div>
                                                     </section>
 
@@ -1089,7 +1089,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
-                                                        classname of the open container
+                                                        Classname of the open container.
                                                         </div>
                                                     </section>
 
@@ -1106,7 +1106,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
-                                                        name of the container&apos;s class of dropdown working in choosable mode
+                                                        Name of the container&apos;s class of dropdown working in choosable mode.
                                                         </div>
                                                     </section>
 
@@ -1123,7 +1123,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
-                                                        name of the container&apos;s class of dropdown working in expanding type
+                                                        Name of the container&apos;s class of dropdown working in expanding type.
                                                         </div>
                                                     </section>
 
@@ -1140,7 +1140,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
-                                                        classname of the header
+                                                        Classname of the header.
                                                         </div>
                                                     </section>
 
@@ -1157,7 +1157,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
-                                                        classname of the title
+                                                        Classname of the title.
                                                         </div>
                                                     </section>
 
@@ -1174,7 +1174,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
-                                                        classname of the list container
+                                                        Classname of the list container.
                                                         </div>
                                                     </section>
 
@@ -1191,7 +1191,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
-                                                        classname of the list
+                                                        Classname of the list.
                                                         </div>
                                                     </section>
                                                 </div>
@@ -1433,7 +1433,11 @@
 
                             <div class="text">
                                 <p>
-                                Overlayers are very useful way to present contents.
+                                Overlayers are very useful way to present contents. There is used AJAX to load content dynamically. To make element binded with certain overlayer, add the class <code class="variable">ajax-overlayer-button</code> and attributes <code class="inline-code">data-overlayer-id</code> with id number of the overlayer which should be used to display content and <code class="inline-code">data-id</code> with id of the content which should be loaded.
+                                </p>
+
+                                <p>
+                                The HTML code should be placed at the end of <code class="inline-code">body</code>.
                                 </p>
                             </div>
 
@@ -1442,15 +1446,15 @@
                                     <div class="listing__wrapper">
                                         <header class="listing__header">
                                             <h4 class="listing__title">
-                                                <span class="listing__name">Listing 12</span>
-                                                <span class="listing__description">&ndash; dropdown &ndash; HTML code</span>
+                                                <span class="listing__name">Listing 17</span>
+                                                <span class="listing__description">&ndash; overlayer &ndash; HTML code</span>
                                             </h4>
                                         </header>
 
                                         <section class="listing__code">
                                             <?php
 
-                                                echo $codeManager->transformFile('dropdowns/listing-dropdown.html');
+                                                echo $codeManager->transformFile('listing-overlayer.html');
 
                                             ?>
                                         </section>
@@ -1458,8 +1462,178 @@
                                 </article>
 
                                 <div class="button-container">
-                                    <button class="button ajax-overlayer-button" data-id="1" data-overlayer-id="1" type="button">See more</button>
+                                    <button class="button button--filled ajax-overlayer-button" data-id="1" data-overlayer-id="1" type="button">
+                                        <div class="button__wrapper">
+                                            <div class="button__inner">
+                                            See more
+                                            </div>
+                                        </div>
+                                    </button>
                                 </div>
+
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">General</h3>
+                                    </header>
+
+                                    <section class="subsection__content">
+                                        <section class="subsection__row">
+                                            <section class="table properties-table">
+                                                <div class="table__wrapper">
+                                                    <header class="table__row table__row--header">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                        Name
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        Default value
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Description
+                                                        </div>
+                                                    </header>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">fadeSpeed</section>
+                                                                <section class="property__type">integer</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        400
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Speed of fading the overlayer.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">slideSpeed</section>
+                                                                <section class="property__type">integer</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        200
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Speed of showing the content of overlayer.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">ajaxFilePath</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        /ajax.php
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Path to AJAX file.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">loadActionName</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        load-overlayer
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Name of the <code class="inline-code">$_POST['action']</code> variable passed to AJAX file.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">innerClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        overlayer__inner
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Name of the wrapper class.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">contentContainerClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        overlayer__content
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Classname of the container for content.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">closeButtonClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        overlayer__close
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Classname of the close button.
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="table__row">
+                                                        <div class="table__cell properties-table__name-cell">
+                                                            <article class="property">
+                                                                <section class="property__name">loadingLayerClass</section>
+                                                                <section class="property__type">string</section>
+                                                            </article>
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__default-value-cell">
+                                                        overlayer__loading-layer
+                                                        </div>
+
+                                                        <div class="table__cell properties-table__description-cell">
+                                                        Classname of the loading layer.
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
                             </section>
                         </div>
                     </div>
@@ -2282,27 +2456,33 @@
             </footer>
         </div>
 
-        <section id="overlayer" class="overlayer" data-overlayer-id="1">
-            <div class="overlayer__inner">
-                <section class="overlayer__content">
+        <section id="overlayer" class="overlayer" data-overlayer-id="1"> 
+            <div class="wrapper">
+                <div>
+                    <div class="overlayer__inner"> 
+                        <section class="overlayer__content"> 
 
-                </section>
+                        </section> 
 
-                <section class="overlayer__spinner-layer">
-                    <div class="wrapper">
-                        <div>
-                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="overlayer__close">
-                    <div class="icon-cross icon-cross--rotated icon-cross--large">
-                        <div></div>
-                        <div></div>
+                        <section class="overlayer__loading-layer"> 
+                            <div class="wrapper"> 
+                                <div>
+                                    <div class="spinner spinner--large spinner--medium">
+                                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                    </div>
+                                </div> 
+                            </div> 
+                        </section> 
                     </div>
                 </div>
             </div>
+
+            <div class="overlayer__close"> 
+                <div class="icon-plus icon-plus--rotated icon-plus--large icon-plus--light"> 
+                    <div></div> 
+                    <div></div> 
+                </div> 
+            </div> 
         </section>
 
         <script src="/js/hawk.js"></script>

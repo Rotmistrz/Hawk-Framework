@@ -268,136 +268,6 @@ Hawk.Dropdown = function(container, options) {
     }
 }
 
-Hawk.initializeDropdowns = function() {
-    var dropdowns = $('.dropdown');
-    var that = this;
-
-    dropdowns.each(function() {
-        var dropdown = new that.Dropdown($(this));
-        dropdown.run();
-    });
-
-    return this;
-}
-
-Hawk.OverlayerManager = function(id, options) {
-    this.container = $('#' + id);
-    this.overlayerId = this.container.attr('data-overlayer-id');
-    
-    this.buttons = $('.overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
-
-    this.inner;
-    this.contentContainer;
-    this.closeButton;
-
-    this.currentButton;
-
-    this.defaultOptions = {
-        fadeSpeed: 400,
-        slideSpeed: 500,
-        innerClass: 'overlayer__inner',
-        contentContainerClass: 'overlayer__content',
-        closeButtonClass: 'overlayer__close',
-        showCallback: function(container, button) {},
-        hideCallback: function(container, button) {}
-    };
-
-    this.options = Hawk.mergeObjects(this.defaultOptions, options);
-
-    this.show = function(callback) {
-        var that = this;
-
-        $('body').css({ overflow: 'hidden' });
-
-        this.container.velocity("fadeIn", {
-            duration: that.options.fadeSpeed,
-            complete: function() {
-                if(that.options.showCallback !== undefined) {
-                    that.options.showCallback(that.container, that.currentButton);
-                }
-
-                if(callback !== undefined) {
-                    callback();
-                }
-            }
-        });
-
-        return this;
-    }
-
-    this.hide = function(callback) {
-        var that = this;
-
-        this.container.velocity("fadeOut", {
-            duration: that.options.fadeSpeed,
-            complete: function() {
-                $('body').css({ overflow: 'auto' });
-
-                if(that.options.hideCallback !== undefined) {
-                    that.options.hideCallback(that.container, that.currentButton);
-                }
-
-                if(callback !== undefined) {
-                    callback();
-                }
-
-                that.currentButton = undefined;
-            }
-        });
-
-        return this;
-    }
-
-    this.setContent = function(content) {
-        var that = this;
-
-        this.contentContainer.html(content).delay(100);
-        this.contentContainer.velocity("slideDown", {
-            duration: that.options.slideSpeed
-        });
-
-        return this;
-    }
-
-    this.run = function() {
-        var that = this;
-
-        this.inner = this.container.find('.' + this.options.innerClass);
-        this.contentContainer = this.container.find('.' + this.options.contentContainerClass).first();
-        this.closeButton = this.container.find('.' + this.options.closeButtonClass);
-
-        this.buttons.click(function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-
-            that.currentButton = $(this);
-
-            var id = $(this).attr('data-id');
-
-            var current = $('.overlayer-content[data-id=' + id + ']').first();
-
-            that.show();
-
-            that.setContent(current.html());
-        });
-
-        that.container.click(function() {
-            that.hide();
-        });
-
-        this.container.find('.' + that.options.innerClass + ', .' + that.options.innerClass + ' :not(.' + that.options.closeButtonClass + ', .' + that.options.closeButtonClass + ' *)').click(function(e) {
-            e.stopPropagation();
-            return;
-        });
-
-        this.closeButton.click(function() {
-            that.hide();
-        });
-
-        return this;
-    }
-}
-
 Hawk.AjaxOverlayerManager = function(id, options) {
     this.container = $('#' + id);
     this.overlayerId = parseInt(this.container.attr('data-overlayer-id'));
@@ -407,7 +277,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
     this.inner;
     this.contentContainer;
     this.closeButton;
-    this.spinnerLayer;
+    this.loadingLayer;
     
     this.currentButton;
 
@@ -416,11 +286,15 @@ Hawk.AjaxOverlayerManager = function(id, options) {
     this.defaultOptions = {
         fadeSpeed: 400,
         slideSpeed: 400,
+
         ajaxFilePath: "/ajax.php",
+        loadActionName: "load-overlayer",
+
         innerClass: 'overlayer__inner',
         contentContainerClass: 'overlayer__content',
         closeButtonClass: 'overlayer__close',
-        spinnerLayerClass: 'overlayer__spinner-layer',
+        loadingLayerClass: 'overlayer__loading-layer',
+
         showCallback: function(container, button) {},
         hideCallback: function(container, button) {},
         autoloadFunction: function(overlayerManager, hash) {
@@ -448,10 +322,8 @@ Hawk.AjaxOverlayerManager = function(id, options) {
             complete: function() {
                 $('body').css({ 'overflow': 'hidden' });
 
-                that.options.showCallback(that.container, that.currentButton);
-
-                if(callback !== undefined) {
-                    callback();
+                if (typeof that.options.showCallback != 'undefined') {
+                    that.options.showCallback(that.container, that.currentButton);
                 }
             }
         });
@@ -459,7 +331,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         return this;
     };
 
-    this.hide = function(callback) {
+    this.hide = function() {
         var that = this;
 
         try {
@@ -474,10 +346,8 @@ Hawk.AjaxOverlayerManager = function(id, options) {
                 $('body').css({ 'overflow': 'auto'});
                 that.contentContainer.html('').hide();
 
-                that.options.hideCallback(that.container, that.currentButton);
-
-                if(callback !== undefined) {
-                    callback();
+                if (typeof that.options.hideCallback != 'undefined') {
+                    that.options.hideCallback(that.container, that.currentButton);
                 }
 
                 that.currentButton = undefined;
@@ -509,13 +379,13 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         var lang = $('html').attr('lang');
 
         that.show();
-        that.spinnerLayer.show();
+        that.loadingLayer.show();
 
         $.ajax({
             type: "POST",
             url: that.options.ajaxFilePath,
             dataType: "json",
-            data: { 'action': 'load-overlayer', 'id': id, 'lang': lang },
+            data: { 'action': that.options.loadActionName, 'id': id, 'lang': lang },
             success: function(result) {
                 if(result.error > 0) {
                     // here should appear error layer
@@ -535,7 +405,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
                 //alert(errorThrown);
             },
             complete: function() {
-                that.spinnerLayer.hide();
+                that.loadingLayer.hide();
             }
         });
         
@@ -548,7 +418,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         this.inner = this.container.find('.' + this.options.innerClass);
         this.contentContainer = this.container.find('.' + this.options.contentContainerClass);
         this.closeButton = $(this.container.find('.' + this.options.closeButtonClass));
-        this.spinnerLayer = $(this.container.find('.' + this.options.spinnerLayerClass));
+        this.loadingLayer = $(this.container.find('.' + this.options.loadingLayerClass));
 
         $(this.buttons).click(function(e) {
             e.preventDefault();
@@ -1695,7 +1565,6 @@ Hawk.run = function() {
         that.refresh();
     });
 
-    //this.initializeDropdowns();
     var exemplaryDropdown = new this.Dropdown($('#exemplary-dropdown'));
     exemplaryDropdown.run();
 
@@ -1733,9 +1602,6 @@ Hawk.run = function() {
             });
         }
     });
-
-    var overlayer = new this.OverlayerManager('overlayer');
-    overlayer.run();
 
     var ajaxOverlayer = new this.AjaxOverlayerManager('overlayer');
     ajaxOverlayer.run();

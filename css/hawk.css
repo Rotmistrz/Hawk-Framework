@@ -363,15 +363,25 @@
     display: none;
     font-size: 36px; }
   .overlayer .overlayer__inner {
-    margin: 40px auto;
-    max-width: 1360px;
     position: relative;
-    padding: 80px 60px;
-    background: #f6f6f6; }
+    background: #f6f6f6;
+    margin: 50px 20px;
+    padding: 20px; }
+    @media (min-width: 420px) {
+      .overlayer .overlayer__inner {
+        padding: 40px; } }
+    @media (min-width: 768px) {
+      .overlayer .overlayer__inner {
+        margin: 70px 40px; } }
+    @media (min-width: 1300px) {
+      .overlayer .overlayer__inner {
+        margin: 70px auto;
+        max-width: 1160px;
+        padding: 80px 60px; } }
   .overlayer .overlayer__close {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 10px;
+    right: 20px;
     -webkit-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
@@ -379,6 +389,14 @@
     z-index: 7000;
     display: block;
     cursor: pointer; }
+    @media (min-width: 768px) {
+      .overlayer .overlayer__close {
+        top: 20px;
+        right: 20px; } }
+    @media (min-width: 1700px) {
+      .overlayer .overlayer__close {
+        top: 30px;
+        right: 30px; } }
   .overlayer .overlayer__content {
     display: none; }
 
@@ -679,8 +697,8 @@
 
 /* icon cross */
 .icon-plus {
-  width: 21px;
-  height: 21px;
+  width: 20px;
+  height: 20px;
   position: relative;
   overflow: hidden; }
   .icon-plus:before, .icon-plus:after {
@@ -692,24 +710,24 @@
     width: 100%;
     left: 0;
     top: 50%;
-    height: 3px;
-    margin: -1.5px 0 0 0; }
+    height: 2px;
+    margin: -1px 0 0 0; }
   .icon-plus:after {
-    width: 3px;
+    width: 2px;
     top: 0;
     left: 50%;
-    margin: 0 0 0 -1.5px;
+    margin: 0 0 0 -1px;
     height: 100%; }
 
 .icon-plus--large {
   width: 26px;
   height: 26px; }
   .icon-plus--large:before {
-    height: 4px;
-    margin: -2px 0 0 0; }
+    height: 2px;
+    margin: -1px 0 0 0; }
   .icon-plus--large:after {
-    width: 4px;
-    margin: 0 0 0 -2px; }
+    width: 2px;
+    margin: 0 0 0 -1px; }
 
 .icon-plus--small {
   width: 16px;
@@ -720,6 +738,12 @@
   .icon-plus--small:after {
     width: 2px;
     margin: 0 0 0 -1px; }
+
+.icon-plus--light:before, .icon-plus--light:after {
+  background: #fff; }
+
+.icon-plus--medium:before, .icon-plus--medium:after {
+  background: #0f2672; }
 
 .icon-plus--rotated {
   -webkit-transform: rotate(45deg);
