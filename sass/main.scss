@@ -125,6 +125,21 @@ padding: 0 0 0 20px;
     }
 }
 
+.plain-list {
+    > li {
+    padding: 8px 0;
+    display: block;
+
+        &:first-child {
+        padding-top: 0;
+        }
+
+        &:last-child {
+        padding-bottom: 0;
+        }
+    }
+}
+
 .icons {
 text-align: center;
 padding: 30px 0;
@@ -365,6 +380,10 @@ list-style-type: none;
 .function-parameter {
     &__name {
     font-weight: 700;
+    }
+
+    &__type {
+    font-style: italic;
     }
 }
 

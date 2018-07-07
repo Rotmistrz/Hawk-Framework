@@ -264,7 +264,7 @@ Hawk.Dropdown = function(container, options) {
             });
         }
 
-        return this;
+        return true;
     }
 }
 
@@ -292,12 +292,12 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
         innerClass: 'overlayer__inner',
         contentContainerClass: 'overlayer__content',
-        closeButtonClass: 'overlayer__close',
+        closeButtonClass: 'ajax-overlayer-close',
         loadingLayerClass: 'overlayer__loading-layer',
 
-        showCallback: function(container, button) {},
-        hideCallback: function(container, button) {},
-        autoloadFunction: function(overlayerManager, hash) {
+        onShow: function(overlayerManager) {},
+        onHide: function(overlayerManager) {},
+        onInitialize: function(overlayerManager, hash) {
             var pattern = /n_[0-9]+(-[a-zA-Z0-9]+)+/
 
             if(pattern.test(hash)) {
@@ -314,7 +314,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
     this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
-    this.show = function(callback) {
+    this.show = function() {
         var that = this;
 
         this.container.velocity("fadeIn", {
@@ -322,14 +322,14 @@ Hawk.AjaxOverlayerManager = function(id, options) {
             complete: function() {
                 $('body').css({ 'overflow': 'hidden' });
 
-                if (typeof that.options.showCallback != 'undefined') {
-                    that.options.showCallback(that.container, that.currentButton);
+                if (typeof that.options.onShow == 'function') {
+                    that.options.onShow(that);
                 }
             }
         });
 
         return this;
-    };
+    }
 
     this.hide = function() {
         var that = this;
@@ -343,11 +343,12 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         this.container.velocity("fadeOut", {
             duration: this.options.fadeSpeed,
             complete: function() {
-                $('body').css({ 'overflow': 'auto'});
+                $('body').css({ 'overflow': 'auto' });
+
                 that.contentContainer.html('').hide();
 
-                if (typeof that.options.hideCallback != 'undefined') {
-                    that.options.hideCallback(that.container, that.currentButton);
+                if (typeof that.options.onHide == 'function') {
+                    that.options.onHide(that);
                 }
 
                 that.currentButton = undefined;
@@ -387,7 +388,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
             dataType: "json",
             data: { 'action': that.options.loadActionName, 'id': id, 'lang': lang },
             success: function(result) {
-                if(result.error > 0) {
+                if (result.error > 0) {
                     // here should appear error layer
                     return;
                 }
@@ -420,11 +421,17 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         this.closeButton = $(this.container.find('.' + this.options.closeButtonClass));
         this.loadingLayer = $(this.container.find('.' + this.options.loadingLayerClass));
 
+        this.container.on('click', '.' + this.options.closeButtonClass, function(e) {
+            e.preventDefault();
+
+            that.hide();
+        });
+
         $(this.buttons).click(function(e) {
             e.preventDefault();
             e.stopPropagation();
 
-            if(!that.open) {
+            if (!that.open) {
                 that.currentButton = $(this);
 
                 var id = $(this).attr('data-id');
@@ -439,83 +446,86 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
         this.container.find('.' + that.options.innerClass + ', .' + that.options.innerClass + ' :not(.' + that.options.closeButtonClass + ', .' + that.options.closeButtonClass + ' *)').click(function(e) {
             e.stopPropagation();
+
             return;
-        });
-
-        this.closeButton.click(function(e) {
-            e.preventDefault();
-
-            that.hide();
         });
 
         var hash = window.location.hash;
         
-        this.options.autoloadFunction(this, hash);
+        if (typeof this.options.onInitialize == 'function') {
+            this.options.onInitialize(this, hash);
+        }
 
-        return this;
+        return true;
     };
 }
 
-Hawk.MoreContentManager = function(id, options) {
-    this.id = id;
-    this.button = $('.more-content-button[data-id=' + this.id + ']');
-    this.contents = $('.more-content[data-id=' + this.id + ']');
+Hawk.MoreContentManager = function(type, options) {
+    this.type = type;
+    this.buttons = $('.more-content-button[data-type="' + this.type + '"]');
+    this.contents = $('.more-content[data-type="' + this.type + '"]');
 
     this.states = {
-        hidden: 'hidden',
-        visible: 'visible'
+        HIDDEN: 0,
+        VISIBLE: 1
     };
 
     this.defaultOptions = {
         slideSpeed: 400,
-        showButtonCallback: function(button) {
+        onShow: function(id, button) {
             button.velocity({ opacity: 0 }, {
                 duration: 400,
                 complete: function() {
-                    
+                    button.css({ visibility: 'hidden' });
                 }
             });
         },
-        hideButtonCallback: function(button) {}
+        onHide: function(id, button) {}
     };
 
     this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
-    this.state;
-
-    if(this.button === undefined || this.contents === undefined) {
-        return false;
-    }
-
-    this.show = function() {
+    this.show = function(id) {
         var that = this;
 
-        this.contents.velocity("slideDown", {
+        var currentButton = this.buttons.filter('[data-id="' + id + '"]');
+        var currentContent = this.contents.filter('[data-id="' + id + '"]');
+
+        currentContent.velocity("slideDown", {
             duration: that.options.slideSpeed,
             complete: function() {
-                that.contents.velocity({ opacity: 1 }, {
+                currentContent.velocity({ opacity: 1 }, {
                     duration: 400
                 });
 
-                that.options.showButtonCallback(that.button);
-                that.state = that.states.visible;
+                if (typeof that.options.onShow == 'function') {
+                    that.options.onShow(id, currentButton);
+                }
+                
+                currentContent.attr('data-state', that.states.VISIBLE);
             }
         });
 
         return this;
     }
 
-    this.hide = function() {
+    this.hide = function(id) {
         var that = this;
 
-        that.contents.velocity({ opacity: 0 }, {
+        var currentButton = this.buttons.filter('[data-id="' + id + '"');
+        var currentContent = this.contents.filter('[data-id="' + id + '"');
+
+        currentContent.velocity({ opacity: 0 }, {
             duration: 400,
             complete: function() {
-                that.contents.velocity("slideUp", {
+                currentContent.velocity("slideUp", {
                     duration: that.options.slideSpeed,
                     complete: function() {
-                        that.options.hideButtonCallback(that.button);
-                        that.state = that.states.hidden;
+                        if (typeof that.options.onHide == 'function') {
+                            that.options.onHide(id, currentButton);
+                        }
+
+                        currentContent.attr('data-state', that.states.HIDDEN);
                     }
                 });
             }
@@ -524,26 +534,38 @@ Hawk.MoreContentManager = function(id, options) {
         return this;
     }
 
+    this.isHidden = function(id) {
+        var currentContent = this.contents.filter('[data-id="' + id + '"');
+
+        return currentContent.attr('data-state') == this.states.HIDDEN;
+    }
+
     this.run = function() {
         var that = this;
 
-        this.button.show();
+        this.buttons.show();
         this.contents.hide().css({ opacity: 0 });
 
-        this.state = this.states.hidden;
+        this.contents.attr('data-state', this.states.HIDDEN);
 
-        this.button.click(function(e) {
+        if (typeof this.buttons == 'undefined' || typeof this.contents == 'undefined') {
+            return false;
+        }
+
+        this.buttons.click(function(e) {
             e.preventDefault();
             e.stopPropagation();
 
-            if(that.state == that.states.hidden) {
-                that.show();
+            var currentId = $(this).attr('data-id');
+
+            if (that.isHidden(currentId)) {
+                that.show(currentId);
             } else {
-                that.hide();
+                that.hide(currentId);
             }
         });
 
-        return this;
+        return true;
     }
 }
 
@@ -1578,7 +1600,7 @@ Hawk.run = function() {
     });
     radioDropdown.run();
 
-    this.initializeMoreContentManagers({
+    /**this.initializeMoreContentManagers({
         showButtonCallback: function(button) {
             button.velocity({ opacity: 0 }, {
                 duration: 400,
@@ -1601,7 +1623,10 @@ Hawk.run = function() {
                 }
             });
         }
-    });
+    });**/
+
+    var moreContentManager = new this.MoreContentManager(1);
+    moreContentManager.run();
 
     var ajaxOverlayer = new this.AjaxOverlayerManager('overlayer');
     ajaxOverlayer.run();

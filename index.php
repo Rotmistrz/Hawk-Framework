@@ -1416,6 +1416,28 @@
                                                 Says whether the dropdown is open at this moment or not.
                                                 </div>
                                             </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        run
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        boolean
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Runs the Dropdown.
+                                                </div>
+                                            </section>
                                         </div>
                                     </section>
                                 </section>
@@ -1605,7 +1627,7 @@
                                                         </div>
 
                                                         <div class="table__cell properties-table__default-value-cell">
-                                                        overlayer__close
+                                                        ajax-overlayer-close
                                                         </div>
 
                                                         <div class="table__cell properties-table__description-cell">
@@ -1634,6 +1656,366 @@
                                         </section>
                                     </section>
                                 </section>
+
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Callbacks</h3>
+                                    </header>
+
+                                    <section class="table functions-table">
+                                        <div class="table__wrapper">
+                                            <header class="table__row table__row--header">
+                                                <div class="table__cell functions-table__name-cell">
+                                                Name
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                Arguments
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Description
+                                                </div>
+                                            </header>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        onShow
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    <article class="function-parameter">
+                                                        <div class="function-parameter__name">
+                                                        overlayerManager
+                                                        </div>
+
+                                                        <div class="function-parameter__type">
+                                                        AjaxOverlayerManager
+                                                        </div>
+
+                                                        <div class="function-parameter__description">
+                                                        current overlayer manager
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Executes immediately after the overlayer is shown.
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        onHide
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    <article class="function-parameter">
+                                                        <div class="function-parameter__name">
+                                                        overlayerManager
+                                                        </div>
+
+                                                        <div class="function-parameter__type">
+                                                        AjaxOverlayerManager
+                                                        </div>
+
+                                                        <div class="function-parameter__description">
+                                                        current overlayer manager
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Executes immediately after the overlayer is hidden.
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        onInitialize
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    <ul class="plain-list">
+                                                        <li>
+                                                            <article class="function-parameter">
+                                                                <div class="function-parameter__name">
+                                                                overlayerManager
+                                                                </div>
+
+                                                                <div class="function-parameter__type">
+                                                                AjaxOverlayerManager
+                                                                </div>
+
+                                                                <div class="function-parameter__description">
+                                                                current overlayer manager
+                                                                </div>
+                                                            </article>
+                                                        </li>
+
+                                                        <li>
+                                                            <article class="function-parameter">
+                                                                <div class="function-parameter__name">
+                                                                hash
+                                                                </div>
+
+                                                                <div class="function-parameter__type">
+                                                                string
+                                                                </div>
+
+                                                                <div class="function-parameter__description">
+                                                                current hash
+                                                                </div>
+                                                            </article>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Executes immediately after the overlayer manager is initialized.
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </section>
+                                </section>
+
+                                <section class="subsection">
+                                    <header class="subsection-header">
+                                        <h3 class="subsection-title">Public methods</h3>
+                                    </header>
+
+                                    <section class="table functions-table">
+                                        <div class="table__wrapper">
+                                            <header class="table__row table__row--header">
+                                                <div class="table__cell functions-table__name-cell">
+                                                Name
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                Arguments
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Description
+                                                </div>
+                                            </header>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        show
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        AjaxOverlayerManager
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Shows the overlayer.
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        hide
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        AjaxOverlayerManager
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Hides the overlayer.
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        changeContent
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        AjaxOverlayerManager
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    <article class="function-parameter">
+                                                        <div class="function-parameter__name">
+                                                        content
+                                                        </div>
+
+                                                        <div class="function-parameter__type">
+                                                        string
+                                                        </div>
+
+                                                        <div class="function-parameter__description">
+                                                        new content to put
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Changes content in the overlayer.
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        loadContent
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        AjaxOverlayerManager
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+                                                    <article class="function-parameter">
+                                                        <div class="function-parameter__name">
+                                                        id
+                                                        </div>
+
+                                                        <div class="function-parameter__type">
+                                                        integer
+                                                        </div>
+
+                                                        <div class="function-parameter__description">
+                                                        id of the content that should be loaded
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Loads new content and shows the overlayer.
+                                                </div>
+                                            </section>
+
+                                            <section class="table__row">
+                                                <div class="table__cell functions-table__name-cell">
+                                                    <article class="function">
+                                                        <div class="function__name">
+                                                        run
+                                                        </div>
+
+                                                        <div class="function__returned-type">
+                                                        boolean
+                                                        </div>
+                                                    </article>
+                                                </div>
+
+                                                <div class="table__cell functions-table__parameter-cell">
+
+                                                </div>
+
+                                                <div class="table__cell functions-table__description-cell">
+                                                Runs the AjaxOverlayerManager.
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </section>
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="more-contents-anchor" class="site-section section-06">
+                    <div class="site-section__layer">
+                        <div class="site-section__inner">
+                            <header class="section-header">
+                                <h2 class="section-title">More contents</h2>
+                            </header>
+
+                            <section class="site-section__content">
+                                <article class="article">
+                                    <header class="article__header">
+                                        <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
+                                    </header>
+
+                                    <div class="article__text">
+                                        <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque sollicitudin orci nec molestie. Aliquam quis vehicula augue. Vivamus in porta tellus. Curabitur vel mollis diam. Nullam at sodales eros. Integer eu lectus consectetur ante dignissim aliquet. Maecenas varius, ante vel scelerisque faucibus, tellus ex blandit velit, ut molestie turpis mi nec tellus. Curabitur vitae nunc faucibus, bibendum eros sed, consequat sem. Vestibulum pulvinar nunc augue, et fringilla enim accumsan a. Pellentesque rutrum lectus sit amet nisl malesuada viverra. Proin pellentesque quis tellus et accumsan.
+                                        </p>
+
+                                        <div class="more-content" data-type="1" data-id="1">
+                                            <p>
+                                            Vivamus nec gravida dolor, ac ultrices velit. Vivamus massa eros, commodo gravida feugiat vel, consequat non urna. Vivamus felis libero, tincidunt mattis luctus ut, tempor a tellus. Donec et diam iaculis, facilisis felis sed, sodales justo. Sed vel odio sed ligula suscipit dictum vel commodo nisl. Phasellus enim massa, sollicitudin ut libero vitae, ultricies porttitor turpis. Vestibulum elementum ipsum a blandit euismod. Nam id urna lorem. Phasellus hendrerit quam non mauris semper congue. Pellentesque ut finibus enim, et convallis est. Praesent ornare maximus lectus, rutrum hendrerit sem commodo id.
+                                            </p>
+                                            <p>
+                                            Morbi viverra risus turpis, at posuere nunc efficitur ac. Mauris pharetra tempus purus, at tristique tortor suscipit sit amet. Sed tempus, ipsum eget sodales pulvinar, turpis tellus consequat sapien, eu bibendum lectus quam nec diam. Integer est massa, malesuada in finibus pharetra, ornare in ante. Praesent imperdiet pellentesque est a elementum. Sed id mollis dolor, vitae ultricies tortor. Praesent magna massa, finibus eget bibendum id, fermentum a ex. In metus tellus, rutrum scelerisque elementum non, sagittis vel nisl.
+                                            </p>
+                                            <p>
+                                            Nunc a suscipit odio. Curabitur sit amet iaculis nulla, sit amet tristique leo. Maecenas rhoncus aliquet sapien ut imperdiet. Nunc lobortis nulla a nisi hendrerit, a accumsan eros accumsan. Mauris vel mauris arcu. Maecenas aliquet mi ut leo mollis, eu convallis quam pellentesque. Sed vitae accumsan lorem. Nam condimentum laoreet velit at lacinia. Duis pharetra dictum erat at molestie. Sed eu justo sagittis, molestie mi nec, aliquam erat. Nulla lacinia quis felis nec sollicitudin. Morbi nulla neque, gravida at dolor at, blandit gravida nisi. Nunc tincidunt neque ac dolor semper, ut auctor sem viverra. Curabitur egestas convallis enim, vel mollis mauris bibendum lacinia. Mauris dignissim ullamcorper sodales.
+                                            </p>
+                                        </div>
+
+                                        <div class="button-container">
+                                            <button class="simple-button more-content-button" data-type="1" data-id="1">
+                                                <div class="simple-button__inner">
+                                                See more
+                                                </div>
+
+                                                <div class="simple-button__icon-bottom icon-arrow icon-arrow--down icon-arrow--small">
+                                                </div>
+                                            </button>
+                                            <!--<button class="simple-button more-button simple-button--bottom-icon" data-id="1" type="button">
+                                                <div class="simple-button__inner">See more</div>
+                                                <div class="simple-button__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
+                                            </button>
+
+                                            <button class="simple-button less-button simple-button--top-icon" data-id="1" type="button">
+                                                <div class="simple-button__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
+                                                <div class="simple-button__inner">See less</div>
+                                            </button>-->
+                                        </div>
+                                    </div>
+                                </article>
                             </section>
                         </div>
                     </div>
@@ -1969,65 +2351,6 @@
                     </div>
                 </section>
             -->
-
-                <section id="more-contents-anchor" class="site-section section-06">
-                    <div class="site-section__layer">
-                        <div class="site-section__inner">
-                            <header class="section-header">
-                                <h2 class="section-title">More contents</h2>
-                            </header>
-
-                            <section class="site-section__content">
-                                <article class="article">
-                                    <header class="article__header">
-                                        <h1 class="article__title">Lorem ipsum dolor sit amet</h1>
-                                    </header>
-
-                                    <div class="article__text">
-                                        <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque sollicitudin orci nec molestie. Aliquam quis vehicula augue. Vivamus in porta tellus. Curabitur vel mollis diam. Nullam at sodales eros. Integer eu lectus consectetur ante dignissim aliquet. Maecenas varius, ante vel scelerisque faucibus, tellus ex blandit velit, ut molestie turpis mi nec tellus. Curabitur vitae nunc faucibus, bibendum eros sed, consequat sem. Vestibulum pulvinar nunc augue, et fringilla enim accumsan a. Pellentesque rutrum lectus sit amet nisl malesuada viverra. Proin pellentesque quis tellus et accumsan.
-                                        </p>
-
-                                        <div class="more-content" data-id="1">
-                                            <p>
-                                            Vivamus nec gravida dolor, ac ultrices velit. Vivamus massa eros, commodo gravida feugiat vel, consequat non urna. Vivamus felis libero, tincidunt mattis luctus ut, tempor a tellus. Donec et diam iaculis, facilisis felis sed, sodales justo. Sed vel odio sed ligula suscipit dictum vel commodo nisl. Phasellus enim massa, sollicitudin ut libero vitae, ultricies porttitor turpis. Vestibulum elementum ipsum a blandit euismod. Nam id urna lorem. Phasellus hendrerit quam non mauris semper congue. Pellentesque ut finibus enim, et convallis est. Praesent ornare maximus lectus, rutrum hendrerit sem commodo id.
-                                            </p>
-                                            <p>
-                                            Morbi viverra risus turpis, at posuere nunc efficitur ac. Mauris pharetra tempus purus, at tristique tortor suscipit sit amet. Sed tempus, ipsum eget sodales pulvinar, turpis tellus consequat sapien, eu bibendum lectus quam nec diam. Integer est massa, malesuada in finibus pharetra, ornare in ante. Praesent imperdiet pellentesque est a elementum. Sed id mollis dolor, vitae ultricies tortor. Praesent magna massa, finibus eget bibendum id, fermentum a ex. In metus tellus, rutrum scelerisque elementum non, sagittis vel nisl.
-                                            </p>
-                                            <p>
-                                            Nunc a suscipit odio. Curabitur sit amet iaculis nulla, sit amet tristique leo. Maecenas rhoncus aliquet sapien ut imperdiet. Nunc lobortis nulla a nisi hendrerit, a accumsan eros accumsan. Mauris vel mauris arcu. Maecenas aliquet mi ut leo mollis, eu convallis quam pellentesque. Sed vitae accumsan lorem. Nam condimentum laoreet velit at lacinia. Duis pharetra dictum erat at molestie. Sed eu justo sagittis, molestie mi nec, aliquam erat. Nulla lacinia quis felis nec sollicitudin. Morbi nulla neque, gravida at dolor at, blandit gravida nisi. Nunc tincidunt neque ac dolor semper, ut auctor sem viverra. Curabitur egestas convallis enim, vel mollis mauris bibendum lacinia. Mauris dignissim ullamcorper sodales.
-                                            </p>
-                                        </div>
-
-                                        <div class="button-container">
-                                            <button class="simple-button more-content-button" data-id="1">
-                                                <div class="simple-button__icon-top icon-arrow icon-arrow--up icon-arrow--small">
-                                                </div>
-
-                                                <div class="simple-button__inner">
-                                                See more
-                                                </div>
-
-                                                <div class="simple-button__icon-bottom icon-arrow icon-arrow--down icon-arrow--small">
-                                                </div>
-                                            </button>
-                                            <!--<button class="simple-button more-button simple-button--bottom-icon" data-id="1" type="button">
-                                                <div class="simple-button__inner">See more</div>
-                                                <div class="simple-button__icon icon-arrow icon-arrow--down icon-arrow--small"></div>
-                                            </button>
-
-                                            <button class="simple-button less-button simple-button--top-icon" data-id="1" type="button">
-                                                <div class="simple-button__icon icon-arrow icon-arrow--up icon-arrow--small"></div>
-                                                <div class="simple-button__inner">See less</div>
-                                            </button>-->
-                                        </div>
-                                    </div>
-                                </article>
-                            </section>
-                        </div>
-                    </div>
-                </section>
 
                 <section id="bookmarks-anchor" class="site-section section-08">
                     <div class="site-section__layer">
@@ -2477,7 +2800,7 @@
                 </div>
             </div>
 
-            <div class="overlayer__close"> 
+            <div class="overlayer__close ajax-overlayer-close"> 
                 <div class="icon-plus icon-plus--rotated icon-plus--large icon-plus--light"> 
                     <div></div> 
                     <div></div> 

@@ -864,6 +864,14 @@ ul {
       border-radius: 50%;
       background: #000; }
 
+.plain-list > li {
+  padding: 8px 0;
+  display: block; }
+  .plain-list > li:first-child {
+    padding-top: 0; }
+  .plain-list > li:last-child {
+    padding-bottom: 0; }
+
 .icons {
   text-align: center;
   padding: 30px 0;
@@ -1045,6 +1053,8 @@ ul {
 
 .function-parameter__name {
   font-weight: 700; }
+.function-parameter__type {
+  font-style: italic; }
 
 .function-parameters-list > li {
   display: block;
