@@ -357,12 +357,17 @@ list-style-type: none;
     &__description {
     font-weight: 400;
     font-style: italic;
+
+        &:before {
+        content: '– ';
+        }
     }
 
     &__code {
     border: 1px solid $medium-color;
     background: $light-color-02;
     padding: 15px 20px;
+    overflow: auto;
     }
 }
 

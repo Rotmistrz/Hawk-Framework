@@ -472,6 +472,7 @@ Hawk.MoreContentManager = function(type, options) {
 
     this.defaultOptions = {
         slideSpeed: 400,
+        fadeSpeed: 400,
         onShow: function(id, button) {
             button.velocity({ opacity: 0 }, {
                 duration: 400,
@@ -495,16 +496,17 @@ Hawk.MoreContentManager = function(type, options) {
             duration: that.options.slideSpeed,
             complete: function() {
                 currentContent.velocity({ opacity: 1 }, {
-                    duration: 400
+                    duration: that.options.fadeSpeed,
+                    complete: function() {
+                        currentContent.attr('data-state', that.states.VISIBLE);
+                    }
                 });
-
-                if (typeof that.options.onShow == 'function') {
-                    that.options.onShow(id, currentButton);
-                }
-                
-                currentContent.attr('data-state', that.states.VISIBLE);
             }
         });
+
+        if (typeof that.options.onShow == 'function') {
+            that.options.onShow(id, currentButton);
+        }
 
         return this;
     }
@@ -516,20 +518,20 @@ Hawk.MoreContentManager = function(type, options) {
         var currentContent = this.contents.filter('[data-id="' + id + '"');
 
         currentContent.velocity({ opacity: 0 }, {
-            duration: 400,
+            duration: that.options.fadeSpeed,
             complete: function() {
                 currentContent.velocity("slideUp", {
                     duration: that.options.slideSpeed,
                     complete: function() {
-                        if (typeof that.options.onHide == 'function') {
-                            that.options.onHide(id, currentButton);
-                        }
-
                         currentContent.attr('data-state', that.states.HIDDEN);
                     }
                 });
             }
         });
+
+        if (typeof that.options.onHide == 'function') {
+            that.options.onHide(id, currentButton);
+        }
         
         return this;
     }
@@ -1586,6 +1588,12 @@ Hawk.run = function() {
     $(window).resize(function() {
         that.refresh();
     });
+
+    /***
+    
+    make here initializing of maybe everything
+
+    ***/
 
     var exemplaryDropdown = new this.Dropdown($('#exemplary-dropdown'));
     exemplaryDropdown.run();
