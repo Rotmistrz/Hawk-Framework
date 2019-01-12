@@ -94,6 +94,10 @@
   position: relative;
   top: 0; }
 
+.dropdown--upwards .dropdown__list-container {
+  top: auto;
+  bottom: 100%; }
+
 .bookmarks-manager {
   max-width: 900px;
   margin: 0 auto; }

@@ -110,6 +110,11 @@ Hawk.DropdownConstants = {
     types: {
         OVERLAYER: 0,
         EXPANDING: 1
+    },
+
+    directions: {
+        DOWNWARDS: 0,
+        UPWARDS: 1
     }
 }
 
@@ -133,10 +138,12 @@ Hawk.Dropdown = function(container, options) {
 
         mode: Hawk.DropdownConstants.modes.PLAIN,
         type: Hawk.DropdownConstants.types.OVERLAYER,
+        direction: Hawk.DropdownConstants.directions.DOWNWARDS,
 
         containerClass: 'dropdown',
         expandingTypeClass: 'dropdown--expanding',
         choosableModeClass: 'dropdown--choosable',
+        upwardsDirectionClass: 'dropdown--upwards',
         openClass: 'dropdown--open',
         headerClass: 'dropdown__header',
         titleClass: 'dropdown__title',
@@ -233,6 +240,10 @@ Hawk.Dropdown = function(container, options) {
             this.container.addClass(this.options.choosableModeClass);
         }
 
+        if (this.options.direction == Hawk.DropdownConstants.directions.UPWARDS) {
+            this.container.addClass(this.options.upwardsDirectionClass);
+        }
+
         this.hide();
 
         this.container.click(function(e) {
@@ -250,7 +261,7 @@ Hawk.Dropdown = function(container, options) {
             }
         });
 
-        this.container.parent().click(function() {
+        $('body').click(function() {
             if (that.isOpen()) {
                 that.hide();
             }
@@ -301,17 +312,21 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         onHide: function(overlayerManager) {},
         onLoad: function(overlayerManager) {},
         onInitialize: function(overlayerManager, hash) {
-            var pattern = /n_[0-9]+(-[a-zA-Z0-9]+)+/
+            var pattern = /[0-9]+\/[0-9]+\/([a-zA-Z0-9\-]+)/
 
-            if(pattern.test(hash)) {
-                var parts = hash.split('_');
+            if (pattern.test(hash)) {
+                var parts = hash.split('/');
 
-                hash = parts[1];
+                var overlayerId = parseInt(parts[0]);
+                var id = parseInt(parts[1]);
 
-                parts = hash.split('-');
-
-                overlayerManager.loadContent(parts[0]); 
+                if (overlayerId == overlayerManager.getId()) {
+                    overlayerManager.loadContent(id);
+                }
             }
+        },
+        createAnchor: function(overlayerManager, id, hash) {
+            return overlayerManager.getId() + "/" + id + "/" + hash;
         }
     }
 
@@ -320,6 +335,10 @@ Hawk.AjaxOverlayerManager = function(id, options) {
     this.popstateDefaultCallback = function() {
         that.hide();
     };
+
+    this.getId = function() {
+        return this.overlayerId;
+    }
 
     this.show = function() {
         var that = this;
@@ -400,7 +419,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
                 that.changeContent(result['html']);
 
-                window.location.hash = result['anchor'];
+                window.location.hash = that.options.createAnchor(that, id, result.anchor);
 
                 if (typeof that.options.onLoad == 'function') {
                     that.options.onLoad(that);
@@ -478,7 +497,7 @@ Hawk.MoreContentManager = function(id, options) {
     this.contentContainer;
 
     this.defaultOptions = {
-        itemsPerLoading: 10,
+        itemsPerLoading: 8,
 
         loadActionName: 'load-more-content',
         ajaxFilePath: 'ajax.php',
@@ -567,8 +586,6 @@ Hawk.MoreContentManager = function(id, options) {
         this.contentContainer = $('.' + this.options.contentContainerClass + '[data-id="' + this.id + '"]');
     
         this.buttons.click(function(e) {
-            console.log("clicked");
-
             e.preventDefault();
 
             if (!that.isDone()) {
@@ -578,43 +595,28 @@ Hawk.MoreContentManager = function(id, options) {
     }
 }
 
-Hawk.AjaxMoreContentManager = function(id, options) {
-    this.id = id;
-    this.buttons = $('.more-content-button[data-id="' + this.id + '"]');
-    this.contentContainer = $('.more-content-container[data-id="' + this.id + '"]');
+Hawk.SimpleMoreContentManager = function(type, options) {
+    this.type = type;
 
-    this.lastRowId = 0;
-    this.isDone = false;
+    this.states = {
+        HIDDEN: 0,
+        VISIBLE: 1
+    };
 
     this.defaultOptions = {
         slideSpeed: 400,
         fadeSpeed: 400,
 
-        itemsPerLoading: 8,
+        buttonClass: 'simple-more-content-button',
+        contentClass: 'simple-more-content',
 
-        onDone: function(button) {
-            button.velocity({ opacity: 0 }, {
-                duration: 400,
-                complete: function() {
-                    button.css({ visibility: 'hidden' });
-                }
-            });
-        },
-        onShow: function(contentsContainer, button) {}
+        onShow: function(manager, button) {},
+        onHide: function(manager, button) {}
     };
 
     this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
-    this.defaultOnLoad = function(items) {
-        items.css({ display: 'none' });
-        items.css({ opacity: 0 });
-
-        this.contentContainer.append(items);
-
-        
-    }
-
-    this.show = function() {
+    this.show = function(id) {
         var that = this;
 
         var currentButton = this.buttons.filter('[data-id="' + id + '"]');
@@ -633,14 +635,48 @@ Hawk.AjaxMoreContentManager = function(id, options) {
         });
 
         if (typeof that.options.onShow == 'function') {
-            that.options.onShow(currentButton);
+            that.options.onShow(id, currentButton);
         }
 
         return this;
     }
 
+    this.hide = function(id) {
+        var that = this;
+
+        var currentButton = this.buttons.filter('[data-id="' + id + '"');
+        var currentContent = this.contents.filter('[data-id="' + id + '"');
+
+        currentContent.velocity({ opacity: 0 }, {
+            duration: that.options.fadeSpeed,
+            complete: function() {
+                currentContent.velocity("slideUp", {
+                    duration: that.options.slideSpeed,
+                    complete: function() {
+                        currentContent.attr('data-state', that.states.HIDDEN);
+                    }
+                });
+            }
+        });
+
+        if (typeof that.options.onHide == 'function') {
+            that.options.onHide(id, currentButton);
+        }
+        
+        return this;
+    }
+
+    this.isHidden = function(id) {
+        var currentContent = this.contents.filter('[data-id="' + id + '"');
+
+        return currentContent.attr('data-state') == this.states.HIDDEN;
+    }
+
     this.run = function() {
         var that = this;
+
+        this.buttons = $('.' + that.options.buttonClass + '[data-type="' + this.type + '"]');
+        this.contents = $('.' + that.options.contentClass + '[data-type="' + this.type + '"]');
 
         this.buttons.show();
         this.contents.hide().css({ opacity: 0 });
@@ -666,6 +702,23 @@ Hawk.AjaxMoreContentManager = function(id, options) {
 
         return true;
     }
+}
+
+Hawk.initializeMoreContentManagers = function(callbacks) {
+    var contents = $('.more-content');
+    var that = this;
+
+    contents.each(function() {
+        var id = $(this).attr('data-id');
+
+        var moreContents = new that.MoreContentManager(id, callbacks);
+
+        if(moreContents) {
+            moreContents.run();
+        }
+    });
+
+    return this;
 }
 
 Hawk.SlideMenu = function(id, options) {
@@ -1692,6 +1745,40 @@ Hawk.run = function() {
     });
     radioDropdown.run();
 
+    var upwardsDropdown = new this.Dropdown($('#upwards-dropdown'), {
+        direction: Hawk.DropdownConstants.directions.UPWARDS
+    });
+    upwardsDropdown.run();
+
+    /**this.initializeMoreContentManagers({
+        showButtonCallback: function(button) {
+            button.velocity({ opacity: 0 }, {
+                duration: 400,
+                complete: function() {
+                    button.find('.simple-button__inner').html("See less");
+                    button.find('.simple-button__icon-top').css({ opacity: 1 });
+                    button.find('.simple-button__icon-bottom').css({ opacity: 0 });
+                    button.delay(100).velocity({ opacity: 1 });
+                }
+            });
+        },
+        hideButtonCallback: function(button) {
+            button.velocity({ opacity: 0 }, {
+                duration: 400,
+                complete: function() {
+                    button.find('.simple-button__inner').html("See more");
+                    button.find('.simple-button__icon-top').css({ opacity: 0 });
+                    button.find('.simple-button__icon-bottom').css({ opacity: 1 });
+                    button.delay(100).velocity({ opacity: 1 });
+                }
+            });
+        }
+    });**/
+
+    /**var moreContentManager = new this.MoreContentManager(1);
+    moreContentManager.run();
+    **/
+
     var ajaxOverlayer = new this.AjaxOverlayerManager('overlayer', {
         onLoad: function(om) {
             console.log("onload");
@@ -1719,20 +1806,6 @@ Hawk.run = function() {
 
     var detailsList = new this.DetailsList($('.details-list').first());
     detailsList.run();
-
-    var moreContentManager = new Hawk.MoreContentManager(1, {
-        onLoad: function(button, contentContainer) {
-            console.log("more content loaded");
-        },
-        onDone: function(button, contentContainer) {
-            console.log("loading done");
-
-            button.velocity({ opacity: 0 }, {
-                duration: 400
-            });
-        }
-    });
-    moreContentManager.run();
 
     return this;
 }

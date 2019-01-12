@@ -41,6 +41,27 @@ Morbi et nisl id justo vulputate euismod. Duis vel diam vel lorem dictum varius.
     $result['anchor'] = "n_1-lorem-ipsum";
     
     echo json_encode($result);
+} else if ($_POST['action'] == 'load-more-content') {
+    header('Content-type: application/json');
+
+    $html = "<div class=\"exemplary\">Hop hop lorem ipsum exemplary items</div>";
+    $html .= "<div class=\"exemplary\">Hop hop lorem ipsum exemplary items</div>";
+    $html .= "<div class=\"exemplary\">Hop hop lorem ipsum exemplary items</div>";
+
+    if ($_POST['lastItemId'] < 3) {
+        $lastItemId = 3;
+        $done = false;
+    } else {
+        $done = true;
+        $lastItemId = 3;
+    }
+
+    $json = [];
+    $json['html'] = $html;
+    $json['lastItemId'] = $lastItemId;
+    $json['isDone'] = $done;
+
+    echo json_encode($json);
 } else if($_POST['action'] == 'send-opinion') {
     header('Content-type: application/json');
 

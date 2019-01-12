@@ -131,6 +131,13 @@ display: block;
 	}
 }
 
+.dropdown--upwards {
+	.dropdown__list-container {
+		top: auto;
+		bottom: 100%;
+	}
+}
+
 .dropdown.dropdown--open {
     .dropdown__header {
     }
