@@ -340,23 +340,6 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         return this.overlayerId;
     }
 
-    this.show = function() {
-        var that = this;
-
-        this.container.velocity("fadeIn", {
-            duration: this.options.fadeSpeed,
-            complete: function() {
-                $('body').css({ 'overflow': 'hidden' });
-
-                if (typeof that.options.onShow == 'function') {
-                    that.options.onShow(that);
-                }
-            }
-        });
-
-        return this;
-    }
-
     this.hide = function() {
         var that = this;
 
@@ -417,9 +400,9 @@ Hawk.AjaxOverlayerManager = function(id, options) {
                     return;
                 }
 
-                that.changeContent(result['html']);
+                that.changeContent(result.html);
 
-                window.location.hash = that.options.createAnchor(that, id, result.anchor);
+                that.changeHash(id, result.anchor);
 
                 if (typeof that.options.onLoad == 'function') {
                     that.options.onLoad(that);
@@ -470,11 +453,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
             that.hide();
         });
 
-        this.container.find('.' + that.options.innerClass + ', .' + that.options.innerClass + ' :not(.' + that.options.closeButtonClass + ', .' + that.options.closeButtonClass + ' *)').click(function(e) {
-            e.stopPropagation();
-
-            return;
-        });
+        this.initializeClosePreventer();        
 
         var hash = window.location.hash;
         
@@ -484,6 +463,66 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
         return true;
     };
+}
+Hawk.AjaxOverlayerManager.prototype.initializeClosePreventer = function() {
+    var that = this;
+
+    this.container.find('.' + that.options.innerClass + ', .' + that.options.innerClass + ' :not(.' + that.options.closeButtonClass + ', .' + that.options.closeButtonClass + ' *)').click(function(e) {
+        e.stopPropagation();
+
+        return;
+    });
+
+    return this;
+}
+Hawk.AjaxOverlayerManager.prototype.show = function() {
+    var that = this;
+
+    this.container.velocity("fadeIn", {
+        duration: this.options.fadeSpeed,
+        complete: function() {
+            $('body').css({ 'overflow': 'hidden' });
+
+            if (typeof that.options.onShow == 'function') {
+                that.options.onShow(that);
+            }
+        }
+    });
+
+    return this;
+}
+Hawk.AjaxOverlayerManager.prototype.changeHash = function(id, anchor) {
+    var that = this;
+
+    if (typeof anchor != 'undefined' && anchor != null && anchor.length > 0) {
+        window.location.hash = that.options.createAnchor(that, id, anchor);
+    }
+
+    return this;
+}
+
+Hawk.PopUp = function(container, options) {
+    Hawk.AjaxOverlayerManager.call(this, container, options);
+}
+Hawk.PopUp.prototype.show = function() {
+    var that = this;
+
+    this.container.velocity("fadeIn", {
+        duration: this.options.fadeSpeed,
+        complete: function() {
+            if (typeof that.options.onShow == 'function') {
+                that.options.onShow(that);
+            }
+        }
+    });
+
+    return this;
+}
+Hawk.PopUp.prototype.initializeClosePreventer = function() {
+    return this;
+}
+Hawk.PopUp.prototype.changeHash = function(id, anchor) {
+    return this;
 }
 
 Hawk.MoreContentManager = function(id, options) {
@@ -1791,6 +1830,19 @@ Hawk.run = function() {
         }
     });
     ajaxOverlayer.run();
+
+    var popup = new this.PopUp('popup', {
+        onLoad: function(om) {
+            console.log("onload");
+        },
+        onShow: function(om) {
+            console.log("onshow");
+        },
+        onHide: function(om) {
+            console.log("onhide");
+        }
+    });
+    popup.run();
 
     var mainmenu = new this.SlideMenu('main-menu', { mode: 'slide-fade', direction: 'right' });
     mainmenu.run();

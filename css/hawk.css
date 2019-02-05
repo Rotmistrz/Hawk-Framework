@@ -404,6 +404,9 @@
   .overlayer .overlayer__content {
     display: none; }
 
+.overlayer--popup .overlayer__inner {
+  max-width: 400px; }
+
 .page-loading-layer {
   display: block;
   position: fixed;
