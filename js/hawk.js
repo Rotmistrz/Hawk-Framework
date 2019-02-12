@@ -539,7 +539,7 @@ Hawk.MoreContentManager = function(id, options) {
         itemsPerLoading: 8,
 
         loadActionName: 'load-more-content',
-        ajaxFilePath: 'ajax.php',
+        ajaxFilePath: '/ajax.php',
 
         buttonClass: 'more-content-button',
         contentContainerClass: 'more-content-container',
@@ -548,14 +548,21 @@ Hawk.MoreContentManager = function(id, options) {
         fadeSpeed: 400,
 
         onLoad: function(button, contentContainer) {},
-        onDone: function(button, contentContainer) {}
+        onDone: function(button, contentContainer) {
+            button.velocity({ opacity: 0 }, {
+                duration: 200,
+                complete: function() {
+                    button.css({ visibility: 'hidden' });
+                }
+            });
+        }
     };
 
     this.options = Hawk.mergeObjects(this.defaultOptions, options);
 
     this.load = function(lastItemId) {
         var that = this;
-        var lang = $('html').attr('lang') || "pl";
+        var lang = $('html').attr('lang');
 
         $.ajax({
             type: "POST",
@@ -563,6 +570,8 @@ Hawk.MoreContentManager = function(id, options) {
             dataType: "json",
             data: { 'action': that.options.loadActionName, 'id': id, 'lang': lang, 'lastItemId': lastItemId },
             success: function(result) {
+                console.log(result);
+
                 if (result.error > 0) {
                     // here should appear error layer
                     return;
@@ -592,8 +601,12 @@ Hawk.MoreContentManager = function(id, options) {
         });
     }
 
-    this.appendContent = function(content) {
-        content = $(content);
+    this.appendContent = function(contentToAppend) {
+        var content = $(contentToAppend);
+
+        content = content.filter(function() {
+            return this.nodeType != 3; //Node.TEXT_NODE
+        });
 
         content.hide();
         content.css({ opacity: 0 });
@@ -1742,6 +1755,55 @@ Hawk.FormSender = function(id, fields, options) {
     }
 }
 
+Hawk.Caller = function(options) {
+    this.callbacks = {};
+    this.refreshing;
+
+    this.defaultOptions = {
+        timeSpace: 100
+    };
+
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
+
+    this.register = function(name, callback) {
+        this.callbacks[name] = callback;
+
+        return this;
+    }
+
+    this.cancel = function(name) {
+        if (typeof this.callbacks[name] != 'undefined') {
+            delete this.callbacks[name];
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    this.call = function() {
+        for (var i in this.callbacks) {
+            this.callbacks[i]();
+        }
+
+        return this;
+    }
+
+    this.run = function() {
+        var that = this;
+
+        this.call();
+
+        $(window).resize(function() {
+            clearTimeout(that.refreshing);
+
+            that.refreshing = setTimeout(function() {
+                that.call();
+            }, that.options.timeSpace);
+        });
+    }
+}
+
 Hawk.refresh = function() {
     this.w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     this.h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeigh;
@@ -1843,6 +1905,13 @@ Hawk.run = function() {
         }
     });
     popup.run();
+
+    var moreContentManager = new this.MoreContentManager(1, {
+        onLoad: function(button, contentContainer) {
+            baguetteBox.run('.baguette-box');
+        }
+    });
+    moreContentManager.run();
 
     var mainmenu = new this.SlideMenu('main-menu', { mode: 'slide-fade', direction: 'right' });
     mainmenu.run();
