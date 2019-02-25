@@ -401,6 +401,8 @@
       .overlayer .overlayer__close {
         top: 30px;
         right: 30px; } }
+  .overlayer .overlayer__content-wrapper {
+    opacity: 0; }
   .overlayer .overlayer__content {
     display: none; }
 

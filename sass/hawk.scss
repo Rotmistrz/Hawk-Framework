@@ -506,6 +506,10 @@ padding: 0;
 		}
 	}
 
+	.overlayer__content-wrapper {
+	opacity: 0;
+	}
+
 	.overlayer__content {
 	display: none;
 	}
