@@ -110,6 +110,11 @@ Hawk.DropdownConstants = {
     types: {
         OVERLAYER: 0,
         EXPANDING: 1
+    },
+
+    directions: {
+        DOWNWARDS: 0,
+        UPWARDS: 1
     }
 }
 
@@ -133,10 +138,12 @@ Hawk.Dropdown = function(container, options) {
 
         mode: Hawk.DropdownConstants.modes.PLAIN,
         type: Hawk.DropdownConstants.types.OVERLAYER,
+        direction: Hawk.DropdownConstants.directions.DOWNWARDS,
 
         containerClass: 'dropdown',
         expandingTypeClass: 'dropdown--expanding',
         choosableModeClass: 'dropdown--choosable',
+        upwardsDirectionClass: 'dropdown--upwards',
         openClass: 'dropdown--open',
         headerClass: 'dropdown__header',
         titleClass: 'dropdown__title',
@@ -233,6 +240,10 @@ Hawk.Dropdown = function(container, options) {
             this.container.addClass(this.options.choosableModeClass);
         }
 
+        if (this.options.direction == Hawk.DropdownConstants.directions.UPWARDS) {
+            this.container.addClass(this.options.upwardsDirectionClass);
+        }
+
         this.hide();
 
         this.container.click(function(e) {
@@ -250,7 +261,7 @@ Hawk.Dropdown = function(container, options) {
             }
         });
 
-        this.container.parent().click(function() {
+        $('body').click(function() {
             if (that.isOpen()) {
                 that.hide();
             }
@@ -277,6 +288,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
     this.buttons = $('.ajax-overlayer-button[data-overlayer-id=' + this.overlayerId + ']');
 
     this.inner;
+    this.contentWrapper;
     this.contentContainer;
     this.closeButton;
     this.loadingLayer;
@@ -284,6 +296,9 @@ Hawk.AjaxOverlayerManager = function(id, options) {
     this.currentButton;
 
     this.open = false;
+
+    this.ajaxRequest;
+    this.ajaxRequestWorking = false;
 
     this.defaultOptions = {
         fadeSpeed: 400,
@@ -293,6 +308,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         loadActionName: "load-overlayer",
 
         innerClass: 'overlayer__inner',
+        contentWrapperClass: 'overlayer__content-wrapper',
         contentContainerClass: 'overlayer__content',
         closeButtonClass: 'ajax-overlayer-close',
         loadingLayerClass: 'overlayer__loading-layer',
@@ -329,25 +345,14 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         return this.overlayerId;
     }
 
-    this.show = function() {
-        var that = this;
-
-        this.container.velocity("fadeIn", {
-            duration: this.options.fadeSpeed,
-            complete: function() {
-                $('body').css({ 'overflow': 'hidden' });
-
-                if (typeof that.options.onShow == 'function') {
-                    that.options.onShow(that);
-                }
-            }
-        });
-
-        return this;
-    }
-
     this.hide = function() {
         var that = this;
+
+        if (this.ajaxRequestWorking) {
+            if (typeof this.ajaxRequest != 'undefined') {
+                this.ajaxRequest.abort();
+            }
+        }
 
         try {
             history.pushState("", document.title, window.location.pathname + window.location.search);
@@ -361,6 +366,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
                 $('body').css({ 'overflow': 'auto' });
 
                 that.contentContainer.html('').hide();
+                that.contentWrapper.css({ opacity: 0 });
 
                 if (typeof that.options.onHide == 'function') {
                     that.options.onHide(that);
@@ -380,9 +386,15 @@ Hawk.AjaxOverlayerManager = function(id, options) {
     this.changeContent = function(content) {
         var that = this;
 
+        this.contentWrapper.css({ opacity: 0 });
         this.contentContainer.html(content);
         this.contentContainer.velocity("slideDown", {
-            duration: that.options.slideSpeed
+            duration: that.options.slideSpeed,
+            complete: function() {
+                that.contentWrapper.velocity({ opacity: 1 } , {
+                    duration: 200
+                });
+            }
         });
 
         return this;
@@ -395,7 +407,9 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         that.show();
         that.loadingLayer.show();
 
-        $.ajax({
+        this.ajaxRequestWorking = true;
+
+        this.ajaxRequest = $.ajax({
             type: "POST",
             url: that.options.ajaxFilePath,
             dataType: "json",
@@ -406,9 +420,9 @@ Hawk.AjaxOverlayerManager = function(id, options) {
                     return;
                 }
 
-                that.changeContent(result['html']);
+                that.changeContent(result.html);
 
-                window.location.hash = that.options.createAnchor(that, id, result.anchor);
+                that.changeHash(id, result.anchor);
 
                 if (typeof that.options.onLoad == 'function') {
                     that.options.onLoad(that);
@@ -422,6 +436,8 @@ Hawk.AjaxOverlayerManager = function(id, options) {
             },
             complete: function() {
                 that.loadingLayer.hide();
+
+                that.ajaxRequestWorking = false;
             }
         });
         
@@ -432,6 +448,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
         var that = this;
 
         this.inner = this.container.find('.' + this.options.innerClass);
+        this.contentWrapper = this.container.find('.' + this.options.contentWrapperClass);
         this.contentContainer = this.container.find('.' + this.options.contentContainerClass);
         this.closeButton = $(this.container.find('.' + this.options.closeButtonClass));
         this.loadingLayer = $(this.container.find('.' + this.options.loadingLayerClass));
@@ -459,11 +476,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
             that.hide();
         });
 
-        this.container.find('.' + that.options.innerClass + ', .' + that.options.innerClass + ' :not(.' + that.options.closeButtonClass + ', .' + that.options.closeButtonClass + ' *)').click(function(e) {
-            e.stopPropagation();
-
-            return;
-        });
+        this.initializeClosePreventer();        
 
         var hash = window.location.hash;
         
@@ -473,6 +486,197 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
         return true;
     };
+}
+Hawk.AjaxOverlayerManager.prototype.initializeClosePreventer = function() {
+    var that = this;
+
+    this.container.find('.' + that.options.innerClass + ', .' + that.options.innerClass + ' :not(.' + that.options.closeButtonClass + ', .' + that.options.closeButtonClass + ' *)').click(function(e) {
+        e.stopPropagation();
+
+        return;
+    });
+
+    return this;
+}
+Hawk.AjaxOverlayerManager.prototype.show = function() {
+    var that = this;
+
+    this.container.velocity("fadeIn", {
+        duration: this.options.fadeSpeed,
+        complete: function() {
+            $('body').css({ 'overflow': 'hidden' });
+
+            if (typeof that.options.onShow == 'function') {
+                that.options.onShow(that);
+            }
+        }
+    });
+
+    return this;
+}
+Hawk.AjaxOverlayerManager.prototype.changeHash = function(id, anchor) {
+    var that = this;
+
+    if (typeof anchor != 'undefined' && anchor != null && anchor.length > 0) {
+        window.location.hash = that.options.createAnchor(that, id, anchor);
+    }
+
+    return this;
+}
+
+Hawk.PopUp = function(container, options) {
+    Hawk.AjaxOverlayerManager.call(this, container, options);
+}
+Hawk.PopUp.prototype.show = function() {
+    var that = this;
+
+    this.container.velocity("fadeIn", {
+        duration: this.options.fadeSpeed,
+        complete: function() {
+            if (typeof that.options.onShow == 'function') {
+                that.options.onShow(that);
+            }
+        }
+    });
+
+    return this;
+}
+Hawk.PopUp.prototype.initializeClosePreventer = function() {
+    return this;
+}
+Hawk.PopUp.prototype.changeHash = function(id, anchor) {
+    return this;
+}
+
+Hawk.AjaxMoreContentManager = function(id, options) {
+    var that = this;
+
+    this.id = id;
+    this.lastItemId = 0;
+    this.done = false;
+
+    this.buttons;
+    this.contentContainer;
+
+    this.defaultOptions = {
+        itemsPerLoading: 8,
+
+        loadActionName: 'load-more-content',
+        ajaxFilePath: '/ajax.php',
+
+        buttonClass: 'more-content-button',
+        contentContainerClass: 'more-content-container',
+
+        slideSpeed: 400,
+        fadeSpeed: 400,
+
+        onLoad: function(buttons, contentContainer) {},
+        onDone: function(buttons, contentContainer) {
+            buttons.velocity({ opacity: 0 }, {
+                duration: 200,
+                complete: function() {
+                    buttons.css({ visibility: 'hidden' });
+                }
+            });
+        },
+        onError: function(buttons, contentContainer) {}
+    };
+
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
+
+    this.load = function(lastItemId) {
+        var that = this;
+        var lang = $('html').attr('lang');
+        var id = this.id;
+
+        $.ajax({
+            type: "POST",
+            url: that.options.ajaxFilePath,
+            dataType: "json",
+            data: { 'action': that.options.loadActionName, 'id': id, 'lang': lang, 'lastItemId': lastItemId },
+            success: function(result) {
+                console.log(result);
+
+                if (result.error) {
+                    if (typeof that.options.onError == 'function') {
+                        that.options.onError(that.buttons, that.contentContainer);
+                    }
+
+                    return false;
+                }
+
+                that.setDone(result['isDone']);
+
+                that.lastItemId = result['lastItemId'];
+
+                that.appendContent(result['html']);
+
+                if (that.isDone() && typeof that.options.onDone == 'function') {
+                    that.options.onDone(that.buttons, that.contentContainer);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                if (typeof that.options.onError == 'function') {
+                    that.options.onError(that.buttons, that.contentContainer);
+                }
+
+                return false;
+            },
+            complete: function() {
+                
+            }
+        });
+    }
+
+    this.appendContent = function(contentToAppend) {
+        var content = $(contentToAppend);
+
+        content = content.filter(function() {
+            return this.nodeType != 3; // Node.TEXT_NODE
+        });
+
+        content.hide();
+        content.css({ opacity: 0 });
+
+        this.contentContainer.append(content);
+
+        content.velocity("slideDown", {
+            duration: that.options.slideSpeed,
+            complete: function() {
+                content.velocity({ opacity: 1 }, {
+                    duration: that.options.fadeSpeed,
+                    complete: function() {
+                        if (typeof that.options.onLoad == 'function') {
+                            that.options.onLoad(that.buttons, that.contentContainer);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    this.isDone = function() {
+        return this.done;
+    }
+
+    this.setDone = function(isDone) {
+        this.done = isDone;
+
+        return this;
+    }
+
+    this.run = function() {
+        this.buttons = $('.' + this.options.buttonClass + '[data-id="' + this.id + '"]');
+        this.contentContainer = $('.' + this.options.contentContainerClass + '[data-id="' + this.id + '"]');
+    
+        this.buttons.click(function(e) {
+            e.preventDefault();
+
+            if (!that.isDone()) {
+                that.load(that.lastItemId);
+            }
+        });
+    }
 }
 
 Hawk.MoreContentManager = function(id, options) {
@@ -1820,6 +2024,11 @@ Hawk.run = function() {
     });
     radioDropdown.run();
 
+    var upwardsDropdown = new this.Dropdown($('#upwards-dropdown'), {
+        direction: Hawk.DropdownConstants.directions.UPWARDS
+    });
+    upwardsDropdown.run();
+
     /**this.initializeMoreContentManagers({
         showButtonCallback: function(button) {
             button.velocity({ opacity: 0 }, {
@@ -1861,6 +2070,29 @@ Hawk.run = function() {
         }
     });
     ajaxOverlayer.run();
+
+    var popup = new this.PopUp('popup', {
+        onLoad: function(om) {
+            console.log("onload");
+        },
+        onShow: function(om) {
+            console.log("onshow");
+        },
+        onHide: function(om) {
+            console.log("onhide");
+        }
+    });
+    popup.run();
+
+    var moreContentManager = new this.AjaxMoreContentManager(1, {
+        onLoad: function(button, contentContainer) {
+            baguetteBox.run('.baguette-box');
+        },
+        onError: function(b, c) {
+            console.log("AjaxMoreContentManager - error occured.");
+        }
+    });
+    moreContentManager.run();
 
     var mainmenu = new this.SlideMenu('main-menu', { mode: 'slide-fade', direction: 'right' });
     mainmenu.run();

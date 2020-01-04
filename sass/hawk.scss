@@ -131,6 +131,13 @@ display: block;
 	}
 }
 
+.dropdown--upwards {
+	.dropdown__list-container {
+		top: auto;
+		bottom: 100%;
+	}
+}
+
 .dropdown.dropdown--open {
     .dropdown__header {
     }
@@ -499,8 +506,17 @@ padding: 0;
 		}
 	}
 
+	.overlayer__content-wrapper {
+	opacity: 0;
+	}
+
 	.overlayer__content {
 	display: none;
+	}
+}
+.overlayer--popup {
+	.overlayer__inner {
+	max-width: 400px;
 	}
 }
 

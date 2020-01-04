@@ -93,6 +93,10 @@
   position: relative;
   top: 0; }
 
+.dropdown--upwards .dropdown__list-container {
+  top: auto;
+  bottom: 100%; }
+
 .bookmarks-manager {
   max-width: 900px;
   margin: 0 auto; }
@@ -397,8 +401,13 @@
       .overlayer .overlayer__close {
         top: 30px;
         right: 30px; } }
+  .overlayer .overlayer__content-wrapper {
+    opacity: 0; }
   .overlayer .overlayer__content {
     display: none; }
+
+.overlayer--popup .overlayer__inner {
+  max-width: 400px; }
 
 .page-loading-layer {
   display: block;
