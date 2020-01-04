@@ -269,6 +269,8 @@ Hawk.Dropdown = function(container, options) {
 }
 
 Hawk.AjaxOverlayerManager = function(id, options) {
+    var that = this;
+
     this.container = $('#' + id);
     this.overlayerId = parseInt(this.container.attr('data-overlayer-id'));
     
@@ -297,22 +299,35 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
         onShow: function(overlayerManager) {},
         onHide: function(overlayerManager) {},
+        onLoad: function(overlayerManager) {},
         onInitialize: function(overlayerManager, hash) {
-            var pattern = /n_[0-9]+(-[a-zA-Z0-9]+)+/
+            var pattern = /[0-9]+\/[0-9]+\/([a-zA-Z0-9\-]+)/
 
-            if(pattern.test(hash)) {
-                var parts = hash.split('_');
+            if (pattern.test(hash)) {
+                var parts = hash.split('/');
 
-                hash = parts[1];
+                var overlayerId = parseInt(parts[0]);
+                var id = parseInt(parts[1]);
 
-                parts = hash.split('-');
-
-                overlayerManager.loadContent(parts[0]); 
+                if (overlayerId == overlayerManager.getId()) {
+                    overlayerManager.loadContent(id);
+                }
             }
+        },
+        createAnchor: function(overlayerManager, id, hash) {
+            return overlayerManager.getId() + "/" + id + "/" + hash;
         }
     }
 
     this.options = Hawk.mergeObjects(this.defaultOptions, options);
+
+    this.popstateDefaultCallback = function() {
+        that.hide();
+    };
+
+    this.getId = function() {
+        return this.overlayerId;
+    }
 
     this.show = function() {
         var that = this;
@@ -355,9 +370,7 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
                 that.open = false;
 
-                $(window).unbind('popstate').on('popstate', function() {
-                    
-                });
+                $(window).unbind('popstate', that.popstateDefaultCallback);
             }
         });
 
@@ -395,11 +408,13 @@ Hawk.AjaxOverlayerManager = function(id, options) {
 
                 that.changeContent(result['html']);
 
-                window.location.hash = result['anchor'];
+                window.location.hash = that.options.createAnchor(that, id, result.anchor);
 
-                $(window).unbind('popstate').on('popstate', function() {
-                    that.hide();
-                });
+                if (typeof that.options.onLoad == 'function') {
+                    that.options.onLoad(that);
+                }
+
+                $(window).on('popstate', that.popstateDefaultCallback);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // here should appear error layer
@@ -460,10 +475,117 @@ Hawk.AjaxOverlayerManager = function(id, options) {
     };
 }
 
-Hawk.MoreContentManager = function(type, options) {
+Hawk.MoreContentManager = function(id, options) {
+    var that = this;
+
+    this.id = id;
+    this.lastItemId = 0;
+    this.done = false;
+
+    this.buttons;
+    this.contentContainer;
+
+    this.defaultOptions = {
+        itemsPerLoading: 8,
+
+        loadActionName: 'load-more-content',
+        ajaxFilePath: 'ajax.php',
+
+        buttonClass: 'more-content-button',
+        contentContainerClass: 'more-content-container',
+
+        slideSpeed: 400,
+        fadeSpeed: 400,
+
+        onLoad: function(button, contentContainer) {},
+        onDone: function(button, contentContainer) {}
+    };
+
+    this.options = Hawk.mergeObjects(this.defaultOptions, options);
+
+    this.load = function(lastItemId) {
+        var that = this;
+        var lang = $('html').attr('lang') || "pl";
+
+        $.ajax({
+            type: "POST",
+            url: that.options.ajaxFilePath,
+            dataType: "json",
+            data: { 'action': that.options.loadActionName, 'id': id, 'lang': lang, 'lastItemId': lastItemId },
+            success: function(result) {
+                if (result.error > 0) {
+                    // here should appear error layer
+                    return;
+                }
+
+                that.appendContent(result['html']);
+
+                that.lastItemId = result['lastItemId'];
+
+                that.setDone(result['isDone']);
+
+                if (typeof that.options.onLoad == 'function') {
+                    that.options.onLoad(that.buttons, that.contentContainer);
+                }
+
+                if (that.isDone() && typeof that.options.onDone == 'function') {
+                    that.options.onDone(that.buttons, that.contentContainer);
+                }                
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // here should appear error layer
+                //alert(errorThrown);
+            },
+            complete: function() {
+                
+            }
+        });
+    }
+
+    this.appendContent = function(content) {
+        content = $(content);
+
+        content.hide();
+        content.css({ opacity: 0 });
+
+        this.contentContainer.append(content);
+
+        content.velocity("slideDown", {
+            duration: that.options.slideSpeed,
+            complete: function() {
+                content.velocity({ opacity: 1 }, {
+                    duration: that.options.fadeSpeed
+                });
+            }
+        });
+    }
+
+    this.isDone = function() {
+        return this.done;
+    }
+
+    this.setDone = function(isDone) {
+        this.done = isDone;
+
+        return this;
+    }
+
+    this.run = function() {
+        this.buttons = $('.' + this.options.buttonClass + '[data-id="' + this.id + '"]');
+        this.contentContainer = $('.' + this.options.contentContainerClass + '[data-id="' + this.id + '"]');
+    
+        this.buttons.click(function(e) {
+            e.preventDefault();
+
+            if (!that.isDone()) {
+                that.load(that.lastItemId);
+            }
+        });
+    }
+}
+
+Hawk.SimpleMoreContentManager = function(type, options) {
     this.type = type;
-    this.buttons = $('.more-content-button[data-type="' + this.type + '"]');
-    this.contents = $('.more-content[data-type="' + this.type + '"]');
 
     this.states = {
         HIDDEN: 0,
@@ -473,15 +595,12 @@ Hawk.MoreContentManager = function(type, options) {
     this.defaultOptions = {
         slideSpeed: 400,
         fadeSpeed: 400,
-        onShow: function(id, button) {
-            button.velocity({ opacity: 0 }, {
-                duration: 400,
-                complete: function() {
-                    button.css({ visibility: 'hidden' });
-                }
-            });
-        },
-        onHide: function(id, button) {}
+
+        buttonClass: 'simple-more-content-button',
+        contentClass: 'simple-more-content',
+
+        onShow: function(manager, button) {},
+        onHide: function(manager, button) {}
     };
 
     this.options = Hawk.mergeObjects(this.defaultOptions, options);
@@ -544,6 +663,9 @@ Hawk.MoreContentManager = function(type, options) {
 
     this.run = function() {
         var that = this;
+
+        this.buttons = $('.' + that.options.buttonClass + '[data-type="' + this.type + '"]');
+        this.contents = $('.' + that.options.contentClass + '[data-type="' + this.type + '"]');
 
         this.buttons.show();
         this.contents.hide().css({ opacity: 0 });
@@ -762,7 +884,7 @@ Hawk.initializeAnchors = function(options) {
 
 Hawk.BookmarksManager = function(container, options) {
     this.container = $(container);
-    this.contentContainer;
+    this.content;
     this.contentWrapper;
     this.bookmarks;
 
@@ -776,15 +898,19 @@ Hawk.BookmarksManager = function(container, options) {
     this.defaultOptions = {
         responsive: true,
         activeScroll: false,
+
         activeScrollWidth: 480,
         slideDuration: 200,
         fadeDuration: 200,
+
         activeBookmarkClass: 'active',
-        bookmarks: that.container.find('.bookmarks-manager__bookmark-container'),
-        contentContainer: that.container.find('.bookmarks-manager__content').first(),
-        contentWrapper: that.container.find('.bookmarks-manager__content-wrapper').first(),
+        bookmarksClass: 'bookmarks-manager__bookmark-container',
+        contentClass: 'bookmarks-manager__content',
+        contentWrapperClass: 'bookmarks-manager__content-wrapper',
+
         bookmarkClass: 'bookmarks-manager__bookmark',
-        contentClass: 'bookmarks-manager__bookmark-content',
+        bookmarkContentClass: 'bookmarks-manager__bookmark-content',
+
         bookmarkActiveCallback: function(bookmarkContainer) {},
         bookmarkUnactiveCallback: function(bookmarkContainer) {},
         changeContentCallback: function(content) {},
@@ -798,11 +924,11 @@ Hawk.BookmarksManager = function(container, options) {
     }
 
     this.isSmallDevice = function() {
-        return (this.isResponsive() && !this.contentContainer.is(':visible'));
+        return (this.isResponsive() && !this.content.is(':visible'));
     }
 
     this.changeContent = function(content, callback) {
-        var container = this.contentContainer;
+        var container = this.content;
 
         var showing = function() {
             container.hide();
@@ -814,12 +940,12 @@ Hawk.BookmarksManager = function(container, options) {
                     container.velocity({ opacity: 1 }, {
                         duration: that.options.fadeDuration,
                         complete: function() {
-                            var currentHeight = that.contentContainer.outerHeight();
+                            var currentHeight = that.content.outerHeight();
 
                             that.currentHeight = currentHeight;
                             that.contentWrapper.css({ 'min-height': that.currentHeight + "px" });
 
-                            that.options.changeContentCallback(that.contentContainer);
+                            that.options.changeContentCallback(that.content);
 
                             that.loading = false;
                         }
@@ -841,7 +967,7 @@ Hawk.BookmarksManager = function(container, options) {
         }
 
         if(this.options.activeScroll && Hawk.w < this.options.activeScrollWidth) {
-            var id = this.contentContainer.attr('id');
+            var id = this.content.attr('id');
 
             if(id !== undefined) {
                 Hawk.scrollToElement({ anchor: '#' + id });
@@ -857,7 +983,7 @@ Hawk.BookmarksManager = function(container, options) {
         this.current = bookmarkContainer;
 
         var bookmark = this.current.find('.' + this.options.bookmarkClass);
-        var content = this.current.find('.' + this.options.contentClass);
+        var content = this.current.find('.' + this.options.bookmarkContentClass);
 
         this.setBookmarkActive(this.current);
 
@@ -882,7 +1008,7 @@ Hawk.BookmarksManager = function(container, options) {
             var current = this.current;
             current.find('.' + this.options.bookmarkClass).removeClass(this.options.activeBookmarkClass);
 
-            current.find('.' + this.options.contentClass).velocity("slideUp", {
+            current.find('.' + this.options.bookmarkContentClass).velocity("slideUp", {
                 duration: that.options.slideDuration
             });
 
@@ -920,7 +1046,7 @@ Hawk.BookmarksManager = function(container, options) {
         //this.current = undefined;
 
         this.unsetBookmarkActive();
-        this.contentContainer.velocity({ opacity: 0 }, {
+        this.content.velocity({ opacity: 0 }, {
             duration: 200,
             complete: function() {
                 if(callback !== undefined) {
@@ -953,9 +1079,9 @@ Hawk.BookmarksManager = function(container, options) {
     }
 
     this.run = function() {
-        this.bookmarks = $(this.options.bookmarks);
-        this.contentContainer = $(this.options.contentContainer);
-        this.contentWrapper = $(this.options.contentWrapper);
+        this.bookmarks = this.container.find('.' + this.options.bookmarksClass);
+        this.content = this.container.find('.' + this.options.contentClass);
+        this.contentWrapper = this.container.find('.' + this.options.contentWrapperClass);
 
         var refresh;
 
@@ -1364,8 +1490,8 @@ Hawk.FormSender = function(id, fields, options) {
         infoWrapperClass: 'form__info-wrapper',
         infoClass: 'form__info',
         spinnerClass: 'form__spinner',
-        correctCallback: function() {},
-        errorCallback: function() {},
+        onSuccess: function(result) {},
+        onError: function(responseText) {},
         callback: function() {}
     };
 
@@ -1521,7 +1647,7 @@ Hawk.FormSender = function(id, fields, options) {
                 console.log(result);
 
                 if (!result.error) {
-                    that.changeMessage(result.message);
+                    //that.changeMessage(result.message);
                     
                     that.clear();
 
@@ -1530,8 +1656,10 @@ Hawk.FormSender = function(id, fields, options) {
                     that.disable();
                 } else {
                     that.checkFields(result.errorFields);
+                }
 
-                    that.changeMessage(result.message);
+                if (typeof that.options.onSuccess == 'function') {
+                    that.options.onSuccess(result);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -1563,6 +1691,90 @@ Hawk.FormSender = function(id, fields, options) {
 
             that.send();
         });
+    }
+}
+
+Hawk.getLocation = function() {
+    return window.location;
+}
+
+Hawk.getPath = function() {
+    return Hawk.getLocation().pathname;
+}
+
+Hawk.Routes = {
+    routes: {},
+
+    path: Hawk.getPath(),
+    regexp: new RegExp(""),
+    pathRegexp: new RegExp(this.path),
+
+    getPath: function() {
+        return this.path;
+    },
+
+    /**routeExists: function(routeName) {
+        return (typeof this.routes[routeName] != 'undefined');
+    },
+
+    getRoute: function(routeName) {
+        if (this.routeExists(routeName)) {
+            return this.routes[routeName];
+        } else {
+            return null;
+        }
+    },
+
+    registerRoute: function(name, path) {
+        this.routes[name] = path;
+    },**/
+
+    is: function(route) {
+      this.regexp = new RegExp(route);
+
+      return this.regexp.test(this.getPath());
+    },
+
+    contains: function(parameterName) {
+        var regexp = new RegExp('/' + parameterName + '/');
+        var endRegexp = new RegExp('/' + parameterName + '$');
+
+        return regexp.test(this.getPath()) || endRegexp.test(this.getPath());
+    },
+
+    getParameterValue: function(parameterString) {
+        var parts = parameterString.split('/');
+
+        if (parts.length > 2) {
+            return parts[2];
+        } else {
+            return null;
+        }
+    },
+
+    get: function(parameterName) {
+        if (this.contains(parameterName)) {
+            var pattern = '/' + parameterName + '/([0-9a-zA-Z\-]+)';
+
+            var regexp = new RegExp(pattern + '/');
+            var endRegexp = new RegExp(pattern + '$');
+
+            var results = regexp.exec(this.getPath());
+
+            if (results != null) {
+                return this.getParameterValue(results[0]);
+            } else {
+                results = endRegexp.exec(this.getPath());
+
+                if (results != null) {
+                    return this.getParameterValue(results[0]);
+                } else {
+                    return null;
+                }
+            }
+        } else {
+            return null;
+        }
     }
 }
 
@@ -1633,10 +1845,21 @@ Hawk.run = function() {
         }
     });**/
 
-    var moreContentManager = new this.MoreContentManager(1);
+    /**var moreContentManager = new this.MoreContentManager(1);
     moreContentManager.run();
+    **/
 
-    var ajaxOverlayer = new this.AjaxOverlayerManager('overlayer');
+    var ajaxOverlayer = new this.AjaxOverlayerManager('overlayer', {
+        onLoad: function(om) {
+            console.log("onload");
+        },
+        onShow: function(om) {
+            console.log("onshow");
+        },
+        onHide: function(om) {
+            console.log("onhide");
+        }
+    });
     ajaxOverlayer.run();
 
     var mainmenu = new this.SlideMenu('main-menu', { mode: 'slide-fade', direction: 'right' });

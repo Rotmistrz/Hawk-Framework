@@ -6,6 +6,7 @@ var getCurrentValue = function(el, prop) {
     return style[prop];
 }
 
+
 var hawkSlideDown = function(element, time) {
     var currentHeight;
     var currentPaddingTop;
@@ -59,6 +60,11 @@ var hawkSlideDown = function(element, time) {
 $(document).ready(function() {
 
     Hawk.run();
+
+
+    console.log("Czy jest parametr");
+    console.log(Hawk.Routes.contains('blabla'));
+
 
 
     var fields = [
