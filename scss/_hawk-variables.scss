@@ -1,9 +1,15 @@
 $dark-color: #000;
 $dark-color-01: #222;
 
-$medium-color: #0f2672; //#a90800;
-$medium-color-01: #213988; //#8f0700;
-$medium-color-02: #1959c4; //#6f0500;
+$primary-color: #0f2672;
+$primary-color-01: #213988;
+$primary-color-02: #1959c4;
+
+$secondary-color: #a90800;
+$secondary-color-01: #8f0700;
+
+$tertiary-color: #444;
+$tertiary-color-01: #777;
 
 $light-color: #fff;
 $light-color-01: #bed7ba;
@@ -17,8 +23,8 @@ $grey: #444;
 $error-color: #b34d4d;
 $error-color-01: #fff2f2;
 
-$sans-serif-font-family: Lato, Verdana, sans-serif;
-$serif-font-family: Heuristica, 'Times New Roman', serif;
+$sans-serif-font-family: Verdana, sans-serif;
+$serif-font-family: 'Times New Roman', serif;
 
 $main-font-size: 16px;
 $main-font-size-00: 17px;
@@ -106,50 +112,20 @@ $huge-font-size-08: 54px;
 $huge-font-size-09: 56px;
 $huge-font-size-10: 58px;
 
-$rwd-380: 380px;
-$rwd-420: 420px;
-$rwd-480: 480px;
-$rwd-500: 500px;
-$rwd-550: 550px;
-$rwd-650: 650px;
-$rwd-768: 768px;
-$rwd-860: 860px;
-$rwd-900: 900px;
-$rwd-992: 992px;
-$rwd-1100: 1100px;
-$rwd-1300: 1300px;
-$rwd-1500: 1500px;
-$rwd-1700: 1700px;
 
+$rwd-mobile-xs: 380px;
+$rwd-mobile-s: 420px;
+$rwd-mobile-m: 480px;
+$rwd-mobile-l: 500px;
+$rwd-mobile-xl: 550px;
 
+$rwd-tablet-xs: 650px;
+$rwd-tablet-s: 768px;
+$rwd-tablet-m: 860px;
+$rwd-tablet-l: 900px;
+$rwd-tablet-xl: 992px;
 
-
-
-
-
-
-
-
-
-
-
-
-$header-01-font-size: 24px;
-$header-01-font-size-00: 28px;
-$header-01-font-size-01: 32px;
-
-$header-02-font-size: 24px;
-
-$subsection-header-01-font-size: 20px;
-$subsection-header-01-font-size-00: 22px;
-
-$icons-header-font-size: 20px;
-
-
-
-
-
-$very-huge-font-size: 72px;
-
-$button-font-size: 16px;
-
+$rwd-desktop-s: 1100px;
+$rwd-desktop-m: 1300px;
+$rwd-desktop-l: 1500px;
+$rwd-desktop-xl: 1700px;

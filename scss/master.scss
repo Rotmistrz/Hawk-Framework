@@ -152,7 +152,7 @@ max-width: 900px;
     display: block;
     padding: 20px 0;
 
-        @media (min-width: $rwd-650) {
+        @media (min-width: $rwd-tablet-xs) {
         display: inline-block;
         width: 33.33%;
         padding: 20px 30px;
@@ -187,10 +187,10 @@ max-width: 900px;
 overflow: hidden;
 position: relative;
 padding: 80px 0 50px 0;
-@include background-gradient-down($medium-color 20%, $medium-color-01 80%, $medium-color-01 100%);
+@include background-gradient-down($primary-color 20%, $primary-color-01 80%, $primary-color-01 100%);
 color: $light-color;
 
-    @media (min-width: $rwd-1300) {
+    @media (min-width: $rwd-desktop-m) {
     padding: 100px 0;
     }
 }
@@ -202,11 +202,11 @@ font-weight: 400;
 letter-spacing: 2px;
 text-align: center;
 
-    @media (min-width: $rwd-768) {
+    @media (min-width: $rwd-tablet-s) {
     font-size: $huge-font-size-00;
     }
 
-    @media (min-width: $rwd-1300) {
+    @media (min-width: $rwd-desktop-m) {
     font-size: $huge-font-size-01;
     }
 }
@@ -217,24 +217,24 @@ text-align: center;
 text-align: left;
 padding: 0 0 30px 0;
 
-    @media (min-width: $rwd-768) {
+    @media (min-width: $rwd-tablet-s) {
     
     }
 }
 
 .section-title {
 font-family: $serif-font-family;
-font-size: $header-01-font-size;
+font-size: $very-large-font-size;
 letter-spacing: 1px;
 text-transform: uppercase;
 font-weight: 400;
 padding: 0 0 10px 0;
-border-bottom: 2px solid $medium-color;
+border-bottom: 2px solid $primary-color;
 }
 
 .section-subtitle {
-font-size: $header-02-font-size;
-line-height: $header-02-font-size + 8px;
+font-size: $larger-font-size;
+line-height: $larger-font-size + 8px;
 font-weight: 400;
 letter-spacing: 1px;
 }
@@ -245,7 +245,7 @@ padding: 0 0 30px 0;
 
 .subsection-title {
 color: $dark-color-01;
-font-size: $subsection-header-01-font-size;
+font-size: $large-font-size;
 font-weight: 700;
 }
 
@@ -322,16 +322,16 @@ list-style-type: none;
     > li {
     display: block;
 
-        @media (min-width: $rwd-480) {
+        @media (min-width: $rwd-mobile-m) {
         float: left;
         width: 50%;
         }
 
-        @media (min-width: $rwd-768) {
+        @media (min-width: $rwd-tablet-s) {
         width: 33.33%;
         }
 
-        @media (min-width: $rwd-1300) {
+        @media (min-width: $rwd-desktop-m) {
         width: 25%;
         }
     }
@@ -364,7 +364,7 @@ list-style-type: none;
     }
 
     &__code {
-    border: 1px solid $medium-color;
+    border: 1px solid $primary-color;
     background: $light-color-02;
     padding: 15px 20px;
     overflow: auto;
@@ -447,7 +447,7 @@ max-width: 300px;
     font-size: $small-font-size;
     padding: 0 15px 10px 15px;
     background: $light-color;
-    border: 1px solid $medium-color-02;
+    border: 1px solid $primary-color-02;
     border-top: 0;
     margin: -1px 0 0 0;
     }
@@ -464,13 +464,13 @@ max-width: 300px;
     &:hover,
     &:focus {
         .dropdown__header {
-        border-color: $medium-color-02;
+        border-color: $primary-color-02;
         }
     }
 }
 .dropdown.dropdown--open {
     .dropdown__header {
-    border-color: $medium-color-02;
+    border-color: $primary-color-02;
     border-bottom-color: transparent;
 
         .dropdown__icon {
@@ -495,7 +495,7 @@ max-width: 300px;
 
 }
 .spinner--medium {
-color: $medium-color;
+color: $primary-color;
 }
 .spinner--large {
 font-size: 36px;
@@ -659,7 +659,7 @@ display: block;
     .choice-field__field-inner {
     width: 8px;
     height: 8px;
-    background: $medium-color-01;
+    background: $primary-color-01;
     opacity: 0;
     @include transition(all .2s linear);
     }
@@ -715,7 +715,7 @@ display: block;
 
     input[type="checkbox"]:checked + .list-choice-field__wrapper,
     input[type="radio"]:checked + .list-choice-field__wrapper {
-    background: $medium-color-02;
+    background: $primary-color-02;
     color: $light-color;
     }
 }
@@ -724,7 +724,7 @@ display: block;
 /***** FOOTER *****/
 
 .site-footer {
-border-top: 3px solid $medium-color;
+border-top: 3px solid $primary-color;
 background: $light-color-02;
 text-align: center;
 padding: 40px 0;
@@ -734,17 +734,17 @@ padding: 40px 0;
     margin: 0 auto;
     padding: 0 20px;
 
-        @media (min-width: $rwd-650) {
+        @media (min-width: $rwd-tablet-xs) {
         padding-left: 40px;
         padding-right: 40px;
         }
 
-        @media (min-width: $rwd-992) {
+        @media (min-width: $rwd-tablet-xl) {
         padding-left: 50px;
         padding-right: 50px;
         }
 
-        @media (min-width: $rwd-1300) {
+        @media (min-width: $rwd-desktop-m) {
         padding-left: 0;
         padding-right: 0;
         }
@@ -777,8 +777,8 @@ cursor: pointer;
 font-size: $large-font-size;
 font-family: $sans-serif-font-family;
 letter-spacing: 1px;
-border: 2px solid $medium-color;
-color: $medium-color;
+border: 2px solid $primary-color;
+color: $primary-color;
 font-weight: 700;
 background: none;
 @include box-sizing(border-box);
@@ -798,7 +798,7 @@ background: none;
         width: 100%;
         height: 100%;
         @include transition(all .2s linear);
-        background: $medium-color;
+        background: $primary-color;
         }
     }
 
@@ -823,7 +823,7 @@ border: 0;
 color: $light-color;
 
     .button__wrapper {
-    background: $medium-color;
+    background: $primary-color;
 
         &:after {
         background: $dark-color;
@@ -837,7 +837,7 @@ color: $light-color;
 
 .simple-button {
 display: inline-block;
-font-size: $button-font-size;
+font-size: $large-font-size;
 background: none;
 border: 0;
 cursor: pointer;
@@ -928,14 +928,14 @@ max-width: 900px;
     &__layer {
     padding: 50px 0;
 
-        @media (min-width: $rwd-650) {
+        @media (min-width: $rwd-tablet-xs) {
         padding: 70px 0;
         }
 
-        @media (min-width: $rwd-992) {
+        @media (min-width: $rwd-tablet-xl) {
         }
 
-        @media (min-width: $rwd-1300) {
+        @media (min-width: $rwd-desktop-m) {
 
         }
     }
@@ -943,15 +943,15 @@ max-width: 900px;
     &__inner {
     padding: 0 20px;
     
-        @media (min-width: $rwd-650) {
+        @media (min-width: $rwd-tablet-xs) {
         padding: 0 40px;
         }
 
-        @media (min-width: $rwd-992) {
+        @media (min-width: $rwd-tablet-xl) {
         padding: 0 50px;
         }
 
-        @media (min-width: $rwd-1300) {
+        @media (min-width: $rwd-desktop-m) {
         max-width: 1300px;
         margin: 0 auto;
         padding-left: 0;
@@ -985,17 +985,17 @@ padding-right: 0;
         padding-left: 20px;
         padding-right: 20px;
 
-            @media (min-width: $rwd-650) {
+            @media (min-width: $rwd-tablet-xs) {
             padding-left: 40px;
             padding-right: 40px;
             }
 
-            @media (min-width: $rwd-992) {
+            @media (min-width: $rwd-tablet-xl) {
             padding-left: 50px;
             padding-right: 50px;
             }
 
-            @media (min-width: $rwd-1300) {
+            @media (min-width: $rwd-desktop-m) {
             padding-left: 0;
             padding-right: 0;
             }
@@ -1025,10 +1025,10 @@ padding-top: 50px;
     .column {
     padding: 20px;
 
-        @media (min-width: $rwd-650) {
+        @media (min-width: $rwd-tablet-xs) {
         padding: 30px 40px;
         }
-        @media (min-width: $rwd-992) {
+        @media (min-width: $rwd-tablet-xl) {
         padding: 30px 50px;
         }
     }

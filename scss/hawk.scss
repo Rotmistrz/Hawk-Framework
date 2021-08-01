@@ -5,6 +5,14 @@
 @import 'hawk-animates';
 
 
+.line {
+	display: block;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
 /***** CONTAINERS *****/
 
 .wrapper {
@@ -86,15 +94,21 @@ position: relative;
 position: relative;
 display: block;
 
+	.dropdown__sensor {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 0;
+		z-index: -10000;
+	}
+
     .dropdown__header {
     position: relative;
     cursor: pointer;
     @include transition(all .2s linear);
     @include user-select(none);
-    }
-
-    .dropdown__title {
-
     }
 
     .dropdown__list-container {
@@ -150,7 +164,7 @@ margin: 0 auto;
 	.bookmarks-manager__bookmarks {
 	text-align: center;
 
-		@media (min-width: $rwd-768) {
+		@media (min-width: $rwd-tablet-s) {
 		padding: 0 0 20px 0;
 		}
 	}
@@ -158,7 +172,7 @@ margin: 0 auto;
 	.bookmarks-manager__bookmark-container {
 	display: block;
 
-		@media (min-width: $rwd-768) {
+		@media (min-width: $rwd-tablet-s) {
 		display: inline-block;
 		}
 	}
@@ -167,7 +181,7 @@ margin: 0 auto;
 	cursor: pointer;
 	padding: 20px;
 
-		@media (min-width: $rwd-1300) {
+		@media (min-width: $rwd-desktop-m) {
 		padding-left: 40px;
 		padding-right: 40px;
 		}
@@ -184,7 +198,7 @@ margin: 0 auto;
 	display: none;
 	@include transition(all .2s linear);
 
-		@media (min-width: $rwd-768) {
+		@media (min-width: $rwd-tablet-s) {
 		display: block;
 		}
 	}
@@ -205,7 +219,7 @@ font-weight: 700;
 }
 
 .simple-bookmark.active {
-color: $medium-color-01;
+color: $primary-color-01;
 }
 
 .details-list {
@@ -222,7 +236,7 @@ margin: 0 auto;
 	padding: 10px 0;
 	cursor: pointer;
 	font-weight: 700;
-	border-bottom: 1px solid $medium-color;
+	border-bottom: 1px solid $primary-color;
 	
 		.details-list__arrow {
 		position: absolute;
@@ -247,13 +261,13 @@ margin: 0 auto;
 		padding: 10px 0;
 		cursor: pointer;
 
-			@media (min-width: $rwd-480) {
+			@media (min-width: $rwd-mobile-m) {
 			display: inline-block;
 			padding: 0 20px;
 			}
 
 			&.active {
-			color: $medium-color;
+			color: $primary-color;
 			font-weight: 700;
 			}
 		}
@@ -471,15 +485,15 @@ padding: 0;
 	margin: 50px 20px;
 	padding: 20px;
 
-		@media (min-width: $rwd-420) {
+		@media (min-width: $rwd-mobile-s) {
 		padding: 40px;
 		}
 
-		@media (min-width: $rwd-768) {
+		@media (min-width: $rwd-tablet-s) {
 		margin: 70px 40px;
 		}
 
-		@media (min-width: $rwd-1300) {
+		@media (min-width: $rwd-desktop-m) {
 		margin: 70px auto;
 		max-width: 1160px;
 		padding: 80px 60px;
@@ -495,12 +509,12 @@ padding: 0;
 	display: block;
 	cursor: pointer;
 
-		@media (min-width: $rwd-768) {
+		@media (min-width: $rwd-tablet-s) {
 		top: 20px;
 		right: 20px;
 		}
 
-		@media (min-width: $rwd-1700) {
+		@media (min-width: $rwd-desktop-xl) {
 		top: 30px;
 		right: 30px;
 		}
@@ -580,7 +594,7 @@ position: relative;
 		}
 
 		> .icon-hamburger__hover-item {
-		background: $medium-color;
+		background: $primary-color;
 		left: -100%;
 
 			&:nth-child(4) {
@@ -635,7 +649,7 @@ position: relative;
 .icon-hamburger--medium {
 	.icon-hamburger__inner {
 		> div {
-		background: $medium-color;
+		background: $primary-color;
 		}
 	}
 }
@@ -748,7 +762,7 @@ height: 18px;
 border-width: 3px;
 }
 .icon-arrow--medium {
-border-color: $medium-color;
+border-color: $primary-color;
 }
 .icon-arrow--light {
 border-color: $light-color;
@@ -773,7 +787,7 @@ border-top-width: 8px;
 border-bottom-width: 8px;
 }
 .icon-triangular-arrow-left--medium {
-border-right-color: $medium-color;
+border-right-color: $primary-color;
 }
 .icon-triangular-arrow-left--light {
 border-right-color: $light-color;
@@ -796,7 +810,7 @@ border-right-width: 8px;
 border-left-width: 8px;
 }
 .icon-triangular-arrow-up--medium {
-border-bottom-color: $medium-color;
+border-bottom-color: $primary-color;
 }
 .icon-triangular-arrow-up--light {
 border-bottom-color: $light-color;
@@ -819,7 +833,7 @@ border-top-width: 8px;
 border-bottom-width: 8px;
 }
 .icon-triangular-arrow-right--medium {
-border-left-color: $medium-color;
+border-left-color: $primary-color;
 }
 .icon-triangular-arrow-right--light {
 border-left-color: $light-color;
@@ -842,7 +856,7 @@ border-right-width: 8px;
 border-left-width: 8px;
 }
 .icon-triangular-arrow-down--medium {
-border-top-color: $medium-color;
+border-top-color: $primary-color;
 }
 .icon-triangular-arrow-down--light {
 border-top-color: $light-color;
@@ -914,7 +928,7 @@ height: 16px;
 .icon-plus--medium {
 	&:before,
 	&:after {
-	background: $medium-color;
+	background: $primary-color;
 	}
 }
 
